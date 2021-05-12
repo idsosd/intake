@@ -124,7 +124,10 @@ $gesprekken = $query -> fetchAll(2);
 			$trclass="table-success";
 		echo "<tr class='".$trclass."'>";
 		echo "<td class='text-end' width='40'><a href='#' onclick=\"showDetails({$gesprek['gespr_id']})\">{$i}.</a></td>";
-		$datum=strftime('%a %e %h %Y' , strtotime($gesprek['gespr_datum']));
+		if(is_null($gesprek['gespr_datum'] OR $gesprek['gespr_datum'] == '')
+            $datum = "";
+		else
+		    $datum=strftime('%a %e %h %Y' , strtotime($gesprek['gespr_datum']));
 		echo "<td width='150'>".$datum."</td>";
 		echo "<td width='250'>".volledigeNaam(1, $gesprek['gespr_achternaam'], $gesprek['gespr_voorvoegsel'], $gesprek['gespr_roepnaam'])."</td>";
 		$emailbody = "Beste {$gesprek['gespr_roepnaam']},%0A%0AJe hebt je aangemeld voor de Software Developer opleiding aan het Alfa-college. Het is de bedoeling dat ik eerst een intakegesprek met je doe.%0A
