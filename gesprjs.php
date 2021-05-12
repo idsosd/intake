@@ -31,3 +31,7 @@ elseif($action=="update_afgeh")
 {
     $gesprek -> updateAfgehandeld();
 }
+elseif($action=="update_uitgen")
+{
+    $gesprek -> updateUitgenodigd();
+}

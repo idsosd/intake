@@ -121,7 +121,7 @@ function addGesprek()
 				"<label for='doorwie'>Door wie</label>" +
 				"<SELECT id='doorwie' class='form-control' required>" +
 				"<option value=''>kies...</option>" +
-				"<option value='JIO'>J&ouml;rgen Nieboer</option>" +
+				"<option value='JIO'>Jorgen Nieboer</option>" +
 				"<option value='OSD'>Ids Osinga</option>" +
 				"</SELECT>" +
 				"</div>" +
@@ -220,4 +220,33 @@ function checkAfgehandeld(gesprid,afgehwaarde)
 		      },
 	    error: function() { alert("Het gesprek kan niet worden verwijderd!"); }
 	    	});		
+}
+
+function checkUitgenodigd(gesprid,uitgenwaarde)
+{
+	if(uitgenwaarde==1)
+	{
+		var input=0;
+		var link="<a href='#' onclick=\"checkUitgenodigd(" + gesprid + "," + input + ")\"><i style='color: red;' class='bi bi-check-circle'>";
+	}
+	else
+	{
+		var input=1;
+		var link="<a href='#' onclick=\"checkUitgenodigd(" + gesprid + "," + input + ")\"><i style='color: green;' class='bi bi-check-circle'>";
+	}
+	$.ajax({
+		url: 'gesprjs.php',
+		data: {
+			action: 'update_uitgen',
+			gesprid: gesprid,
+			uitgen: input
+		},
+		//dataType: 'json',
+		type: 'post',
+		success: function() {
+			//alert("gaat goed!" + naam + " " + datum + " " + tel1 + " " + tel2 + " " + opl);
+			$('#uitgen_' + gesprid).empty().append(link);
+		},
+		error: function() { alert("Het gesprek kan niet worden verwijderd!"); }
+	});
 }

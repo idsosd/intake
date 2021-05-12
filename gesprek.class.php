@@ -39,14 +39,14 @@ class Gesprek
            $returnstmt.="<div class='col-md-3'>";
            $returnstmt.="<label for='doorwie'>Door wie</label>";
            $selectedOSD="";
-           $selectedSAE="";
+           $selectedJIO="";
            if($recset['gespr_doorwie']=='OSD')
                $selectedOSD="SELECTED";
-           elseif($recset['gespr_doorwie']=='SAE')
-               $selectedSAE="SELECTED";
+           elseif($recset['gespr_doorwie']=='JIO')
+               $selectedJIO="SELECTED";
            $returnstmt.="<SELECT id='doorwie' class='form-control' required>";
            $returnstmt.="<option value=''>kies...</option>";
-           $returnstmt.="<option value='SAE' ".$selectedSAE.">Sven Franssens</option>";
+           $returnstmt.="<option value='JIO' ".$selectedJIO.">Jorgen Nieboer</option>";
            $returnstmt.="<option value='OSD' ".$selectedOSD.">Ids Osinga</option>";
            $returnstmt.="</SELECT>";
            $returnstmt.="</div>";
@@ -153,6 +153,19 @@ class Gesprek
             $sql="UPDATE gesprekken SET gespr_afgehandeld=:afgeh WHERE gespr_id=:id";
             $query = $dbconnect -> prepare($sql);
             $query -> bindParam(':afgeh', $_POST['afgeh']);
+            $query -> bindParam(':id', $_POST['gesprid']);
+            $query -> execute();
+        } catch (PDOException $e){
+            echo $e -> getMessage();
+        }
+    }
+
+    public function updateUitgenodigd(){
+        try{
+            $dbconnect = new dbconnection();
+            $sql="UPDATE gesprekken SET gespr_uitgenodigd=:uitgen WHERE gespr_id=:id";
+            $query = $dbconnect -> prepare($sql);
+            $query -> bindParam(':uitgen', $_POST['uitgen']);
             $query -> bindParam(':id', $_POST['gesprid']);
             $query -> execute();
         } catch (PDOException $e){

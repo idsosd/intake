@@ -1,10 +1,10 @@
 <?php
-ini_set('display_errors',1);
-error_reporting(E_ALL & ~E_NOTICE & ~E_WARNING); //toon alle fouten behalve notices en warnings
-setlocale(LC_ALL, array('Dutch_Netherlands', 'Dutch', 'nl_NL', 'nl', 'nl_NL.ISO8859-1'));
-date_default_timezone_set('Europe/Amsterdam');
+include_once('inc/sessie.php');
+if( !isset($_SESSION['loggedin']) OR $_SESSION['loggedin'] == 0)
+    header("Location: login.php");
 include_once('inc/dbconnection.class.php');
 include_once('inc/functions.php');
+
 $oplcode=1;
 $cohort='21/22';
 $dbconnect=new dbconnection();
@@ -39,7 +39,36 @@ $gesprekken = $query -> fetchAll(2);
 
  </head>
 <body>
-	
+<header>
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Intakegesprekken SD-team Alfa-college</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav me-auto mb-2 mb-md-0">
+                 <!--   <li class="nav-item active">
+                        <a class="nav-link" aria-current="page" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Link</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                    </li>-->
+                </ul>
+                <div style="color: white;">
+                    <?= $_SESSION['user_email'] ?>&nbsp;&nbsp;&nbsp;
+                </div>
+                <div class="d-flex">
+                    <a class="btn btn-outline-secondary" href="loguit.php">Log uit</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>
 <div class="mai-wrapper">
 
 <div class="container">
@@ -67,7 +96,7 @@ $gesprekken = $query -> fetchAll(2);
 	<div class="col-lg-10">
 <h1>Intakegesprekken Alfa-college SD-team</h1>
 	</div>
-	<div class="col-lg-2" style="margin-top: 10px"><button class="btn btn-primary btn-block" onclick="addGesprek()">Voeg toe</button>
+	<div class="col-lg-2 text-end" style="margin-top: 10px"><button class="btn btn-primary btn-block" onclick="addGesprek()">Voeg toe</button>
 	</div>
 </div>
 <table class="table table-hover">
@@ -82,6 +111,7 @@ $gesprekken = $query -> fetchAll(2);
       <th>Nodig</th>
       <th>Advies</th>
       <th>Verwerkt</th>
+        <th>Door</th>
     </tr>
   </thead>
 <?php
@@ -97,9 +127,14 @@ $gesprekken = $query -> fetchAll(2);
 		echo "<td width='150'>".$datum."</td>";
 		echo "<td width='250'>".volledigeNaam(1, $gesprek['gespr_achternaam'], $gesprek['gespr_voorvoegsel'], $gesprek['gespr_roepnaam'])."</td>";
 		$emailbody = "Beste {$gesprek['gespr_roepnaam']},%0A%0AJe hebt je aangemeld voor de Software Developer opleiding aan het Alfa-college. Het is de bedoeling dat ik eerst een intakegesprek met je doe.%0A
-		%0AIk nodig je daarom uit om mij uit te nodigen voor een online bijeenkomst via MS Teams (of een vergelijkbare tool) van een half uur. De momenten waarop ik doorgaans prima kan, zijn:%0A%0AMaandag na 13 uur%0ADonderdag na 14 uur%0AVrijdag na 13 uur%0A%0AIk ontvang graag een uitnodiging van je!%0A%0A";
+		%0AIk nodig je daarom uit om mij uit te nodigen voor een online bijeenkomst via MS Teams (of een vergelijkbare tool) van een half uur. De momenten waarop ik doorgaans prima kan, zijn:%0A%0A%0AIk ontvang graag een uitnodiging van je!%0A%0A";
 		echo "<td width='150'><a href='mailto:{$gesprek['gespr_emailadres1']}?subject=Intakegesprek Alfa-college Software Developer&body=$emailbody'>{$gesprek['gespr_emailadres1']}</a></td>";
-        echo "<td width='150' class='text-center'>".$gesprek['gespr_uitgenodigd']."</td>";
+        $uitgenodigd="<i style='color: red;' class='bi bi-check-circle'></i>";
+        if($gesprek['gespr_uitgenodigd']==1)
+            $uitgenodigd="<i style='color: green;' class='bi bi-check-circle'></i>";
+		echo "<td id='uitgen_{$gesprek['gespr_id']}' class='text-center'><a href='#' onclick=\"checkUitgenodigd({$gesprek['gespr_id']},{$gesprek['gespr_uitgenodigd']})\">{$uitgenodigd}</a></td>";
+
+       // echo "<td width='150' class='text-center'>".$gesprek['gespr_uitgenodigd']."</td>";
 		$opleiding="SD";
 		if($gesprek['gespr_opl']==0)
 			$opleiding="BEHEER";
@@ -113,6 +148,7 @@ $gesprekken = $query -> fetchAll(2);
 		if($gesprek['gespr_afgehandeld']==1)
 			$afgehandeld="<i style='color: green;' class='bi bi-check-circle'></i>";
 		echo "<td id='afgeh_{$gesprek['gespr_id']}' class='text-center'><a href='#' onclick=\"checkAfgehandeld({$gesprek['gespr_id']},{$gesprek['gespr_afgehandeld']})\">{$afgehandeld}</a></td>";
+		echo "<td>{$gesprek['gespr_doorwie']}</td>";
 		echo "</tr>";
 		$i++;
 	}
