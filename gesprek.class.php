@@ -92,14 +92,10 @@ class Gesprek
             $dbconnect = new dbconnection();
             $sql="INSERT INTO gesprekken (gespr_achternaam, gespr_roepnaam, gespr_voorvoegsel, gespr_datum, gespr_tel1, gespr_emailadres1, gespr_emailadres2, gespr_opl, gespr_oplvariant, gespr_doorwie) VALUES (:achternaam, :roepnaam, :voorv, :datum, :tel1, :email1, :email2, :opl, :var, :wie)";
             $query = $dbconnect -> prepare($sql);
-            if(is_null($_POST['datum']) OR $_POST['datum']=="")
-                $datum="";
-            else
-                $datum = $_POST['datum'];
             $query -> bindParam(':achternaam', $_POST['achternaam']);
             $query -> bindParam(':roepnaam', $_POST['roepnaam']);
             $query -> bindParam(':voorv', $_POST['voorv']);
-            $query -> bindParam(':datum', $datum);
+            $query -> bindParam(':datum', $_POST['datum']);
             $query -> bindParam(':tel1', $_POST['tel1']);
             $query -> bindParam(':email1', $_POST['email1']);
             $query -> bindParam(':email2', $_POST['email2']);
