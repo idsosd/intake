@@ -124,7 +124,7 @@ $gesprekken = $query -> fetchAll(2);
 			$trclass="table-success";
 		echo "<tr class='".$trclass."'>";
 		echo "<td class='text-end' width='40'><a href='#' onclick=\"showDetails({$gesprek['gespr_id']})\">{$i}.</a></td>";
-		if(is_null($gesprek['gespr_datum'] OR $gesprek['gespr_datum'] == '')
+		if(is_null($gesprek['gespr_datum']) OR $gesprek['gespr_datum'] == '')
             $datum = "";
 		else
 		    $datum=strftime('%a %e %h %Y' , strtotime($gesprek['gespr_datum']));
