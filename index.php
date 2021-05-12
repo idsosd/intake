@@ -38,7 +38,7 @@ $gesprekken = $query -> fetchAll(2);
 </style>
 
  </head>
-<body>
+<body class="d-flex flex-column h-100">
 <header>
     <!-- Fixed navbar -->
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
@@ -69,6 +69,8 @@ $gesprekken = $query -> fetchAll(2);
         </div>
     </nav>
 </header>
+<main class="flex-shrink-0">
+
 <div class="mai-wrapper">
 
 <div class="container">
@@ -156,6 +158,7 @@ $gesprekken = $query -> fetchAll(2);
 </table>
 </div>
 </div>
+</main>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
 </body>
 </html>
