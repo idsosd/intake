@@ -27,6 +27,7 @@ $gesprekken = $query -> fetchAll(2);
 <title>Intake-gesprekken</title>
       <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css">
+      <link rel="stylesheet" href="css/mystyle.css" />
       <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
 <script src="gesprjs.js"></script>
@@ -54,10 +55,10 @@ $gesprekken = $query -> fetchAll(2);
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Link</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
                     </li>-->
+                    <li class="nav-item">
+                        <a class="btn btn-outline-success" href="#" onclick="addGesprek()" tabindex="-1">Voeg toe</a>
+                    </li>
                 </ul>
                 <div style="color: white;">
                     <?= $_SESSION['user_email'] ?>&nbsp;&nbsp;&nbsp;
@@ -70,8 +71,6 @@ $gesprekken = $query -> fetchAll(2);
     </nav>
 </header>
 <main class="flex-shrink-0">
-
-<div class="mai-wrapper">
 
 <div class="container">
 
@@ -94,13 +93,13 @@ $gesprekken = $query -> fetchAll(2);
     </div>
 
 
-<div class="row">	
+<!--<div class="row">
 	<div class="col-lg-10">
 <h1>Intakegesprekken Alfa-college SD-team</h1>
 	</div>
 	<div class="col-lg-2 text-end" style="margin-top: 10px"><button class="btn btn-primary btn-block" onclick="addGesprek()">Voeg toe</button>
 	</div>
-</div>
+</div>-->
 <table class="table table-hover">
 	<thead class="thead-dark">
     <tr>
@@ -156,7 +155,6 @@ $gesprekken = $query -> fetchAll(2);
 	}
 	?>
 </table>
-</div>
 </div>
 </main>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
