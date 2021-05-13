@@ -75,7 +75,7 @@ $gesprekken = $query -> fetchAll(2);
 <div class="container">
 
     <div id="detailsModal"  class="modal" tabindex="-1">
-        <div class="modal-dialog modal-lg">
+        <div class="modal-dialog modal-xl">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 id="modal-title" class="modal-title">Details intakegesprek</h5>
@@ -120,7 +120,7 @@ $gesprekken = $query -> fetchAll(2);
 	foreach($gesprekken as $gesprek)
 	{
 		$trclass="";
-		if($gesprek['gespr_advies']=="")
+		if($gesprek['gespr_zorgstatus']=="")
 			$trclass="table-success";
 		echo "<tr class='".$trclass."'>";
 		echo "<td class='text-end' width='40'><a href='#' onclick=\"showDetails({$gesprek['gespr_id']})\">{$i}.</a></td>";
@@ -147,7 +147,7 @@ $gesprekken = $query -> fetchAll(2);
             $variant="BBL";
 		echo "<td width='40'>".$opleiding."-".$variant."</td>";
 		echo "<td>".$gesprek['gespr_nodig']."</td>";
-		echo "<td class='text-center'>".$gesprek['gespr_advies']."</td>";
+		echo "<td class='text-center'>".$gesprek['gespr_zorgstatus']."</td>";
 		$afgehandeld="<i style='color: red;' class='bi bi-check-circle'></i>";
 		if($gesprek['gespr_afgehandeld']==1)
 			$afgehandeld="<i style='color: green;' class='bi bi-check-circle'></i>";

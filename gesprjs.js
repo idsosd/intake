@@ -22,37 +22,53 @@ function showDetails(gesprid)
 
 function updateGesprek(gesprid)
 {
-	var nummer = $('#nummer').val();
-	var datum = $('#datum').val();
+	var stid = $('#stid').val();
+	var emailadres1 = $('#emailadres1').val();
+	var emailadres2 = $('#emailadres2').val();
 	var tel1 = $('#tel1').val();
-	var email1 = $('#email1').val();
-	var extracont = $('#extracontgeg').val();
+	var opl = $('#opl').val();
+	var oplvariant = $('#oplvariant').val();
 	var doorwie = $('#doorwie').val();
-	var bijzonderheden = $('#bijzonderheden').val();
+	var datum = $('#datum').val();
 	var vorigeopl = $('#vorigeopl').val();
+	var andereintake = $('#andereintake').val();
+	var thuissituatie = $('#thuissituatie').val();
+	var vrijetijd = $('#vrijetijd').val();
 	var waarom = $('#waarom').val();
 	var doel = $('#doel').val();
 	var nodig = $('#nodig').val();
-	var advies = $('#advies').val();
+	var voorkennis = $('#voorkennis').val();
+	var generiek = $('#generiek').val();
+	var vaardigheden = $('#vaardigheden').val();
 	var opmerking = $('#opmerking').val();
+	var zorgstatus = $('#zorgstatus').val();
+	var uitkomst = $('#uitkomst').val();
 	$.ajax({                                      
       url: 'gesprjs.php',      
       data: { 
 	      action: 'update', 
 	      gesprid: gesprid,
-	      nummer: nummer,
+	      stid: stid,
+		  emailadres1: emailadres1,
+		  emailadres2: emailadres2,
+		  tel1: tel1,
+		  opl: opl,
+		  oplvariant: oplvariant,
+		  doorwie: doorwie,
 	      datum: datum,
-	      tel1: tel1,
-	      email1: email1,
-	      extrac: extracont,
-	      wie: doorwie,
-	      bijz: bijzonderheden,
-	      voropl: vorigeopl,
-	      waarom: waarom,
-	      doel: doel,
-	      nod: nodig,
-	      adv: advies,
-	      opm: opmerking
+		  vorigeopl: vorigeopl,
+	      andereintake: andereintake,
+		  thuissituatie: thuissituatie,
+		  vrijetijd: vrijetijd,
+		  waarom: waarom,
+		  doel: doel,
+		  nodig: nodig,
+		  voorkennis: voorkennis,
+		  generiek: generiek,
+		  vaardigheden: vaardigheden,
+		  opmerking: opmerking,
+	      zorgstatus: zorgstatus,
+		  uitkomst: uitkomst
 	       },
 	  //dataType: 'json',   
       type: 'post',
