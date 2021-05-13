@@ -83,7 +83,7 @@ class Gesprek
            $returnstmt.="<hr>";
            $returnstmt.="<div class='row'>";
            $returnstmt.="<div class='col'>";
-           $returnstmt.="<label for='vorigeopl'>Vorige opleiding</label>";
+           $returnstmt.="<label for='vorigeopl'>Vorige opleiding (incl. richting, vakken)</label>";
            $returnstmt.="<textarea id='vorigeopl' class='form-control'>".$recset['gespr_vorigeopl']."</textarea>";
            $returnstmt.="</div>";
            $returnstmt.="<div class='col'>";
@@ -124,7 +124,11 @@ class Gesprek
            $returnstmt.="<div class='row'>";
            $returnstmt.="<div class='col'>";
            $returnstmt.="<label for='voorkennis'>Voorkennis</label>";
-           $returnstmt.="<textarea id='voorkennis' class='form-control' rows='9'>".$recset['gespr_voorkennis']."</textarea>";
+           if(is_null($recset['gespr_voorkennis']))
+               $voorkennisveld = "1. server <br>2. variabele <br>3. HTML/CSS <br>4. PHP <br>5. JavaScript <br>6. Git(Hub) <br>7. JAVA <br>8. API <br>9. C#";
+           else
+               $voorkennisveld = $recset['gespr_voorkennis'];
+           $returnstmt.="<textarea id='voorkennis' class='form-control' rows='9'>$voorkennisveld</textarea>";
            $returnstmt.="</div>";
            $returnstmt.="<div class='col'>";
            $returnstmt.="<label for='generiek'>Generieke vakken</label>";
@@ -157,14 +161,14 @@ class Gesprek
                $selectedC2="SELECTED";
            elseif($recset['gespr_zorgstatus']=='D')
                $selectedD="SELECTED";
-           $returnstmt.="<SELECT id='zorgstatus' class='form-control text-center' type='text' value='".$recset['gespr_zorgstatus']."'>";
+           $returnstmt.="<SELECT id='zorgstatus' class='form-control'>";
            $returnstmt.="<option value=''>Kies ......</option>";
-           $returnstmt.="<option value='A' {$selectedA}>A Diplomaperspectief</option>";
-           $returnstmt.="<option value='B' {$selectedB}>B Diplomaperspectief mits begeleiding</option>";
-           $returnstmt.="<option value='C' {$selectedC}>C Geen diplomaperspectief tenzij</option>";
-           $returnstmt.="<option value='C1' {$selectedC1}>C1 Intensieve ondersteuning</option>";
-           $returnstmt.="<option value='C2' {$selectedC2}>C2 Via bijzondere toelating</option>";
-           $returnstmt.="<option value='D' {$selectedD}>D Geen diplomaperspectief</option>";
+           $returnstmt.="<option value='A' $selectedA>A Diplomaperspectief</option>";
+           $returnstmt.="<option value='B' $selectedB>B Diplomaperspectief mits begeleiding</option>";
+           $returnstmt.="<option value='C' $selectedC>C Geen diplomaperspectief tenzij</option>";
+           $returnstmt.="<option value='C1' $selectedC1>C1 Intensieve ondersteuning</option>";
+           $returnstmt.="<option value='C2' $selectedC2>C2 Via bijzondere toelating</option>";
+           $returnstmt.="<option value='D' $selectedD>D Geen diplomaperspectief</option>";
            $returnstmt.="</SELECT>";
            $returnstmt.="</div>";
            $returnstmt.="<div class='col'>";
@@ -176,35 +180,35 @@ class Gesprek
            $selected04="";
            $selected05="";
            $selected06="";
-           if($recset['gespr_uitkomst']==0)
+           if($recset['gespr_uitkomst']===0)
                $selected00="SELECTED";
-           elseif($recset['gespr_uitkomst']==1)
+           elseif($recset['gespr_uitkomst']===1)
                $selected01="SELECTED";
-           elseif($recset['gespr_uitkomst']==2)
+           elseif($recset['gespr_uitkomst']===2)
                $selected02="SELECTED";
-           elseif($recset['gespr_uitkomst']==3)
+           elseif($recset['gespr_uitkomst']===3)
                $selected03="SELECTED";
-           elseif($recset['gespr_uitkomst']==4)
+           elseif($recset['gespr_uitkomst']===4)
                $selected04="SELECTED";
-           elseif($recset['gespr_uitkomst']==5)
+           elseif($recset['gespr_uitkomst']===5)
                $selected05="SELECTED";
-           elseif($recset['gespr_uitkomst']==6)
+           elseif($recset['gespr_uitkomst']===6)
                $selected06="SELECTED";
-           $returnstmt.="<SELECT id='uitkomst' class='form-control text-center' type='text' value='".$recset['gespr_uitkomst']."'>";
+           $returnstmt.="<SELECT id='uitkomst' class='form-control'>";
            $returnstmt.="<option value=''>Kies.....</option>";
-           $returnstmt.="<option value='0' {$selected00}>Geen</option>";
-           $returnstmt.="<option value='1' {$selected01}>Geplaatst</option>";
-           $returnstmt.="<option value='2' {$selected02}>Afmelden</option>";
-           $returnstmt.="<option value='3' {$selected03}>Afgewezen</option>";
-           $returnstmt.="<option value='4' {$selected04}>Nieuw gesprek inplannen</option>";
-           $returnstmt.="<option value='5' {$selected05}>Andere opleiding binnen Alfa</option>";
-           $returnstmt.="<option value='6' {$selected06}>Student heeft zich afgemeld</option>";
+           $returnstmt.="<option value='0' $selected00>Geen</option>";
+           $returnstmt.="<option value='1' $selected01>Geplaatst</option>";
+           $returnstmt.="<option value='2' $selected02>Afmelden</option>";
+           $returnstmt.="<option value='3' $selected03>Afgewezen</option>";
+           $returnstmt.="<option value='4' $selected04>Nieuw gesprek inplannen</option>";
+           $returnstmt.="<option value='5' $selected05>Andere opleiding binnen Alfa</option>";
+           $returnstmt.="<option value='6' $selected06>Student heeft zich afgemeld</option>";
            $returnstmt.="</SELECT>";
            $returnstmt.="</div>";
            $returnstmt.="</div>";
            $returnstmt.="</form>";
-           $returndata = array(0=>volledigeNaam(0, $recset['gespr_achternaam'], $recset['gespr_voorvoegsel'], $recset['gespr_roepnaam']), 1=>$returnstmt);
-           return $returndata;
+          // $returndata = array(0=>volledigeNaam(0, $recset['gespr_achternaam'], $recset['gespr_voorvoegsel'], $recset['gespr_roepnaam']), 1=>$returnstmt);
+           return array(0=>volledigeNaam(0, $recset['gespr_achternaam'], $recset['gespr_voorvoegsel'], $recset['gespr_roepnaam']), 1=>$returnstmt);
        } catch (PDOException $e){
            echo $e -> getMessage();
        }
