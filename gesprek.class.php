@@ -125,7 +125,11 @@ class Gesprek
            $returnstmt.="<div class='col'>";
            $returnstmt.="<label for='voorkennis'>Voorkennis</label>";
            if(is_null($recset['gespr_voorkennis']))
-               $voorkennisveld = "1. server <br>2. variabele <br>3. HTML/CSS <br>4. PHP <br>5. JavaScript <br>6. Git(Hub) <br>7. JAVA <br>8. API <br>9. C#";
+               $voorkennisveld = "1. server 
+2. variabele 
+3. HTML/CSS 
+4. PHP 
+5. JavaScript <br>6. Git(Hub) <br>7. JAVA <br>8. API <br>9. C#";
            else
                $voorkennisveld = $recset['gespr_voorkennis'];
            $returnstmt.="<textarea id='voorkennis' class='form-control' rows='9'>$voorkennisveld</textarea>";
