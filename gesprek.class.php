@@ -129,18 +129,43 @@ class Gesprek
 2. variabele 
 3. HTML/CSS 
 4. PHP 
-5. JavaScript <br>6. Git(Hub) <br>7. JAVA <br>8. API <br>9. C#";
+5. JavaScript 
+6. Git(Hub) 
+7. JAVA 
+8. API 
+9. C# ";
            else
                $voorkennisveld = $recset['gespr_voorkennis'];
            $returnstmt.="<textarea id='voorkennis' class='form-control' rows='9'>$voorkennisveld</textarea>";
            $returnstmt.="</div>";
            $returnstmt.="<div class='col'>";
            $returnstmt.="<label for='generiek'>Generieke vakken</label>";
-           $returnstmt.="<textarea id='generiek' class='form-control' rows='9'>".$recset['gespr_generiek']."</textarea>";
+           if(is_null($recset['gespr_generiek']))
+               $generiekveld = "1. Nederlands 
+2. Engels 
+3. rekenen 
+4. burgerschap 
+5. Fit4Life 
+6. wiskunde ";
+           else
+               $generiekveld = $recset['gespr_generiek'];
+           $returnstmt.="<textarea id='generiek' class='form-control' rows='9'>$generiekveld</textarea>";
            $returnstmt.="</div>";
            $returnstmt.="<div class='col'>";
            $returnstmt.="<label for='vaardigheden'>Vaardigheden</label>";
-           $returnstmt.="<textarea id='vaardigheden' class='form-control' rows='9'>".$recset['gespr_vaardigheden']."</textarea>";
+           if(is_null($recset['gespr_vaardigheden']))
+               $vaardighedenveld = "1. Onderzoeken 
+2. Doorzetten 
+3. Nieuwsgierig zijn 
+4. Geordend zijn 
+5. Gedisciplineerd zijn 
+6. Zelfstandig zijn 
+7. Samenwerken 
+8. Sociaal vaardig zijn 
+9. Raadplegen van bronnen ";
+           else
+               $vaardighedenveld = $recset['gespr_vaardigheden'];
+           $returnstmt.="<textarea id='vaardigheden' class='form-control' rows='9'>$vaardighedenveld</textarea>";
            $returnstmt.="</div>";
            $returnstmt.="</div>";
            $returnstmt.="<hr>";
