@@ -33,7 +33,11 @@ class Gesprek
            $returnstmt.="</div>";
            $returnstmt.="</div>";
            $returnstmt.="<div class='row' style='background: coral; padding-bottom: 20px'>";
-           $returnstmt.="<div class='col-md-5'>";
+           $returnstmt.="<div class='col-md-1'>";
+           $returnstmt.="<label for='leeftijd'>Leeftijd</label>";
+           $returnstmt.="<input id='leeftijd' class='form-control' type='text' value='".$recset['gespr_leeftijd']."'>";
+           $returnstmt.="</div>";
+           $returnstmt.="<div class='col-md-4'>";
            $returnstmt.="<label for='opl'>Opleiding</label>";
            $selectedOpl0="";
            $selectedOpl1="";
@@ -169,69 +173,67 @@ class Gesprek
            $returnstmt.="</div>";
            $returnstmt.="</div>";
            $returnstmt.="<hr>";
+           $returnstmt.="<div class='row' style='background: aqua; padding-top: 10px'>";
+           $returnstmt.="<div class='col-md-9'>Vooropleiding";
+           $returnstmt.="</div>";
+           $returnstmt.="<div class='col-md-3'>Voorkennis";
+           $returnstmt.="</div>";
+           $returnstmt.="</div>";
+           $returnstmt.="<div class='row' style='background: aqua;'>";
+           $returnstmt.="<div class='col-md-9'>";
+           $vooroplopties = array(0=>'MBO N2', 1=>'MBO N3', 2=>'MBO N4', 3=>'VMBO-K', 4=>'VMBO-(G)T', 5=>'HAVO 3', 6=>'HAVO 4', 7=>'HAVO 5', 8=>'anders');
+           $k=0;
+           while($k<count($vooroplopties)){
+               $checkedText="";
+               if($recset['gespr_vooropl_niv']==$vooroplopties[$k])
+                   $checkedText="checked";
+               $returnstmt.="<div class='form-check form-check-inline'>";
+               $returnstmt.="<input class='form-check-input vooropl' type='radio' name='vooropleiding' id='vooropleiding$k' value='$vooroplopties[$k]' $checkedText>";
+               $returnstmt.="<label class='form-check-label' for='vooropleiding$k'>$vooroplopties[$k]</label>";
+               $returnstmt.="</div>";
+               $k++;
+           }
+           $returnstmt.="</div>";
+           $returnstmt.="<div class='col-md-3'>";
+
+           $m=0;
+           while($m < 5){
+               $checkedText="";
+               if($recset['gespr_voorkennis_niv']==$m)
+                   $checkedText="checked";
+               $returnstmt.="<div class='form-check form-check-inline'>";
+               $returnstmt.="<input class='form-check-input voork' type='radio' name='voorkennis' id='voorkennis$m' value='$m' $checkedText>";
+               $returnstmt.="<label class='form-check-label' for='voorkennis$m'>$m</label>";
+               $returnstmt.="</div>";
+               $m++;
+           }
+           $returnstmt.="</div>";
+           $returnstmt.="</div>";
            $returnstmt.="<div class='row' style='background: aqua; padding-bottom: 20px'>";
            $returnstmt.="<div class='col'>";
            $returnstmt.="<label for='zorgstatus'>Zorgstatus</label>";
-           $selectedA="";
-           $selectedB="";
-           $selectedC="";
-           $selectedC1="";
-           $selectedC2="";
-           $selectedD="";
-           if($recset['gespr_zorgstatus']=='A')
-               $selectedA="SELECTED";
-           elseif($recset['gespr_zorgstatus']=='B')
-               $selectedB="SELECTED";
-           elseif($recset['gespr_zorgstatus']=='C')
-               $selectedC="SELECTED";
-           elseif($recset['gespr_zorgstatus']=='C1')
-               $selectedC1="SELECTED";
-           elseif($recset['gespr_zorgstatus']=='C2')
-               $selectedC2="SELECTED";
-           elseif($recset['gespr_zorgstatus']=='D')
-               $selectedD="SELECTED";
            $returnstmt.="<SELECT id='zorgstatus' class='form-control'>";
            $returnstmt.="<option value=''>Kies ......</option>";
-           $returnstmt.="<option value='A' $selectedA>A Diplomaperspectief</option>";
-           $returnstmt.="<option value='B' $selectedB>B Diplomaperspectief mits begeleiding</option>";
-           $returnstmt.="<option value='C' $selectedC>C Geen diplomaperspectief tenzij</option>";
-           $returnstmt.="<option value='C1' $selectedC1>C1 Intensieve ondersteuning</option>";
-           $returnstmt.="<option value='C2' $selectedC2>C2 Via bijzondere toelating</option>";
-           $returnstmt.="<option value='D' $selectedD>D Geen diplomaperspectief</option>";
+           $zorgstatusopties = array('A'=>'A Diplomaperspectief', 'B'=>'B Diplomaperspectief mits begeleiding', 'C'=>'C Geen diplomaperspectief tenzij', 'C1'=>'C1 Intensieve ondersteuning', 'C2'=>'C2 Via bijzondere toelating', 'D'=>'D Geen diplomaperspectief');
+           foreach ($zorgstatusopties as $array_key => $array_value) {
+               $selectedText="";
+               if($recset['gespr_zorgstatus']==$array_key)
+                   $selectedText="SELECTED";
+               $returnstmt.="<option value='$array_key' $selectedText>$array_value</option>";
+           }
            $returnstmt.="</SELECT>";
            $returnstmt.="</div>";
            $returnstmt.="<div class='col'>";
            $returnstmt.="<label for='uitkomst'>Uitkomst</label>";
-           $selected00="";
-           $selected01="";
-           $selected02="";
-           $selected03="";
-           $selected04="";
-           $selected05="";
-           $selected06="";
-           if($recset['gespr_uitkomst']===0)
-               $selected00="SELECTED";
-           elseif($recset['gespr_uitkomst']===1)
-               $selected01="SELECTED";
-           elseif($recset['gespr_uitkomst']===2)
-               $selected02="SELECTED";
-           elseif($recset['gespr_uitkomst']===3)
-               $selected03="SELECTED";
-           elseif($recset['gespr_uitkomst']===4)
-               $selected04="SELECTED";
-           elseif($recset['gespr_uitkomst']===5)
-               $selected05="SELECTED";
-           elseif($recset['gespr_uitkomst']===6)
-               $selected06="SELECTED";
            $returnstmt.="<SELECT id='uitkomst' class='form-control'>";
            $returnstmt.="<option value=''>Kies.....</option>";
-           $returnstmt.="<option value='0' $selected00>Geen</option>";
-           $returnstmt.="<option value='1' $selected01>Geplaatst</option>";
-           $returnstmt.="<option value='2' $selected02>Afmelden</option>";
-           $returnstmt.="<option value='3' $selected03>Afgewezen</option>";
-           $returnstmt.="<option value='4' $selected04>Nieuw gesprek inplannen</option>";
-           $returnstmt.="<option value='5' $selected05>Andere opleiding binnen Alfa</option>";
-           $returnstmt.="<option value='6' $selected06>Student heeft zich afgemeld</option>";
+           $uitkomstopties = array(0=>'Geen', 1=>'Geplaatst', 2=>'Afmelden', 3=>'Afgewezen', 4=>'Nieuw gesprek inplannen', 5=>'Andere opleiding binnen Alfa', 6=>'Student heeft zich afgemeld');
+           foreach ($uitkomstopties as $array_key => $array_value) {
+               $selectedText="";
+               if($recset['gespr_uitkomst']===$array_key)
+                   $selectedText="SELECTED";
+               $returnstmt.="<option value='$array_key' $selectedText>$array_value</option>";
+           }
            $returnstmt.="</SELECT>";
            $returnstmt.="</div>";
            $returnstmt.="</div>";
@@ -239,18 +241,19 @@ class Gesprek
           // $returndata = array(0=>volledigeNaam(0, $recset['gespr_achternaam'], $recset['gespr_voorvoegsel'], $recset['gespr_roepnaam']), 1=>$returnstmt);
            return array(0=>volledigeNaam(0, $recset['gespr_achternaam'], $recset['gespr_voorvoegsel'], $recset['gespr_roepnaam']), 1=>$returnstmt);
        } catch (PDOException $e){
-           echo $e -> getMessage();
+           return $e -> getMessage();
        }
    }
 
     public function insertGesprek(){
         try{
             $dbconnect = new dbconnection();
-            $sql="INSERT INTO gesprekken (gespr_achternaam, gespr_roepnaam, gespr_voorvoegsel, gespr_datum, gespr_tel1, gespr_emailadres1, gespr_emailadres2, gespr_opl, gespr_oplvariant, gespr_doorwie) VALUES (:achternaam, :roepnaam, :voorv, :datum, :tel1, :email1, :email2, :opl, :var, :wie)";
+            $sql="INSERT INTO gesprekken (gespr_achternaam, gespr_roepnaam, gespr_voorvoegsel, gespr_leeftijd, gespr_datum, gespr_tel1, gespr_emailadres1, gespr_emailadres2, gespr_opl, gespr_oplvariant, gespr_doorwie) VALUES (:achternaam, :roepnaam, :voorv, :leeftijd, :datum, :tel1, :email1, :email2, :opl, :var, :wie)";
             $query = $dbconnect -> prepare($sql);
             $query -> bindParam(':achternaam', $_POST['achternaam']);
             $query -> bindParam(':roepnaam', $_POST['roepnaam']);
             $query -> bindParam(':voorv', $_POST['voorv']);
+            $query -> bindParam(':leeftijd', $_POST['leeftijd']);
             $query -> bindParam(':datum', $_POST['datum']);
             $query -> bindParam(':tel1', $_POST['tel1']);
             $query -> bindParam(':email1', $_POST['email1']);
@@ -270,7 +273,8 @@ class Gesprek
             $sql="UPDATE gesprekken SET 
             gespr_stid=:stid, 
             gespr_datum=:datum,
-            gespr_doorwie=:doorwie,          
+            gespr_doorwie=:doorwie,
+            gespr_leeftijd=:leeftijd,   
             gespr_emailadres1=:emailadres1,
             gespr_emailadres2=:emailadres2,
             gespr_tel1=:tel1,
@@ -287,6 +291,8 @@ class Gesprek
             gespr_generiek=:generiek,
             gespr_vaardigheden=:vaardigheden,
             gespr_opmerking=:opmerking,
+            gespr_vooropl_niv=:vooropl,
+            gespr_voorkennis_niv=:voork,
             gespr_zorgstatus=:zorgstatus, 
             gespr_uitkomst=:uitkomst 
             WHERE gespr_id=:id";
@@ -294,6 +300,7 @@ class Gesprek
             $query -> bindParam(':stid', $_POST['stid']);
             $query -> bindParam(':datum', $_POST['datum']);
             $query -> bindParam(':doorwie', $_POST['doorwie']);
+            $query -> bindParam(':leeftijd', $_POST['leeftijd']);
             $query -> bindParam(':emailadres1', $_POST['emailadres1']);
             $query -> bindParam(':emailadres2', $_POST['emailadres2']);
             $query -> bindParam(':tel1', $_POST['tel1']);
@@ -310,6 +317,8 @@ class Gesprek
             $query -> bindParam(':generiek', $_POST['generiek']);
             $query -> bindParam(':vaardigheden', $_POST['vaardigheden']);
             $query -> bindParam(':opmerking', $_POST['opmerking']);
+            $query -> bindParam(':vooropl', $_POST['vooropl']);
+            $query -> bindParam(':voork', $_POST['voork']);
             $query -> bindParam(':zorgstatus', $_POST['zorgstatus']);
             $query -> bindParam(':uitkomst', $_POST['uitkomst']);
             $query -> bindParam(':id', $_POST['gesprid']);
@@ -338,6 +347,18 @@ class Gesprek
             $sql="UPDATE gesprekken SET gespr_uitgenodigd=:uitgen WHERE gespr_id=:id";
             $query = $dbconnect -> prepare($sql);
             $query -> bindParam(':uitgen', $_POST['uitgen']);
+            $query -> bindParam(':id', $_POST['gesprid']);
+            $query -> execute();
+        } catch (PDOException $e){
+            echo $e -> getMessage();
+        }
+    }
+
+    public function deleteGesprek(){
+        try{
+            $dbconnect = new dbconnection();
+            $sql="DELETE FROM gesprekken WHERE gespr_id=:id";
+            $query = $dbconnect -> prepare($sql);
             $query -> bindParam(':id', $_POST['gesprid']);
             $query -> execute();
         } catch (PDOException $e){

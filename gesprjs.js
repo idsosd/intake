@@ -23,6 +23,7 @@ function showDetails(gesprid)
 function updateGesprek(gesprid)
 {
 	var stid = $('#stid').val();
+	var leeftijd = $('#leeftijd').val();
 	var emailadres1 = $('#emailadres1').val();
 	var emailadres2 = $('#emailadres2').val();
 	var tel1 = $('#tel1').val();
@@ -41,6 +42,8 @@ function updateGesprek(gesprid)
 	var generiek = $('#generiek').val();
 	var vaardigheden = $('#vaardigheden').val();
 	var opmerking = $('#opmerking').val();
+	var vooropl = $('.vooropl:checked').val();
+	var voork = $('.voork:checked').val();
 	var zorgstatus = $('#zorgstatus').val();
 	var uitkomst = $('#uitkomst').val();
 	$.ajax({                                      
@@ -49,6 +52,7 @@ function updateGesprek(gesprid)
 	      action: 'update', 
 	      gesprid: gesprid,
 	      stid: stid,
+		  leeftijd: leeftijd,
 		  emailadres1: emailadres1,
 		  emailadres2: emailadres2,
 		  tel1: tel1,
@@ -67,6 +71,8 @@ function updateGesprek(gesprid)
 		  generiek: generiek,
 		  vaardigheden: vaardigheden,
 		  opmerking: opmerking,
+		  vooropl: vooropl,
+		  voork: voork,
 	      zorgstatus: zorgstatus,
 		  uitkomst: uitkomst
 	       },
@@ -99,10 +105,7 @@ function addGesprek()
 				"</div>" +
 		"</div>" +
 		"<div class='row'>" +
-				"<div class='col'>" +
-				"<label for='tel1'>Telefoonnr. 1</label>" +
-				"<input id='tel1' class='form-control' type='text' placeholder='' required>" +
-				"</div>" +
+
 				"<div class='col'>" +
 				"<label for='email1'>E-mailadres 1</label>" +
 				"<input id='email1' class='form-control' type='email' placeholder='' required>" +
@@ -111,9 +114,17 @@ function addGesprek()
 				"<label for='email2'>E-mailadres 2</label>" +
 				"<input id='email2' class='form-control' type='email' placeholder=''>" +
 				"</div>" +
+		"<div class='col'>" +
+		"<label for='tel1'>Telefoonnr. 1</label>" +
+		"<input id='tel1' class='form-control' type='text' placeholder='' required>" +
+		"</div>" +
 				"</div>" +
 				"<div class='row'>" +
-				"<div class='col'>" +
+				"<div class='col-md-1'>" +
+				"<label for='leeftijd'>Leeftijd</label>" +
+				"<input id='leeftijd' class='form-control' type='text' placeholder=''>" +
+				"</div>" +
+				"<div class='col-md-4'>" +
 				"<label for='opl'>Opleiding</label>" +
 				"<SELECT id='opl' class='form-control' required>" +
 				"<option value=''>kies...</option>" +
@@ -121,7 +132,7 @@ function addGesprek()
 				"<option value='1'>Software Developer</option>" +
 				"</SELECT>" +
 				"</div>" +
-				"<div class='col'>" +
+				"<div class='col-md-2'>" +
 				"<label for='var'>Variant</label>" +
 				"<SELECT id='var' class='form-control' required>" +
 				"<option value=''>kies...</option>" +
@@ -129,16 +140,16 @@ function addGesprek()
 				"<option value='1'>BBL</option>" +
 				"</SELECT>" +
 				"</div>" +
-				"<div class='col'>" +
+				"<div class='col-md-3'>" +
 				"<label for='datum'>Datum</label>" +
 				"<input id='datum' class='form-control' type='date'>" +
 				"</div>" +
-				"<div class='form-group col'>" +
+				"<div class='col-md-2'>" +
 				"<label for='doorwie'>Door wie</label>" +
 				"<SELECT id='doorwie' class='form-control' required>" +
 				"<option value=''>kies...</option>" +
-				"<option value='JIO'>Jorgen Nieboer</option>" +
-				"<option value='OSD'>Ids Osinga</option>" +
+				"<option value='JIO'>JIO</option>" +
+				"<option value='OSD'>OSD</option>" +
 				"</SELECT>" +
 				"</div>" +
 				"</div>" +
@@ -155,6 +166,7 @@ function insertGesprek()
 	var achternaam = $('#achternaam').val();
 	var voorv = $('#voorv').val();
 	var roepnaam = $('#roepnaam').val();
+	var leeftijd = $('#leeftijd').val();
 	var datum = $('#datum').val();
 	var tel1 = $('#tel1').val();
 	var email1 = $('#email1').val();
@@ -169,6 +181,7 @@ function insertGesprek()
 	      achternaam: achternaam,
 		  voorv: voorv,
 		  roepnaam: roepnaam,
+		  leeftijd: leeftijd,
 	      datum: datum,
 	      tel1: tel1,
 	      email1: email1,
@@ -211,15 +224,17 @@ function deleteGesprek(gesprid)
 
 function checkAfgehandeld(gesprid,afgehwaarde)
 {
-	if(afgehwaarde==1)
+	var input;
+	var link;
+	if(afgehwaarde===1)
 	{
-		var input=0;
-		var link="<a href='#' onclick=\"checkAfgehandeld(" + gesprid + "," + input + ")\"><i style='color: red;' class='bi bi-check-circle'>";
+		input=0;
+		link="<a href='#' onclick=\"checkAfgehandeld(" + gesprid + "," + input + ")\"><i style='color: red;' class='bi bi-check-circle'>";
 	}	
 	else
 	{
-		var input=1;
-		var link="<a href='#' onclick=\"checkAfgehandeld(" + gesprid + "," + input + ")\"><i style='color: green;' class='bi bi-check-circle'>";
+		input=1;
+		link="<a href='#' onclick=\"checkAfgehandeld(" + gesprid + "," + input + ")\"><i style='color: green;' class='bi bi-check-circle'>";
 	}	
 	$.ajax({                                      
 	    url: 'gesprjs.php',      
@@ -240,15 +255,17 @@ function checkAfgehandeld(gesprid,afgehwaarde)
 
 function checkUitgenodigd(gesprid,uitgenwaarde)
 {
-	if(uitgenwaarde==1)
+	var input;
+	var link;
+	if(uitgenwaarde===1)
 	{
-		var input=0;
-		var link="<a href='#' onclick=\"checkUitgenodigd(" + gesprid + "," + input + ")\"><i style='color: red;' class='bi bi-check-circle'>";
+		input=0;
+		link="<a href='#' onclick=\"checkUitgenodigd(" + gesprid + "," + input + ")\"><i style='color: red;' class='bi bi-check-circle'>";
 	}
 	else
 	{
-		var input=1;
-		var link="<a href='#' onclick=\"checkUitgenodigd(" + gesprid + "," + input + ")\"><i style='color: green;' class='bi bi-check-circle'>";
+		input=1;
+		link="<a href='#' onclick=\"checkUitgenodigd(" + gesprid + "," + input + ")\"><i style='color: green;' class='bi bi-check-circle'>";
 	}
 	$.ajax({
 		url: 'gesprjs.php',
