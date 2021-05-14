@@ -83,7 +83,7 @@ $gesprekken = $query -> fetchAll(2);
                  <li class="nav-item dropdown">
                      <a class="nav-link dropdown-toggle btn btn-outline-warning" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">BOL en/of BBL</a>
                      <ul class="dropdown-menu">
-                         <li><a class="dropdown-item" href="index.php">Beide</a></li>
+                         <li><a class="dropdown-item" href="index.php?intaker=<?= $intaker ?>">Beide</a></li>
                          <li><hr class="dropdown-divider"></li>
                          <li><a class="dropdown-item" href="index.php?intaker=<?= $intaker ?>&variant=0">BOL</a></li>
                          <li><a class="dropdown-item" href="index.php?intaker=<?= $intaker ?>&variant=1">BBL</a></li>
@@ -151,7 +151,7 @@ $gesprekken = $query -> fetchAll(2);
       <th>Naam</th>
       <th>E-mailadres</th>
         <th>Uitgenodigd</th>
-      <th>Opleiding</th>
+      <th>Opl.</th>
       <th>Nodig</th>
       <th>Zorgstatus</th>
         <th>Uitkomst</th>
@@ -184,13 +184,14 @@ $uitkomstopties = array(0=>'Geen', 1=>'Geplaatst', 2=>'Afmelden', 3=>'Afgewezen'
 		echo "<td id='uitgen_{$gesprek['gespr_id']}' class='text-center'><a href='#' onclick=\"checkUitgenodigd({$gesprek['gespr_id']},{$gesprek['gespr_uitgenodigd']})\">{$uitgenodigd}</a></td>";
 
        // echo "<td width='150' class='text-center'>".$gesprek['gespr_uitgenodigd']."</td>";
-		$opleiding="SD";
+		/*$opleiding="SD";
 		if($gesprek['gespr_opl']==0)
 			$opleiding="BEHEER";
         $variant="BOL";
         if($gesprek['gespr_oplvariant']==1)
-            $variant="BBL";
-		echo "<td width='40'>".$opleiding."-".$variant."</td>";
+            $variant="BBL";*/
+        $variantarray=array(0=>"BOL", 1=>"BBL");
+		echo "<td>".$variantarray[$gesprek['gespr_oplvariant']]."</td>";
 		echo "<td>".$gesprek['gespr_nodig']."</td>";
 		echo "<td class='text-center'>".$gesprek['gespr_zorgstatus']."</td>";
         echo "<td>".$uitkomstopties[$gesprek['gespr_uitkomst']]."</td>";
