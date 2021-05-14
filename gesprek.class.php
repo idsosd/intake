@@ -117,17 +117,17 @@ class Gesprek
            $returnstmt.="</div>";
            $returnstmt.="<div class='row'>";
            $returnstmt.="<div class='col'>";
-           $returnstmt.="<label for='nodig'>Bijzonderheden qua extra aandacht (denk aan ADHD, dyslexie e.d.)</label>";
+           $returnstmt.="<label for='nodig'><b>Bijzonderheden qua extra aandacht (denk aan ADHD, dyslexie e.d.)</b></label>";
            $returnstmt.="<textarea id='nodig' class='form-control'>".$recset['gespr_nodig']."</textarea>";
            $returnstmt.="</div>";
            $returnstmt.="<div class='col'>";
-           $returnstmt.="<label for='opmerking'>Opmerking in het algemeen</label>";
+           $returnstmt.="<label for='opmerking'><b>Opmerking in het algemeen</b></label>";
            $returnstmt.="<textarea id='opmerking' class='form-control'>".$recset['gespr_opmerking']."</textarea>";
            $returnstmt.="</div>";
            $returnstmt.="</div>";
            $returnstmt.="<div class='row'>";
            $returnstmt.="<div class='col'>";
-           $returnstmt.="<label for='voorkennis'>Voorkennis</label>";
+           $returnstmt.="<label for='voorkennis'><b>Voorkennis</b></label>";
            if(is_null($recset['gespr_voorkennis']))
                $voorkennisveld = "1. server 
 2. variabele 
@@ -143,7 +143,7 @@ class Gesprek
            $returnstmt.="<textarea id='voorkennis' class='form-control' rows='9'>$voorkennisveld</textarea>";
            $returnstmt.="</div>";
            $returnstmt.="<div class='col'>";
-           $returnstmt.="<label for='generiek'>Generieke vakken</label>";
+           $returnstmt.="<label for='generiek'><b>Generieke vakken</b></label>";
            if(is_null($recset['gespr_generiek']))
                $generiekveld = "1. Nederlands 
 2. Engels 
@@ -156,7 +156,7 @@ class Gesprek
            $returnstmt.="<textarea id='generiek' class='form-control' rows='9'>$generiekveld</textarea>";
            $returnstmt.="</div>";
            $returnstmt.="<div class='col'>";
-           $returnstmt.="<label for='vaardigheden'>Vaardigheden</label>";
+           $returnstmt.="<label for='vaardigheden'><b>Vaardigheden</b></label>";
            if(is_null($recset['gespr_vaardigheden']))
                $vaardighedenveld = "1. Onderzoeken 
 2. Doorzetten 
@@ -174,13 +174,11 @@ class Gesprek
            $returnstmt.="</div>";
            $returnstmt.="<hr>";
            $returnstmt.="<div class='row' style='background: aqua; padding-top: 10px'>";
-           $returnstmt.="<div class='col-md-9'>Vooropleiding";
-           $returnstmt.="</div>";
-           $returnstmt.="<div class='col-md-3'>Voorkennis";
+           $returnstmt.="<div class='col'><b>Vooropleiding</b>";
            $returnstmt.="</div>";
            $returnstmt.="</div>";
            $returnstmt.="<div class='row' style='background: aqua;'>";
-           $returnstmt.="<div class='col-md-9'>";
+           $returnstmt.="<div class='col'>";
            $vooroplopties = array(0=>'MBO N2', 1=>'MBO N3', 2=>'MBO N4', 3=>'VMBO-K', 4=>'VMBO-(G)T', 5=>'HAVO 3', 6=>'HAVO 4', 7=>'HAVO 5', 8=>'anders');
            $k=0;
            while($k<count($vooroplopties)){
@@ -194,8 +192,11 @@ class Gesprek
                $k++;
            }
            $returnstmt.="</div>";
-           $returnstmt.="<div class='col-md-3'>";
+           $returnstmt.="</div>";
+           $returnstmt.="<div class='row' style='background: aqua; padding-bottom: 20px'>";
 
+           $returnstmt.="<div class='col'>";
+           $returnstmt.="<b>Voorkennis</b><br>";
            $m=0;
            while($m < 5){
                $checkedText="";
@@ -208,10 +209,9 @@ class Gesprek
                $m++;
            }
            $returnstmt.="</div>";
-           $returnstmt.="</div>";
-           $returnstmt.="<div class='row' style='background: aqua; padding-bottom: 20px'>";
+
            $returnstmt.="<div class='col'>";
-           $returnstmt.="<label for='zorgstatus'>Zorgstatus</label>";
+           $returnstmt.="<label for='zorgstatus'><b>Zorgstatus</b></label>";
            $returnstmt.="<SELECT id='zorgstatus' class='form-control'>";
            $returnstmt.="<option value=''>Kies ......</option>";
            $zorgstatusopties = array('A'=>'A Diplomaperspectief', 'B'=>'B Diplomaperspectief mits begeleiding', 'C'=>'C Geen diplomaperspectief tenzij', 'C1'=>'C1 Intensieve ondersteuning', 'C2'=>'C2 Via bijzondere toelating', 'D'=>'D Geen diplomaperspectief');
@@ -224,7 +224,7 @@ class Gesprek
            $returnstmt.="</SELECT>";
            $returnstmt.="</div>";
            $returnstmt.="<div class='col'>";
-           $returnstmt.="<label for='uitkomst'>Uitkomst</label>";
+           $returnstmt.="<label for='uitkomst'><b>Uitkomst</b></label>";
            $returnstmt.="<SELECT id='uitkomst' class='form-control'>";
            $returnstmt.="<option value=''>Kies.....</option>";
            $uitkomstopties = array(0=>'Geen', 1=>'Geplaatst', 2=>'Afmelden', 3=>'Afgewezen', 4=>'Nieuw gesprek inplannen', 5=>'Andere opleiding binnen Alfa', 6=>'Student heeft zich afgemeld');

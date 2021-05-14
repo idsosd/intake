@@ -74,7 +74,7 @@ $gesprekken = $query -> fetchAll(2);
     <!-- Fixed navbar -->
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#"><img src="img/alfalogo.png" alt="" width="40"class="d-inline-block align-text-top">&nbsp;&nbsp;&nbsp;&nbsp;Intakegesprekken SD</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <a class="navbar-brand" href="index.php"><img src="img/alfalogo.png" alt="" width="40"class="d-inline-block align-text-top">&nbsp;&nbsp;&nbsp;&nbsp;Intakegesprekken SD</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -107,6 +107,7 @@ $gesprekken = $query -> fetchAll(2);
                     </li>
                 </ul>
                 <span class="navbar-text">
+                    <a class="btn btn-info" href="intakegesprek.php" tabindex="-1"><i class="bi bi-info-circle"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <a class="btn btn-success" href="#" onclick="addGesprek()" tabindex="-1">Voeg toe</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?= $_SESSION['user_email'] ?>&nbsp;&nbsp;&nbsp;<a class="btn btn-secondary" href="loguit.php">Log uit</a>
       </span>
             </div>
@@ -117,7 +118,7 @@ $gesprekken = $query -> fetchAll(2);
 
 <div class="container">
 
-    <div id="detailsModal"  class="modal" tabindex="-1">
+    <div id="detailsModal"  class="modal fade" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1">
         <div class="modal-dialog modal-xl">
             <div class="modal-content">
                 <div class="modal-header">
