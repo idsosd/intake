@@ -12,10 +12,11 @@
 </head>
 <body class="d-flex flex-column h-100">
 <div class="container">
-<p>Procedure:</p>
-Het gesprek is al in de geest van hoe wij met onze studenten willen werken: het initiatief zoveel mogelijk bij de student laten en kijken wat er gebeurt. Reageren ze vlot en adequaat.
+<h3>Intake-procedure SD-team</h3>
+<p>Het gesprek is al in de geest van hoe wij met onze studenten willen werken: het initiatief zoveel mogelijk bij de student laten en kijken wat er gebeurt. Reageren ze vlot en adequaat?
 Als dat niet zo is, het daar tijdens het gesprek over hebben!
-Tijdens het stellen van de vragen, leg je op natuurlijke wijze ook iets uit over 'hoe we werken'. Dit komt met de vraag over de vaardigheden nog het sterkst tot uiting.
+    Tijdens het stellen van de vragen, leg je op natuurlijke wijze ook iets uit over 'hoe we werken'. Dit komt met de vraag over de vaardigheden nog het sterkst tot uiting.</p>
+    <p>De volgende stappen worden in meer of mindere mate doorlopen:</p>
 <ol>
     <li>Je nodigt de student uit om jou uit te nodigen voor een gesprek van een half uur; dit kan snel door op de link van het e-mailadres te klikken, je moet alleen nog je handtekening plaatsen en je beschikbaarheid aangeven; als je de uitnodiging gedaan hebt, kun je dat aangeven onder de kop 'Uitgenodigd'</li>
     <li>De student prikt een moment in je agenda, dit lukt niet altijd in 1 keer; let op de communicatie en zeg daar wat van, ook in positieve zin; als de datum voor het gesprek vaststaat, kun je die invoeren in het scherm als je op het volgnr. voor de student klikt</li>

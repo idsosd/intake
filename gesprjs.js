@@ -92,40 +92,40 @@ function addGesprek()
 	var form="<form id='addgesprek' onsubmit=\"insertGesprek(); return false\">" +
 				"<div class='row'>" +
 				"<div class='col'>" +
-				"<label for='achternaam'>Achternaam</label>" +
+				"<label for='achternaam'><b>Achternaam</b></label>" +
 				"<input id='achternaam' class='form-control' type='text' placeholder='achternaam' required>" +
 				"</div>" +
 				"<div class='col'>" +
-				"<label for='voorv'>Voorv.</label>" +
+				"<label for='voorv'><b>Voorv.</b></label>" +
 				"<input id='voorv' class='form-control' type='text' placeholder='voorvoegsel'>" +
 				"</div>" +
 				"<div class='col'>" +
-				"<label for='roepnaam'>Roepnaam</label>" +
+				"<label for='roepnaam'><b>Roepnaam</b></label>" +
 				"<input id='roepnaam' class='form-control' type='text' placeholder='roepnaam' required>" +
 				"</div>" +
 		"</div>" +
 		"<div class='row'>" +
 
 				"<div class='col'>" +
-				"<label for='email1'>E-mailadres 1</label>" +
+				"<label for='email1'><b>E-mailadres 1</b></label>" +
 				"<input id='email1' class='form-control' type='email' placeholder='' required>" +
 				"</div>" +
 				"<div class='col'>" +
-				"<label for='email2'>E-mailadres 2</label>" +
+				"<label for='email2'><b>E-mailadres 2</b></label>" +
 				"<input id='email2' class='form-control' type='email' placeholder=''>" +
 				"</div>" +
 		"<div class='col'>" +
-		"<label for='tel1'>Telefoonnr. 1</label>" +
+		"<label for='tel1'><b>Telefoonnr. 1</b></label>" +
 		"<input id='tel1' class='form-control' type='text' placeholder='' required>" +
 		"</div>" +
 				"</div>" +
 				"<div class='row'>" +
 				"<div class='col-md-1'>" +
-				"<label for='leeftijd'>Leeftijd</label>" +
+				"<label for='leeftijd'><b>Leeftijd</b></label>" +
 				"<input id='leeftijd' class='form-control' type='text' placeholder=''>" +
 				"</div>" +
 				"<div class='col-md-4'>" +
-				"<label for='opl'>Opleiding</label>" +
+				"<label for='opl'><b>Opleiding</b></label>" +
 				"<SELECT id='opl' class='form-control' required>" +
 				"<option value=''>kies...</option>" +
 				"<option value='0'>Expert IT systems and devices</option>" +
@@ -133,7 +133,7 @@ function addGesprek()
 				"</SELECT>" +
 				"</div>" +
 				"<div class='col-md-2'>" +
-				"<label for='var'>Variant</label>" +
+				"<label for='var'><b>Variant</b></label>" +
 				"<SELECT id='var' class='form-control' required>" +
 				"<option value=''>kies...</option>" +
 				"<option value='0'>BOL</option>" +
@@ -141,11 +141,11 @@ function addGesprek()
 				"</SELECT>" +
 				"</div>" +
 				"<div class='col-md-3'>" +
-				"<label for='datum'>Datum</label>" +
+				"<label for='datum'><b>Datum</b></label>" +
 				"<input id='datum' class='form-control' type='date'>" +
 				"</div>" +
 				"<div class='col-md-2'>" +
-				"<label for='doorwie'>Door wie</label>" +
+				"<label for='doorwie'><b>Door</b></label>" +
 				"<SELECT id='doorwie' class='form-control' required>" +
 				"<option value=''>kies...</option>" +
 				"<option value='JIO'>JIO</option>" +
