@@ -7,15 +7,45 @@ include_once('inc/functions.php');
 
 $oplcode=1;
 $cohort='21/22';
+
+$intaker = "";
+if(isset($_GET['intaker']))
+    $intaker = $_GET['intaker'];
+
+$variant = "";
+if(isset($_GET['variant']))
+    $variant = $_GET['variant'];
+
 $dbconnect=new dbconnection();
-$sql="SELECT * FROM gesprekken WHERE gespr_opl=:oplcode AND gespr_cohort=:coh ORDER BY gespr_datum, gespr_achternaam";
-$query = $dbconnect -> prepare($sql);
+
+if($intaker <> '') {
+    if($variant <> '') {
+        $sql = "SELECT * FROM gesprekken WHERE gespr_opl=:oplcode AND gespr_cohort=:coh AND gespr_doorwie=:intaker AND gespr_oplvariant=:variant ORDER BY gespr_datum, gespr_achternaam";
+        $query = $dbconnect->prepare($sql);
+        $query->bindParam(':variant', $variant);
+    }
+    else {
+        $sql = "SELECT * FROM gesprekken WHERE gespr_opl=:oplcode AND gespr_cohort=:coh AND gespr_doorwie=:intaker ORDER BY gespr_datum, gespr_achternaam";
+        $query = $dbconnect->prepare($sql);
+    }
+    $query->bindParam(':intaker', $intaker);
+}
+else {
+    if($variant <> '') {
+        $sql = "SELECT * FROM gesprekken WHERE gespr_opl=:oplcode AND gespr_cohort=:coh AND gespr_oplvariant=:variant ORDER BY gespr_datum, gespr_achternaam";
+        $query = $dbconnect->prepare($sql);
+        $query->bindParam(':variant', $variant);
+    }
+    else {
+        $sql = "SELECT * FROM gesprekken WHERE gespr_opl=:oplcode AND gespr_cohort=:coh ORDER BY gespr_datum, gespr_achternaam";
+        $query = $dbconnect->prepare($sql);
+    }
+}
 $query -> bindParam(':oplcode',$oplcode);
 $query -> bindParam(':coh',$cohort);
 $query -> execute();
 $gesprekken = $query -> fetchAll(2);
 
-	
 	?>
 <!DOCTYPE html>
 <html lang="nl">
@@ -50,22 +80,35 @@ $gesprekken = $query -> fetchAll(2);
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <ul class="navbar-nav me-auto mb-2 mb-md-0">
-                 <!--   <li class="nav-item active">
-                        <a class="nav-link" aria-current="page" href="#">Home</a>
+                 <li class="nav-item dropdown">
+                     <a class="nav-link dropdown-toggle btn btn-outline-warning" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">BOL en/of BBL</a>
+                     <ul class="dropdown-menu">
+                         <li><a class="dropdown-item" href="index.php">Beide</a></li>
+                         <li><hr class="dropdown-divider"></li>
+                         <li><a class="dropdown-item" href="index.php?intaker=<?= $intaker ?>&variant=0">BOL</a></li>
+                         <li><a class="dropdown-item" href="index.php?intaker=<?= $intaker ?>&variant=1">BBL</a></li>
+                     </ul>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Link</a>
-                    </li>-->
-                    <li class="nav-item">
-                        <a class="btn btn-outline-success" href="#" onclick="addGesprek()" tabindex="-1">Voeg toe</a>
+                    <li class="nav-item dropdown" style="margin-left: 20px;">
+                        <a class="nav-link dropdown-toggle btn btn-outline-warning" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Intaker</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="index.php?variant=<?= $variant ?>">Alle</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <?php
+                            $sql="SELECT * FROM intaker";
+                            $query = $dbconnect -> prepare($sql);
+                            $query -> execute();
+                            $intakers = $query -> fetchAll(2);
+                            foreach($intakers as $intaker){
+                                echo "<li><a class='dropdown-item' href='index.php?intaker={$intaker['it_afk']}&variant=$variant'>{$intaker['it_afk']}</a></li>";
+                                }
+                            ?>
+                        </ul>
                     </li>
                 </ul>
-                <div style="color: white;">
-                    <?= $_SESSION['user_email'] ?>&nbsp;&nbsp;&nbsp;
-                </div>
-                <div class="d-flex">
-                    <a class="btn btn-outline-secondary" href="loguit.php">Log uit</a>
-                </div>
+                <span class="navbar-text">
+        <a class="btn btn-success" href="#" onclick="addGesprek()" tabindex="-1">Voeg toe</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?= $_SESSION['user_email'] ?>&nbsp;&nbsp;&nbsp;<a class="btn btn-secondary" href="loguit.php">Log uit</a>
+      </span>
             </div>
         </div>
     </nav>

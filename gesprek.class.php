@@ -185,7 +185,7 @@ class Gesprek
            $k=0;
            while($k<count($vooroplopties)){
                $checkedText="";
-               if($recset['gespr_vooropl_niv']==$vooroplopties[$k])
+               if($recset['gespr_vooropl_niv']===$vooroplopties[$k])
                    $checkedText="checked";
                $returnstmt.="<div class='form-check form-check-inline'>";
                $returnstmt.="<input class='form-check-input vooropl' type='radio' name='vooropleiding' id='vooropleiding$k' value='$vooroplopties[$k]' $checkedText>";
@@ -199,7 +199,7 @@ class Gesprek
            $m=0;
            while($m < 5){
                $checkedText="";
-               if($recset['gespr_voorkennis_niv']==$m)
+               if($recset['gespr_voorkennis_niv']===$m)
                    $checkedText="checked";
                $returnstmt.="<div class='form-check form-check-inline'>";
                $returnstmt.="<input class='form-check-input voork' type='radio' name='voorkennis' id='voorkennis$m' value='$m' $checkedText>";
