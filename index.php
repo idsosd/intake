@@ -74,7 +74,7 @@ $gesprekken = $query -> fetchAll(2);
     <!-- Fixed navbar -->
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">Intakegesprekken SD-team Alfa-college</a>
+            <a class="navbar-brand" href="#"><img src="img/alfalogo.png" alt="" width="40"class="d-inline-block align-text-top">&nbsp;&nbsp;&nbsp;&nbsp;Intakegesprekken SD</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -153,12 +153,14 @@ $gesprekken = $query -> fetchAll(2);
         <th>Uitgenodigd</th>
       <th>Opleiding</th>
       <th>Nodig</th>
-      <th>Advies</th>
+      <th>Zorgstatus</th>
+        <th>Uitkomst</th>
       <th>Verwerkt</th>
         <th>Door</th>
     </tr>
   </thead>
 <?php
+$uitkomstopties = array(0=>'Geen', 1=>'Geplaatst', 2=>'Afmelden', 3=>'Afgewezen', 4=>'Nieuw gesprek inplannen', 5=>'Andere opleiding binnen Alfa', 6=>'Student heeft zich afgemeld');
 	$i=1;
 	foreach($gesprekken as $gesprek)
 	{
@@ -191,6 +193,7 @@ $gesprekken = $query -> fetchAll(2);
 		echo "<td width='40'>".$opleiding."-".$variant."</td>";
 		echo "<td>".$gesprek['gespr_nodig']."</td>";
 		echo "<td class='text-center'>".$gesprek['gespr_zorgstatus']."</td>";
+        echo "<td>".$uitkomstopties[$gesprek['gespr_uitkomst']]."</td>";
 		$afgehandeld="<i style='color: red;' class='bi bi-check-circle'></i>";
 		if($gesprek['gespr_afgehandeld']==1)
 			$afgehandeld="<i style='color: green;' class='bi bi-check-circle'></i>";
