@@ -380,7 +380,7 @@ class Gesprek
             $statusarray = array(0=>"intake", 1=>"afgedrukt", 2=>"definitief",3=>"afgemeld");
             $returnstmt = "<table class='table table-sm table-hover'><tr><th>status</th><th>aantal</th><th>e-mailadressen</th></tr>";
             while($recset=$query->fetch(PDO::FETCH_ASSOC)){
-                $emailadressen = $this->selectEmailadressen($oplcode, $cohort, $recset['gespr_aanmstatus']);
+                $emailadressen = $this->selectEmailadressen($oplcode, $cohort, $recset['gespr_aanmstatus'], $variant);
                 $returnstmt.="<tr><td>{$statusarray[$recset['gespr_aanmstatus']]}</td>";
                 $returnstmt.="<td>{$recset['aantal']}</td>";
                 $returnstmt.="<td>$emailadressen</td>";
