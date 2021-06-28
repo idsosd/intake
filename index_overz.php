@@ -77,13 +77,11 @@ $gesprekken = $query -> fetchAll(2);
     </div>
 
 
-<!--<div class="row">
-	<div class="col-lg-10">
-<h1>Intakegesprekken Alfa-college SD-team</h1>
+<div class="row">
+	<div class="col">
+        draaitabel
 	</div>
-	<div class="col-lg-2 text-end" style="margin-top: 10px"><button class="btn btn-primary btn-block" onclick="addGesprek()">Voeg toe</button>
-	</div>
-</div>-->
+</div>
 <table class="table table-hover">
 	<thead class="thead-dark">
     <tr>
