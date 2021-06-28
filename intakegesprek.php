@@ -21,12 +21,12 @@ Als dat niet zo is, het daar tijdens het gesprek over hebben!
     <li>Je nodigt de student uit om jou uit te nodigen voor een gesprek van een half uur; dit kan snel door op de link van het e-mailadres te klikken, je moet alleen nog je handtekening plaatsen en je beschikbaarheid aangeven; als je de uitnodiging gedaan hebt, kun je dat aangeven onder de kop 'Uitgenodigd'</li>
     <li>De student prikt een moment in je agenda, dit lukt niet altijd in 1 keer; let op de communicatie en zeg daar wat van, ook in positieve zin; als de datum voor het gesprek vaststaat, kun je die invoeren in het scherm als je op het volgnr. voor de student klikt</li>
     <li>De meeting vindt plaats: let op de presentatie (bij een Teams-meeting: is de camera aan?)</li>
-    <li>Klik op het volgnr voor de student, het volgende scherm is je leidraad voor het gesprek (volg het van links naar rechts)
+    <li>Klik op het volgnr voor de student, het volgende scherm is je leidraad voor het gesprek (volg het van links naar rechts en van boven naar beneden)
         <ul>
             <li>De vooropleiding spreekt voor zich, moet toereikend zijn; vergeet niet onderaan het niveau nog aan te klikken (nodig voor de statistieken)</li>
             <li>Nog andere intakes? Zo ja, waar en waar hangt de keuze nog van af?</li>
             <li>Thuissituatie: (bijv. bij scheiding) geeft dat nog gedoe / spanningen</li>
-            <li>Vrije tijd en baantjes: heoveel tijd slokt dat op? Als iemand aangeeft dat hij/zij gamet, hier aandacht aan besteden bij de volgende vraag!</li>
+            <li>Vrije tijd en baantjes: hoeveel tijd slokt dat op? Als iemand aangeeft dat hij/zij gamet, hier aandacht aan besteden bij de volgende vraag!</li>
             <li>Verwachtingen: 'een hardcore gamer is nog lang geen SD-liefhebber'</li>
             <li>Toekomstbeeld: spreekt voor zich</li>
             <li>Bijzonderheden: is vaak al gescreend door LBC-er, maar besteed daar wel even aandacht aan</li>
@@ -42,7 +42,7 @@ Als dat niet zo is, het daar tijdens het gesprek over hebben!
         <li>heeft de student nog vragen? Veel voorkomende vragen:
         <ul>
             <li>boeken-/licentiekosten (licenties Nederlands, rekenen en SPL - ca. &euro; 200)</li>
-            <li>laptop specificaties</li>
+            <li>laptop specificaties (minimaal i5, 16 Gb RAM, 512 Gb SSD, ca. &euro; 600)</li>
             <li>aantal meisjes (bij vrouwelijke aanmelding)</li>
             <li>klassegrootte</li>
             <li>versnellingsmogelijkheden</li>

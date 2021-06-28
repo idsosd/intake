@@ -9,6 +9,13 @@
           </mappings>
         </serverdata>
       </paths>
+      <paths name="ApiPostcode">
+        <serverdata>
+          <mappings>
+            <mapping local="$PROJECT_DIR$" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
       <paths name="Forum">
         <serverdata>
           <mappings>
@@ -31,6 +38,13 @@
         </serverdata>
       </paths>
       <paths name="aanmelden">
+        <serverdata>
+          <mappings>
+            <mapping local="$PROJECT_DIR$" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
+      <paths name="api-postcode">
         <serverdata>
           <mappings>
             <mapping local="$PROJECT_DIR$" web="/" />
@@ -80,6 +94,13 @@
         </serverdata>
       </paths>
       <paths name="planning">
+        <serverdata>
+          <mappings>
+            <mapping local="$PROJECT_DIR$" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
+      <paths name="postcodeapi">
         <serverdata>
           <mappings>
             <mapping local="$PROJECT_DIR$" web="/" />

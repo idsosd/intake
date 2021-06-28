@@ -201,6 +201,8 @@ $uitkomstopties = array(0=>'Geen', 1=>'Geplaatst', 2=>'Afmelden', 3=>'Afgewezen'
 			$afgehandeld="<i style='color: green;' class='bi bi-check-circle'></i>";
 		echo "<td id='afgeh_{$gesprek['gespr_id']}' class='text-center'><a href='#' onclick=\"checkAfgehandeld({$gesprek['gespr_id']},{$gesprek['gespr_afgehandeld']})\">{$afgehandeld}</a></td>";
 		echo "<td>{$gesprek['gespr_doorwie']}</td>";
+		$statusarray = array(0=>"intake", 1=>"afgedrukt", 2=>"definitief",3=>"afgemeld");
+        echo "<td>{$statusarray[$gesprek['gespr_aanmstatus']]}</td>";
 		echo "</tr>";
 		$i++;
 	}
