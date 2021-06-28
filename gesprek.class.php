@@ -387,10 +387,10 @@ class Gesprek
                 $returnstmt.="</tr>";
                 if($alleemailadressen <> "")
                     $alleemailadressen .= ", ";
-                $alleemailadressen .= $emailadressen;
+                $alleemailadressen .= $emailadressen[0];
                 $totaal+=$recset['aantal'];
             }
-            $returnstmt.="<tr><td>totaal</td><td>$totaal</td><td>$alleemailadressen</td></tr>";
+            $returnstmt.="<tr><td>totaal</td><td><a href='mailto:$alleemailadressen'>$totaal</a></td><td></td></tr>";
             $returnstmt .= "</table>";
             return $returnstmt;
         } catch (PDOException $e){
@@ -409,7 +409,7 @@ class Gesprek
             $query -> bindParam(':variant',$variant);
             $query -> execute();
             $emailadresarray=array();
-            $achternaamenid = "";
+            $achternaamenid = "| ";
             while($recset=$query->fetch(PDO::FETCH_ASSOC)){
                 if(!in_array($recset['gespr_emailadres1'], $emailadresarray))
                     array_push($emailadresarray, $recset['gespr_emailadres1']);
