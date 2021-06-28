@@ -82,12 +82,14 @@ $gesprekken = $query -> fetchAll(2);
 
 <div class="row">
 	<div class="col">
+        <h3>Draaitabel BOL <?= $cohort ?></h3>
         <?php
         $draaitabel = $gesprek->selectStatusDraaitabel($oplcode, $cohort, 0);
         echo $draaitabel;
         ?>
 	</div>
     <div class="col">
+        <h3>Draaitabel BBL <?= $cohort ?></h3>
         <?php
         $draaitabel = $gesprek->selectStatusDraaitabel($oplcode, $cohort, 1);
         echo $draaitabel;
