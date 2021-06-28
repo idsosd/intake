@@ -51,36 +51,7 @@ $gesprekken = $query -> fetchAll(2);
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarCollapse">
-                <ul class="navbar-nav me-auto mb-2 mb-md-0">
-                 <li class="nav-item dropdown">
-                     <a class="nav-link dropdown-toggle btn btn-outline-warning" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">BOL en/of BBL</a>
-                     <ul class="dropdown-menu">
-                         <li><a class="dropdown-item" href="index.php?intaker=<?= $intaker ?>">Beide</a></li>
-                         <li><hr class="dropdown-divider"></li>
-                         <li><a class="dropdown-item" href="index.php?intaker=<?= $intaker ?>&variant=0">BOL</a></li>
-                         <li><a class="dropdown-item" href="index.php?intaker=<?= $intaker ?>&variant=1">BBL</a></li>
-                     </ul>
-                    </li>
-                    <li class="nav-item dropdown" style="margin-left: 20px;">
-                        <a class="nav-link dropdown-toggle btn btn-outline-warning" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Intaker</a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="index.php?variant=<?= $variant ?>">Alle</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <?php
-                            $sql="SELECT * FROM intaker";
-                            $query = $dbconnect -> prepare($sql);
-                            $query -> execute();
-                            $intakers = $query -> fetchAll(2);
-                            foreach($intakers as $intaker){
-                                echo "<li><a class='dropdown-item' href='index.php?intaker={$intaker['it_afk']}&variant=$variant'>{$intaker['it_afk']}</a></li>";
-                                }
-                            ?>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-        </div>
+
     </nav>
 </header>
 <main class="flex-shrink-0">
