@@ -80,7 +80,7 @@ $gesprekken = $query -> fetchAll(2);
     </div>
 
 
-<div class="row">
+<div class="row" style="margin-top: 20px;">
 	<div class="col">
         <h3>Draaitabel BOL <?= $cohort ?></h3>
         <?php
