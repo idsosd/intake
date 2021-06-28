@@ -79,10 +79,6 @@ $gesprekken = $query -> fetchAll(2);
                         </ul>
                     </li>
                 </ul>
-                <span class="navbar-text">
-                    <a class="btn btn-info" href="intakegesprek.php" tabindex="-1"><i class="bi bi-info-circle"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <a class="btn btn-success" href="#" onclick="addGesprek()" tabindex="-1">Voeg toe</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?= $_SESSION['user_email'] ?>&nbsp;&nbsp;&nbsp;<a class="btn btn-secondary" href="loguit.php">Log uit</a>
-      </span>
             </div>
         </div>
     </nav>
@@ -123,6 +119,7 @@ $gesprekken = $query -> fetchAll(2);
       <th class="text-right">#</th>
       <th>Naam</th>
       <th>Opl.</th>
+        <th>Nodig</th>
       <th>Zorgstatus</th>
         <th>Uitkomst</th>
         <th>Status</th>
@@ -137,7 +134,7 @@ $uitkomstopties = array(0=>'Geen', 1=>'Geplaatst', 2=>'Afmelden', 3=>'Afgewezen'
 		if($gesprek['gespr_zorgstatus']=="")
 			$trclass="table-success";
 		echo "<tr class='".$trclass."'>";
-		echo "<td class='text-end' width='40'><a href='#' onclick=\"showDetails({$gesprek['gespr_id']})\">{$i}.</a></td>";
+		echo "<td class='text-end' width='40'>{$i}.</td>";
 		echo "<td width='250'>".volledigeNaam(1, $gesprek['gespr_achternaam'], $gesprek['gespr_voorvoegsel'], $gesprek['gespr_roepnaam'])."</td>";
 		$emailbody = "Beste {$gesprek['gespr_roepnaam']},%0A%0AJe hebt je aangemeld voor de Software Developer opleiding aan het Alfa-college. Het is de bedoeling dat ik eerst een intakegesprek met je doe.%0A
 		%0AIk nodig je daarom uit om mij uit te nodigen voor een online bijeenkomst via MS Teams (of een vergelijkbare tool) van een half uur. De momenten waarop ik doorgaans prima kan, zijn:%0A%0A%0AIk ontvang graag een uitnodiging van je!%0A%0A";
