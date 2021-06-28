@@ -369,7 +369,7 @@ class Gesprek
     public function selectStatusDraaitabel($oplcode, $cohort, $variant){
         try{
             $dbconnect = new dbconnection();
-            $sql="SELECT gespr_aanmstatus, COUNT(gespr_aanmstatus) AS aantal FROM gesprekken WHERE gespr_opl=:oplcode AND gespr_cohort=:coh AND gespr_oplvariant=:variant GROUP BY gespr_aanmstatus";
+            $sql="SELECT gespr_stid, gespr_aanmstatus, COUNT(gespr_aanmstatus) AS aantal FROM gesprekken WHERE gespr_opl=:oplcode AND gespr_cohort=:coh AND gespr_oplvariant=:variant GROUP BY gespr_aanmstatus";
             $query = $dbconnect -> prepare($sql);
             $query -> bindParam(':oplcode',$oplcode);
             $query -> bindParam(':coh',$cohort);
@@ -382,8 +382,8 @@ class Gesprek
             while($recset=$query->fetch(PDO::FETCH_ASSOC)){
                 $emailadressen = $this->selectEmailadressen($oplcode, $cohort, $recset['gespr_aanmstatus'], $variant);
                 $returnstmt.="<tr><td>{$statusarray[$recset['gespr_aanmstatus']]}</td>";
-                $returnstmt.="<td>{$recset['aantal']}</td>";
-                $returnstmt.="<td>$emailadressen</td>";
+                $returnstmt.="<td><a href='mailto:>$emailadressen'>{$recset['aantal']}</a></td>";
+                $returnstmt.="<td>{$recset['gespr_achternaam']} ({$recset['gespr_stid']})</td>";
                 $returnstmt.="</tr>";
                 if($alleemailadressen <> "")
                     $alleemailadressen .= ", ";
