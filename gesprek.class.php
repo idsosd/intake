@@ -413,7 +413,7 @@ class Gesprek
             while($recset=$query->fetch(PDO::FETCH_ASSOC)){
                 if(!in_array($recset['gespr_emailadres1'], $emailadresarray))
                     array_push($emailadresarray, $recset['gespr_emailadres1']);
-                $achternaamenid.=$recset['gespr_achternaam']." ({$recset['gespr_stid']}) | ";
+                $achternaamenid.=$recset['gespr_achternaam'].", {$recset['gespr_roepnaam']} {$recset['gespr_voorvoegsel']} ({$recset['gespr_stid']}) | ";
             }
             $returndata = array(0=>implode(", ", $emailadresarray), 1=>$achternaamenid);
             return $returndata;
