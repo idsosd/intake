@@ -376,7 +376,7 @@ class Gesprek
             $query -> execute();
             $returnstmt = "<table><tr><th>status</th><th>aantal</th></tr>";
             while($recset=$query->fetch(PDO::FETCH_ASSOC)){
-                $returnstmt.="<tr><td>{$recset['gespr_aanmstatus']}</td><td>{$recset['aantal'}</td></tr>";
+                $returnstmt.="<tr><td>{$recset['gespr_aanmstatus']}</td><td>{$recset['aantal']}</td></tr>";
             }
             $returnstmt .= "</table>";
             return $returnstmt;
