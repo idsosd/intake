@@ -376,14 +376,35 @@ class Gesprek
             $query -> execute();
             $totaal = 0;
             $statusarray = array(0=>"intake", 1=>"afgedrukt", 2=>"definitief",3=>"afgemeld");
-            $returnstmt = "<table><tr><th>status</th><th>aantal</th></tr>";
+            $returnstmt = "<table><tr><th>status</th><th>aantal</th><th>e-mailadressen</th></tr>";
             while($recset=$query->fetch(PDO::FETCH_ASSOC)){
                 $returnstmt.="<tr><td>{$statusarray[$recset['gespr_aanmstatus']]}</td><td>{$recset['aantal']}</td></tr>";
+                $emailadressen = $this->selectEmailadressen($oplcode, $cohort, [$recset['gespr_aanmstatus']);
                 $totaal+=$recset['aantal'];
             }
-            $returnstmt.="<tr><td>totaal</td><td>$totaal</td></tr>";
+            $returnstmt.="<tr><td>totaal</td><td>$totaal</td><td>$emailadressen</td></tr>";
             $returnstmt .= "</table>";
             return $returnstmt;
+        } catch (PDOException $e){
+            echo $e -> getMessage();
+        }
+    }
+
+    private function selectEmailadressen($oplcode, $cohort, $status){
+        try{
+            $dbconnect = new dbconnection();
+            $sql="SELECT * FROM gesprekken WHERE gespr_opl=:oplcode AND gespr_cohort=:coh AND gespr_aanmstatus=:status";
+            $query = $dbconnect -> prepare($sql);
+            $query -> bindParam(':oplcode',$oplcode);
+            $query -> bindParam(':coh',$cohort);
+            $query -> bindParam(':status',$status);
+            $query -> execute();
+            $emailadresarray=array();
+            while($recset=$query->fetch(PDO::FETCH_ASSOC)){
+                if(!in_array($recset['gespr_emailadres1'], $emailadresarray))
+                    array_push($emailadresarray, $recset['gespr_emailadres1']);
+            }
+            return implode(", ", $emailadresarray);
         } catch (PDOException $e){
             echo $e -> getMessage();
         }
