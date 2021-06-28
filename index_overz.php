@@ -88,6 +88,8 @@ $gesprekken = $query -> fetchAll(2);
         echo $draaitabel;
         ?>
 	</div>
+</div>
+    <div class="row" style="padding-top: 20px;">
     <div class="col">
         <h3>Draaitabel BBL <?= $cohort ?></h3>
         <?php
