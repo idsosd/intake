@@ -374,10 +374,14 @@ class Gesprek
             $query -> bindParam(':oplcode',$oplcode);
             $query -> bindParam(':coh',$cohort);
             $query -> execute();
+            $totaal = 0;
+            $statusarray = array(0=>"intake", 1=>"afgedrukt", 2=>"definitief",3=>"afgemeld");
             $returnstmt = "<table><tr><th>status</th><th>aantal</th></tr>";
             while($recset=$query->fetch(PDO::FETCH_ASSOC)){
-                $returnstmt.="<tr><td>{$recset['gespr_aanmstatus']}</td><td>{$recset['aantal']}</td></tr>";
+                $returnstmt.="<tr><td>{$statusarray[$recset['gespr_aanmstatus']]}</td><td>{$recset['aantal']}</td></tr>";
+                $totaal+=$recset['aantal'];
             }
+            $returnstmt.="<tr><td>totaal</td><td>$totaal</td></tr>";
             $returnstmt .= "</table>";
             return $returnstmt;
         } catch (PDOException $e){
