@@ -379,7 +379,7 @@ class Gesprek
             $returnstmt = "<table><tr><th>status</th><th>aantal</th><th>e-mailadressen</th></tr>";
             while($recset=$query->fetch(PDO::FETCH_ASSOC)){
                 $returnstmt.="<tr><td>{$statusarray[$recset['gespr_aanmstatus']]}</td><td>{$recset['aantal']}</td></tr>";
-                $emailadressen = $this->selectEmailadressen($oplcode, $cohort, [$recset['gespr_aanmstatus']);
+                $emailadressen = $this->selectEmailadressen($oplcode, $cohort, $recset['gespr_aanmstatus']);
                 $totaal+=$recset['aantal'];
             }
             $returnstmt.="<tr><td>totaal</td><td>$totaal</td><td>$emailadressen</td></tr>";
