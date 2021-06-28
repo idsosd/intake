@@ -401,7 +401,7 @@ class Gesprek
     private function selectEmailadressen($oplcode, $cohort, $status, $variant){
         try{
             $dbconnect = new dbconnection();
-            $sql="SELECT * FROM gesprekken WHERE gespr_opl=:oplcode AND gespr_cohort=:coh AND gespr_aanmstatus=:status AND gespr_oplvariant=:variant";
+            $sql="SELECT * FROM gesprekken WHERE gespr_opl=:oplcode AND gespr_cohort=:coh AND gespr_aanmstatus=:status AND gespr_oplvariant=:variant ORDER BY gespr_achternaam";
             $query = $dbconnect -> prepare($sql);
             $query -> bindParam(':oplcode',$oplcode);
             $query -> bindParam(':coh',$cohort);
