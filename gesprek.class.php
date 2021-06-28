@@ -382,7 +382,7 @@ class Gesprek
             while($recset=$query->fetch(PDO::FETCH_ASSOC)){
                 $emailadressen = $this->selectEmailadressen($oplcode, $cohort, $recset['gespr_aanmstatus'], $variant);
                 $returnstmt.="<tr><td>{$statusarray[$recset['gespr_aanmstatus']]}</td>";
-                $returnstmt.="<td class='text-center'><a href='mailto:>{$emailadressen[0]}'>{$recset['aantal']}</a></td>";
+                $returnstmt.="<td class='text-center'><a href='mailto:{$emailadressen[0]}'>{$recset['aantal']}</a></td>";
                 $returnstmt.="<td>{$emailadressen[1]}</td>";
                 $returnstmt.="</tr>";
                 if($alleemailadressen <> "")
