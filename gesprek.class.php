@@ -398,14 +398,15 @@ class Gesprek
         }
     }
 
-    private function selectEmailadressen($oplcode, $cohort, $status){
+    private function selectEmailadressen($oplcode, $cohort, $status, $variant){
         try{
             $dbconnect = new dbconnection();
-            $sql="SELECT * FROM gesprekken WHERE gespr_opl=:oplcode AND gespr_cohort=:coh AND gespr_aanmstatus=:status";
+            $sql="SELECT * FROM gesprekken WHERE gespr_opl=:oplcode AND gespr_cohort=:coh AND gespr_aanmstatus=:status AND gespr_oplvariant=:variant";
             $query = $dbconnect -> prepare($sql);
             $query -> bindParam(':oplcode',$oplcode);
             $query -> bindParam(':coh',$cohort);
             $query -> bindParam(':status',$status);
+            $query -> bindParam(':variant',$variant);
             $query -> execute();
             $emailadresarray=array();
             while($recset=$query->fetch(PDO::FETCH_ASSOC)){
