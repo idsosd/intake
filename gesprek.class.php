@@ -378,11 +378,11 @@ class Gesprek
             $totaal = 0;
             $alleemailadressen = "";
             $statusarray = array(0=>"intake", 1=>"afgedrukt", 2=>"definitief",3=>"afgemeld");
-            $returnstmt = "<table class='table table-sm table-hover'><tr><th>status</th><th>aantal</th><th>e-mailadressen</th></tr>";
+            $returnstmt = "<table class='table table-sm table-hover'><tr><th>status</th><th>aantal</th><th>studenten</th></tr>";
             while($recset=$query->fetch(PDO::FETCH_ASSOC)){
                 $emailadressen = $this->selectEmailadressen($oplcode, $cohort, $recset['gespr_aanmstatus'], $variant);
                 $returnstmt.="<tr><td>{$statusarray[$recset['gespr_aanmstatus']]}</td>";
-                $returnstmt.="<td><a href='mailto:>{$emailadressen[0]}'>{$recset['aantal']}</a></td>";
+                $returnstmt.="<td class='text-center'><a href='mailto:>{$emailadressen[0]}'>{$recset['aantal']}</a></td>";
                 $returnstmt.="<td>{$emailadressen[1]}</td>";
                 $returnstmt.="</tr>";
                 if($alleemailadressen <> "")
@@ -390,7 +390,7 @@ class Gesprek
                 $alleemailadressen .= $emailadressen[0];
                 $totaal+=$recset['aantal'];
             }
-            $returnstmt.="<tr><td>totaal</td><td><a href='mailto:$alleemailadressen'>$totaal</a></td><td></td></tr>";
+            $returnstmt.="<tr><td>totaal</td><td class='text-center'><a href='mailto:$alleemailadressen'>$totaal</a></td><td></td></tr>";
             $returnstmt .= "</table>";
             return $returnstmt;
         } catch (PDOException $e){
