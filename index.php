@@ -74,7 +74,7 @@ $gesprekken = $query -> fetchAll(2);
     <!-- Fixed navbar -->
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
         <div class="container-fluid">
-            <a class="navbar-brand" href="index.php"><img src="img/alfalogo.png" alt="" width="40"class="d-inline-block align-text-top">&nbsp;&nbsp;&nbsp;&nbsp;Intakegesprekken SD</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <a class="navbar-brand" href="index_overz.php"><img src="img/alfalogo.png" alt="" width="40"class="d-inline-block align-text-top">&nbsp;&nbsp;&nbsp;&nbsp;Intakegesprekken SD</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
