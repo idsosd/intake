@@ -4,6 +4,9 @@ if( !isset($_SESSION['loggedin']) OR $_SESSION['loggedin'] == 0)
     header("Location: login.php");
 include_once('inc/dbconnection.class.php');
 include_once('inc/functions.php');
+include_once('gesprek.class.php');
+
+$gesprek= new Gesprek();
 
 $oplcode=1;
 $cohort='21/22';
@@ -79,7 +82,10 @@ $gesprekken = $query -> fetchAll(2);
 
 <div class="row">
 	<div class="col">
-        draaitabel
+        <?php
+        $draaitabel = $gesprek->selectStatusDraaitabel($oplcode, $cohort);
+        echo $draaitabel;
+        ?>
 	</div>
 </div>
 <table class="table table-hover">

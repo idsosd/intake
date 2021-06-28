@@ -366,11 +366,13 @@ class Gesprek
         }
     }
 
-    public function selectStatusDraaitabel(){
+    public function selectStatusDraaitabel($oplcode, $cohort){
         try{
             $dbconnect = new dbconnection();
-            $sql="SELECT gespr_aanmstatus, COUNT(gespr_aanmstatus) AS aantal FROM gesprekken GROUP BY gespr_aanmstatus";
+            $sql="SELECT gespr_aanmstatus, COUNT(gespr_aanmstatus) AS aantal FROM gesprekken WHERE gespr_opl=:oplcode AND gespr_cohort=:coh GROUP BY gespr_aanmstatus";
             $query = $dbconnect -> prepare($sql);
+            $query -> bindParam(':oplcode',$oplcode);
+            $query -> bindParam(':coh',$cohort);
             $query -> execute();
             $returnstmt = "<table><tr><th>status</th><th>aantal</th></tr>";
             while($recset=$query->fetch(PDO::FETCH_ASSOC)){
