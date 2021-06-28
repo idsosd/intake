@@ -83,10 +83,16 @@ $gesprekken = $query -> fetchAll(2);
 <div class="row">
 	<div class="col">
         <?php
-        $draaitabel = $gesprek->selectStatusDraaitabel($oplcode, $cohort);
+        $draaitabel = $gesprek->selectStatusDraaitabel($oplcode, $cohort, 0);
         echo $draaitabel;
         ?>
 	</div>
+    <div class="col">
+        <?php
+        $draaitabel = $gesprek->selectStatusDraaitabel($oplcode, $cohort, 1);
+        echo $draaitabel;
+        ?>
+    </div>
 </div>
 <table class="table table-hover">
 	<thead class="thead-dark">
