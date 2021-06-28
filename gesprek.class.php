@@ -382,8 +382,8 @@ class Gesprek
             while($recset=$query->fetch(PDO::FETCH_ASSOC)){
                 $emailadressen = $this->selectEmailadressen($oplcode, $cohort, $recset['gespr_aanmstatus'], $variant);
                 $returnstmt.="<tr><td>{$statusarray[$recset['gespr_aanmstatus']]}</td>";
-                $returnstmt.="<td><a href='mailto:>$emailadressen'>{$recset['aantal']}</a></td>";
-                $returnstmt.="<td>{$recset['gespr_achternaam']} ({$recset['gespr_stid']})</td>";
+                $returnstmt.="<td><a href='mailto:>{$emailadressen[0]}'>{$recset['aantal']}</a></td>";
+                $returnstmt.="<td>{$emailadressen[1]}</td>";
                 $returnstmt.="</tr>";
                 if($alleemailadressen <> "")
                     $alleemailadressen .= ", ";
@@ -409,11 +409,14 @@ class Gesprek
             $query -> bindParam(':variant',$variant);
             $query -> execute();
             $emailadresarray=array();
+            $achternaamenid = "";
             while($recset=$query->fetch(PDO::FETCH_ASSOC)){
                 if(!in_array($recset['gespr_emailadres1'], $emailadresarray))
                     array_push($emailadresarray, $recset['gespr_emailadres1']);
+                $achternaamenid.=$recset['gespr_achternaam']." ({$recset['gespr_stid']}) | ";
             }
-            return implode(", ", $emailadresarray);
+            $returndata = array(0=>implode(", ", $emailadresarray), 1=>$achternaamenid);
+            return $returndata;
         } catch (PDOException $e){
             echo $e -> getMessage();
         }
