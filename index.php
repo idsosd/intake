@@ -158,6 +158,7 @@ $gesprekken = $query -> fetchAll(2);
         <th>Uitkomst</th>
       <th>Verwerkt</th>
         <th>Door</th>
+        <th>Status</th>
     </tr>
   </thead>
 <?php
