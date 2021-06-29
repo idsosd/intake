@@ -132,7 +132,10 @@ $uitkomstopties = array(0=>'Geen', 1=>'Geplaatst', 2=>'Afmelden', 3=>'Afgewezen'
         echo "<td><SELECT class='form-control' onchange='updateAanmstatus({$gesprek['gespr_id']})'>";
         $i = 0;
         while($i < count($statusarray)){
-            echo "<option class='form-control' value='$i'>{$statusarray[$gesprek['gespr_aanmstatus']]}</option>";
+            $selected = "";
+            if($i == $gesprek['gespr_aanmstatus'])
+                $selected = "SELECTED";
+            echo "<option class='form-control' value='$i' $selected>{$statusarray[$i]}</option>";
             $i++;
         }
         echo "</SELECT></td>";
