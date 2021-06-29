@@ -386,7 +386,7 @@ class Gesprek
                 $returnstmt.="<td>{$emailadressen[1]}</td>";
                 $returnstmt.="</tr>";
                 if($alleemailadressen <> "")
-                    $alleemailadressen .= ", ";
+                    $alleemailadressen .= "; ";
                 $alleemailadressen .= $emailadressen[0];
                 $totaal+=$recset['aantal'];
             }
@@ -415,7 +415,7 @@ class Gesprek
                     array_push($emailadresarray, $recset['gespr_emailadres1']);
                 $achternaamenid.=$recset['gespr_achternaam'].", {$recset['gespr_roepnaam']} {$recset['gespr_voorvoegsel']} ({$recset['gespr_stid']}) | ";
             }
-            $returndata = array(0=>implode(", ", $emailadresarray), 1=>$achternaamenid);
+            $returndata = array(0=>implode("; ", $emailadresarray), 1=>$achternaamenid);
             return $returndata;
         } catch (PDOException $e){
             echo $e -> getMessage();
