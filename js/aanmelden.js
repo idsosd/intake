@@ -17,21 +17,3 @@ function bepaalSterkte() {
         }
     })
 }
-
-function updateAanmstatus(aanmid){
-    let aanmstatus = $("#aanmstatus_" + aanmid).val();
-    $.ajax({
-        url: 'app/aanmeldenjs.php',
-        data: {
-            inp_aanmid: aanmid,
-            inp_aanmstatus: aanmstatus
-        },
-        type: 'post',
-        success: function() {
-            alert(aanmstatus);
-        },
-        error: function(){
-            alert("De aanmeldstatus kan niet worden bijgewerkt" + aanmstatus);
-        }
-    })
-}

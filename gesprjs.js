@@ -283,3 +283,22 @@ function checkUitgenodigd(gesprid,uitgenwaarde)
 		error: function() { alert("Het gesprek kan niet worden verwijderd!"); }
 	});
 }
+
+function updateAanmstatus(aanmid){
+	let aanmstatus = $("#aanmstatus_" + aanmid).val();
+	$.ajax({
+		url: 'gesprjs.php',
+		data: {
+			action: 'update_aanmstatus',
+			inp_aanmid: aanmid,
+			inp_aanmstatus: aanmstatus
+		},
+		type: 'post',
+		success: function() {
+			alert(aanmstatus);
+		},
+		error: function(){
+			alert("De aanmeldstatus kan niet worden bijgewerkt" + aanmstatus);
+		}
+	})
+}
