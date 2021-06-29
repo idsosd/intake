@@ -294,9 +294,7 @@ function updateAanmstatus(aanmid){
 			inp_aanmstatus: aanmstatus
 		},
 		type: 'post',
-		success: function() {
-			alert(aanmstatus);
-		},
+		success: function() { },
 		error: function(){
 			alert("De aanmeldstatus kan niet worden bijgewerkt" + aanmstatus);
 		}
