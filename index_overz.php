@@ -98,7 +98,7 @@ $gesprekken = $query -> fetchAll(2);
         ?>
     </div>
 </div>
-<table class="table table-hover">
+<table class="table table-hover w-auto">
 	<thead class="thead-dark">
     <tr>
       <th class="text-right">#</th>
@@ -109,7 +109,7 @@ $gesprekken = $query -> fetchAll(2);
         <th>Uitkomst</th>
         <th>Status</th>
     </tr>
-  </thead>
+  </thead><tbody>
 <?php
 $uitkomstopties = array(0=>'Geen', 1=>'Geplaatst', 2=>'Afmelden', 3=>'Afgewezen', 4=>'Nieuw gesprek inplannen', 5=>'Andere opleiding binnen Alfa', 6=>'Student heeft zich afgemeld');
 	$i=1;
@@ -141,6 +141,7 @@ $uitkomstopties = array(0=>'Geen', 1=>'Geplaatst', 2=>'Afmelden', 3=>'Afgewezen'
 		$i++;
 	}
 	?>
+    </tbody>
 </table>
 </div>
 </main>
