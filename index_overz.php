@@ -120,16 +120,14 @@ $uitkomstopties = array(0=>'Geen', 1=>'Geplaatst', 2=>'Afmelden', 3=>'Afgewezen'
 			$trclass="table-success";
 		echo "<tr class='".$trclass."'>";
 		echo "<td class='text-end' width='40'>{$i}.</td>";
-		echo "<td width='250'>".volledigeNaam(1, $gesprek['gespr_achternaam'], $gesprek['gespr_voorvoegsel'], $gesprek['gespr_roepnaam'])."</td>";
-		$emailbody = "Beste {$gesprek['gespr_roepnaam']},%0A%0AJe hebt je aangemeld voor de Software Developer opleiding aan het Alfa-college. Het is de bedoeling dat ik eerst een intakegesprek met je doe.%0A
-		%0AIk nodig je daarom uit om mij uit te nodigen voor een online bijeenkomst via MS Teams (of een vergelijkbare tool) van een half uur. De momenten waarop ik doorgaans prima kan, zijn:%0A%0A%0AIk ontvang graag een uitnodiging van je!%0A%0A";
+		echo "<td>".volledigeNaam(1, $gesprek['gespr_achternaam'], $gesprek['gespr_voorvoegsel'], $gesprek['gespr_roepnaam'])."</td>";
         $variantarray=array(0=>"BOL", 1=>"BBL");
 		echo "<td>".$variantarray[$gesprek['gespr_oplvariant']]."</td>";
 		echo "<td>".$gesprek['gespr_nodig']."</td>";
 		echo "<td class='text-center'>".$gesprek['gespr_zorgstatus']."</td>";
         echo "<td>".$uitkomstopties[$gesprek['gespr_uitkomst']]."</td>";
 		$statusarray = array(0=>"intake", 1=>"afgedrukt", 2=>"definitief",3=>"afgemeld");
-        echo "<td><SELECT class='form-control' onchange='updateAanmstatus({$gesprek['gespr_id']})'>";
+        echo "<td><SELECT onchange='updateAanmstatus({$gesprek['gespr_id']})'>";
         $i = 0;
         while($i < count($statusarray)){
             $selected = "";
