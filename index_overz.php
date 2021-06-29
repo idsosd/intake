@@ -119,13 +119,13 @@ $uitkomstopties = array(0=>'Geen', 1=>'Geplaatst', 2=>'Afmelden', 3=>'Afgewezen'
 		if($gesprek['gespr_zorgstatus']=="")
 			$trclass="table-success";
 		echo "<tr class='".$trclass."'>";
-		echo "<td class='text-end' width='40'>{$i}.</td>";
-		echo "<td>".volledigeNaam(1, $gesprek['gespr_achternaam'], $gesprek['gespr_voorvoegsel'], $gesprek['gespr_roepnaam'])."</td>";
+		echo "<td class='fit text-end' width='40'>{$i}.</td>";
+		echo "<td class='fit'>".volledigeNaam(1, $gesprek['gespr_achternaam'], $gesprek['gespr_voorvoegsel'], $gesprek['gespr_roepnaam'])."</td>";
         $variantarray=array(0=>"BOL", 1=>"BBL");
-		echo "<td>".$variantarray[$gesprek['gespr_oplvariant']]."</td>";
-		echo "<td>".$gesprek['gespr_nodig']."</td>";
-		echo "<td class='text-center'>".$gesprek['gespr_zorgstatus']."</td>";
-        echo "<td>".$uitkomstopties[$gesprek['gespr_uitkomst']]."</td>";
+		echo "<td class='fit'>".$variantarray[$gesprek['gespr_oplvariant']]."</td>";
+		echo "<td class='fit'>".$gesprek['gespr_nodig']."</td>";
+		echo "<td class='fit text-center'>".$gesprek['gespr_zorgstatus']."</td>";
+        echo "<td class='fit'>".$uitkomstopties[$gesprek['gespr_uitkomst']]."</td>";
 		$statusarray = array(0=>"intake", 1=>"afgedrukt", 2=>"definitief",3=>"afgemeld");
         echo "<td class='fit'><SELECT class='form-select form-select-sm' onchange='updateAanmstatus({$gesprek['gespr_id']})'>";
         $i = 0;
