@@ -107,7 +107,7 @@ $gesprekken = $query -> fetchAll(2);
         <th>Nodig</th>
       <th>Zorgstatus</th>
         <th>Uitkomst</th>
-        <th style="width: 10%">Status</th>
+        <th style="width: 15%">Status</th>
     </tr>
   </thead><tbody>
 <?php
@@ -127,7 +127,7 @@ $uitkomstopties = array(0=>'Geen', 1=>'Geplaatst', 2=>'Afmelden', 3=>'Afgewezen'
 		echo "<td class='fit text-center'>".$gesprek['gespr_zorgstatus']."</td>";
         echo "<td class='fit'>".$uitkomstopties[$gesprek['gespr_uitkomst']]."</td>";
 		$statusarray = array(0=>"intake", 1=>"afgedrukt", 2=>"definitief",3=>"afgemeld");
-        echo "<td class='fit'><SELECT class='form-select form-select-sm' onchange='updateAanmstatus({$gesprek['gespr_id']})'>";
+        echo "<td class='fit'><SELECT id='aanmstatus_{$gesprek['gespr_id']}' class='form-select form-select-sm' onchange='updateAanmstatus({$gesprek['gespr_id']})'>";
         $i = 0;
         while($i < count($statusarray)){
             $selected = "";
