@@ -129,7 +129,13 @@ $uitkomstopties = array(0=>'Geen', 1=>'Geplaatst', 2=>'Afmelden', 3=>'Afgewezen'
 		echo "<td class='text-center'>".$gesprek['gespr_zorgstatus']."</td>";
         echo "<td>".$uitkomstopties[$gesprek['gespr_uitkomst']]."</td>";
 		$statusarray = array(0=>"intake", 1=>"afgedrukt", 2=>"definitief",3=>"afgemeld");
-        echo "<td>{$statusarray[$gesprek['gespr_aanmstatus']]}</td>";
+        echo "<td><SELECT class='form-control' onchange='updateAanmstatus({$gesprek['gespr_id']})'>";
+        $i = 0;
+        while($i < count()){
+            echo "<option class='form-control' value='$i'>{$statusarray[$gesprek['gespr_aanmstatus']]}</option>";
+            $i++;
+        }
+        echo "</SELECT></td>";
 		echo "</tr>";
 		$i++;
 	}
