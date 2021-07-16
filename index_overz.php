@@ -141,6 +141,7 @@ $uitkomstopties = array(0=>'Geen', 1=>'Geplaatst', 2=>'Afmelden', 3=>'Afgewezen'
         $klassenarray = array(0=>"B-ITA4-1a", 1=>"B-ITA4-1b");
         echo "<td class='fit'><SELECT id='klas_{$gesprek['gespr_id']}' class='form-select form-select-sm' onchange='updateKlas({$gesprek['gespr_id']})'>";
         $i = 0;
+        echo "<option value=''>kies...</option>";
         while($i < count($klassenarray)){
             $selected = "";
             if($klassenarray[$i] == $gesprek['gespr_klas'])
