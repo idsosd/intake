@@ -248,8 +248,9 @@ class Gesprek
     public function insertGesprek(){
         try{
             $dbconnect = new dbconnection();
-            $sql="INSERT INTO gesprekken (gespr_achternaam, gespr_roepnaam, gespr_voorvoegsel, gespr_leeftijd, gespr_datum, gespr_tel1, gespr_emailadres1, gespr_emailadres2, gespr_opl, gespr_oplvariant, gespr_doorwie) VALUES (:achternaam, :roepnaam, :voorv, :leeftijd, :datum, :tel1, :email1, :email2, :opl, :var, :wie)";
+            $sql="INSERT INTO gesprekken (gespr_stid, gespr_achternaam, gespr_roepnaam, gespr_voorvoegsel, gespr_leeftijd, gespr_datum, gespr_tel1, gespr_emailadres1, gespr_emailadres2, gespr_opl, gespr_oplvariant, gespr_doorwie) VALUES (:studnr, :achternaam, :roepnaam, :voorv, :leeftijd, :datum, :tel1, :email1, :email2, :opl, :var, :wie)";
             $query = $dbconnect -> prepare($sql);
+            $query -> bindParam(':studnr', $_POST['studnr']);
             $query -> bindParam(':achternaam', $_POST['achternaam']);
             $query -> bindParam(':roepnaam', $_POST['roepnaam']);
             $query -> bindParam(':voorv', $_POST['voorv']);

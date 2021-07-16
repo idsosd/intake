@@ -91,6 +91,10 @@ function addGesprek()
 {
 	var form="<form id='addgesprek' onsubmit=\"insertGesprek(); return false\">" +
 				"<div class='row'>" +
+		"<div class='col'>" +
+		"<label for='studnr'><b>Studentnr</b></label>" +
+		"<input id='studnr' class='form-control' type='text'>" +
+		"</div>" +
 				"<div class='col'>" +
 				"<label for='achternaam'><b>Achternaam</b></label>" +
 				"<input id='achternaam' class='form-control' type='text' placeholder='achternaam' required>" +
@@ -163,6 +167,7 @@ function addGesprek()
 
 function insertGesprek()
 {
+	var studnr = $('#studnr').val();
 	var achternaam = $('#achternaam').val();
 	var voorv = $('#voorv').val();
 	var roepnaam = $('#roepnaam').val();
@@ -177,7 +182,8 @@ function insertGesprek()
 	$.ajax({                                      
       url: 'gesprjs.php',      
       data: { 
-	      action: 'insert', 
+	      action: 'insert',
+		  studnr: studnr,
 	      achternaam: achternaam,
 		  voorv: voorv,
 		  roepnaam: roepnaam,
