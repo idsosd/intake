@@ -434,4 +434,17 @@ class Gesprek
            echo $e -> getMessage();
        }
     }
+
+    public function updateKlas(){
+        try{
+            $dbconnect = new dbconnection();
+            $sql="UPDATE gesprekken SET gespr_klas=:klas WHERE gespr_id=:id";
+            $query = $dbconnect -> prepare($sql);
+            $query -> bindParam(':klas',$_POST['inp_klas']);
+            $query -> bindParam(':id',$_POST['inp_aanmid']);
+            $query -> execute();
+        } catch (PDOException $e){
+            echo $e -> getMessage();
+        }
+    }
 }

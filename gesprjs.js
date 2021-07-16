@@ -300,3 +300,20 @@ function updateAanmstatus(aanmid){
 		}
 	})
 }
+
+function updateKlas(aanmid){
+	let klas = $("#klas_" + aanmid).val();
+	$.ajax({
+		url: 'gesprjs.php',
+		data: {
+			action: 'update_klas',
+			inp_aanmid: aanmid,
+			inp_klas: klas
+		},
+		type: 'post',
+		success: function() { },
+		error: function(){
+			alert("De klas kan niet worden bijgewerkt");
+		}
+	})
+}

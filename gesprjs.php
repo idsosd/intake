@@ -22,3 +22,5 @@ elseif($action=="update_uitgen")
     $gesprek -> updateUitgenodigd();
 elseif($action=="update_aanmstatus")
     $gesprek -> updateAanmstatus();
+elseif($action=="update_klas")
+    $gesprek -> updateKlas();
