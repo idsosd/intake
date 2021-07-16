@@ -463,8 +463,8 @@ class Gesprek
             $statusarray = array(0=>"intake", 1=>"afgedrukt", 2=>"definitief",3=>"afgemeld");
             $returnstmt = "<table class='table table-sm table-hover'><tr><th>status</th><th>aantal</th><th>studenten</th></tr>";
             while($recset=$query->fetch(PDO::FETCH_ASSOC)){
-                $emailadressen = $this->selectEmailadressen($oplcode, $cohort, $recset['gespr_vooropl_niv'], $variant);
-                $returnstmt.="<tr><td>{$statusarray[$recset['gespr_vooropl_niv']]}</td>";
+                $emailadressen = $this->selectEmailadressenBijVooropl($oplcode, $cohort, $recset['gespr_vooropl_niv'], $variant);
+                $returnstmt.="<tr><td>{$vooroplopties[$recset['gespr_vooropl_niv']]}</td>";
                 $returnstmt.="<td class='text-center'><a href='mailto:{$emailadressen[0]}'>{$recset['aantal']}</a></td>";
                 $returnstmt.="<td>{$emailadressen[1]}</td>";
                 $returnstmt.="</tr>";
@@ -476,6 +476,30 @@ class Gesprek
             $returnstmt.="<tr><td>totaal</td><td class='text-center'><a href='mailto:$alleemailadressen'>$totaal</a></td><td></td></tr>";
             $returnstmt .= "</table>";
             return $returnstmt;
+        } catch (PDOException $e){
+            echo $e -> getMessage();
+        }
+    }
+
+    private function selectEmailadressenBijVooropl($oplcode, $cohort, $vooropl, $variant){
+        try{
+            $dbconnect = new dbconnection();
+            $sql="SELECT * FROM gesprekken WHERE gespr_opl=:oplcode AND gespr_cohort=:coh AND gespr_vooropl_niv=:vooropl AND gespr_oplvariant=:variant ORDER BY gespr_achternaam";
+            $query = $dbconnect -> prepare($sql);
+            $query -> bindParam(':oplcode',$oplcode);
+            $query -> bindParam(':coh',$cohort);
+            $query -> bindParam(':vooropl',$vooropl);
+            $query -> bindParam(':variant',$variant);
+            $query -> execute();
+            $emailadresarray=array();
+            $achternaamenid = "| ";
+            while($recset=$query->fetch(PDO::FETCH_ASSOC)){
+                if(!in_array($recset['gespr_emailadres1'], $emailadresarray))
+                    array_push($emailadresarray, $recset['gespr_emailadres1']);
+                $achternaamenid.=$recset['gespr_achternaam'].", {$recset['gespr_roepnaam']} {$recset['gespr_voorvoegsel']} ({$recset['gespr_stid']}) | ";
+            }
+            $returndata = array(0=>implode("; ", $emailadresarray), 1=>$achternaamenid);
+            return $returndata;
         } catch (PDOException $e){
             echo $e -> getMessage();
         }
