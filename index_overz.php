@@ -109,13 +109,17 @@ $gesprekken = $query -> fetchAll(2);
     <div class="row" style="padding-top: 20px;">
         <div class="col">
             <h3>Draaitabel klas <?= $cohort ?></h3>
+        </div>
+        <div class="col text-end">
+            <a class="btn btn-success" href="export_klasindeling.php">DOWNLOAD KLASINDELING</a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
             <?php
             $draaitabel = $gesprek->selectKlasDraaitabel($oplcode, $cohort, 0);
             echo $draaitabel;
             ?>
-        </div>
-        <div class="col text-right">
-           <a class="btn btn-success" href="export_klasindeling.php">DOWNLOAD KLASINDELING</a>
         </div>
     </div>
 <table class="table table-hover w-auto">
