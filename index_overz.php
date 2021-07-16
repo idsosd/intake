@@ -108,7 +108,7 @@ $gesprekken = $query -> fetchAll(2);
       <th>Zorgstatus</th>
         <th>Uitkomst</th>
         <th style="width: 15%">Status</th>
-        <th style="width: 15%">Klas</th>
+        <th>Klas</th>
     </tr>
   </thead><tbody>
 <?php
