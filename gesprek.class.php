@@ -463,7 +463,7 @@ class Gesprek
             $returnstmt = "<table class='table table-sm table-hover'><tr><th>status</th><th>aantal</th><th>studenten</th></tr>";
             while($recset=$query->fetch(PDO::FETCH_ASSOC)){
                 $emailadressen = $this->selectEmailadressenBijVooropl($oplcode, $cohort, $recset['gespr_vooropl_niv'], $variant);
-                $returnstmt.="<tr><td>{$vooroplopties[$recset['gespr_vooropl_niv']]}</td>";
+                $returnstmt.="<tr><td>{$recset['gespr_vooropl_niv']}</td>";
                 $returnstmt.="<td class='text-center'><a href='mailto:{$emailadressen[0]}'>{$recset['aantal']}</a></td>";
                 $returnstmt.="<td>{$emailadressen[1]}</td>";
                 $returnstmt.="</tr>";
