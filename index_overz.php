@@ -108,6 +108,7 @@ $gesprekken = $query -> fetchAll(2);
       <th>Zorgstatus</th>
         <th>Uitkomst</th>
         <th style="width: 15%">Status</th>
+        <th style="width: 15%">Klas</th>
     </tr>
   </thead><tbody>
 <?php
@@ -134,6 +135,17 @@ $uitkomstopties = array(0=>'Geen', 1=>'Geplaatst', 2=>'Afmelden', 3=>'Afgewezen'
             if($i == $gesprek['gespr_aanmstatus'])
                 $selected = "SELECTED";
             echo "<option value='$i' $selected>{$statusarray[$i]}</option>";
+            $i++;
+        }
+        echo "</SELECT></td>";
+        $klassenarray = array(0=>"B-ITA4-1a", 1=>"B-ITA4-1b");
+        echo "<td class='fit'><SELECT id='klas_{$gesprek['gespr_id']}' class='form-select form-select-sm' onchange='updateKlas({$gesprek['gespr_klas']})'>";
+        $i = 0;
+        while($i < count($klassenarray)){
+            $selected = "";
+            if($klassenarray[$i] == $gesprek['gespr_klas'])
+                $selected = "SELECTED";
+            echo "<option value='$klassenarray[$i]' $selected>{$klassenarray[$i]}</option>";
             $i++;
         }
         echo "</SELECT></td>";
