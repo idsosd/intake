@@ -129,25 +129,25 @@ $uitkomstopties = array(0=>'Geen', 1=>'Geplaatst', 2=>'Afmelden', 3=>'Afgewezen'
         echo "<td class='fit'>".$uitkomstopties[$gesprek['gespr_uitkomst']]."</td>";
 		$statusarray = array(0=>"intake", 1=>"afgedrukt", 2=>"definitief",3=>"afgemeld");
         echo "<td class='fit'><SELECT id='aanmstatus_{$gesprek['gespr_id']}' class='form-select form-select-sm' onchange='updateAanmstatus({$gesprek['gespr_id']})'>";
-        $i = 0;
-        while($i < count($statusarray)){
+        $j = 0;
+        while($j < count($statusarray)){
             $selected = "";
-            if($i == $gesprek['gespr_aanmstatus'])
+            if($j == $gesprek['gespr_aanmstatus'])
                 $selected = "SELECTED";
-            echo "<option value='$i' $selected>{$statusarray[$i]}</option>";
-            $i++;
+            echo "<option value='$j' $selected>{$statusarray[$j]}</option>";
+            $j++;
         }
         echo "</SELECT></td>";
         $klassenarray = array(0=>"B-ITA4-1a", 1=>"B-ITA4-1b");
         echo "<td class='fit'><SELECT id='klas_{$gesprek['gespr_id']}' class='form-select form-select-sm' onchange='updateKlas({$gesprek['gespr_id']})'>";
-        $i = 0;
+        $k = 0;
         echo "<option value=''>kies...</option>";
-        while($i < count($klassenarray)){
+        while($k < count($klassenarray)){
             $selected = "";
-            if($klassenarray[$i] == $gesprek['gespr_klas'])
+            if($klassenarray[$k] == $gesprek['gespr_klas'])
                 $selected = "SELECTED";
-            echo "<option value='$klassenarray[$i]' $selected>{$klassenarray[$i]}</option>";
-            $i++;
+            echo "<option value='$klassenarray[$k]' $selected>{$klassenarray[$k]}</option>";
+            $k++;
         }
         echo "</SELECT></td>";
 		echo "</tr>";
