@@ -16,7 +16,6 @@ $dbconnect=new dbconnection();
 
 $sql = "SELECT * FROM gesprekken WHERE gespr_opl=:oplcode AND gespr_cohort=:coh ORDER BY gespr_datum, gespr_achternaam";
 $query = $dbconnect->prepare($sql);
-
 $query -> bindParam(':oplcode',$oplcode);
 $query -> bindParam(':coh',$cohort);
 $query -> execute();

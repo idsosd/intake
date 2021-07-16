@@ -460,7 +460,7 @@ class Gesprek
             $query -> execute();
             $totaal = 0;
             $alleemailadressen = "";
-            $returnstmt = "<table class='table table-sm table-hover'><tr><th>status</th><th>aantal</th><th>studenten</th></tr>";
+            $returnstmt = "<table class='table table-sm table-hover'><tr><th>vooropleiding</th><th>aantal</th><th>studenten</th></tr>";
             while($recset=$query->fetch(PDO::FETCH_ASSOC)){
                 $emailadressen = $this->selectEmailadressenBijVooropl($oplcode, $cohort, $recset['gespr_vooropl_niv'], $variant);
                 $returnstmt.="<tr><td style='width: 15%'>{$recset['gespr_vooropl_niv']}</td>";
@@ -514,7 +514,7 @@ class Gesprek
             $query -> execute();
             $totaal = 0;
             $alleemailadressen = "";
-            $returnstmt = "<table class='table table-sm table-hover'><tr><th>status</th><th>aantal</th><th>studenten</th></tr>";
+            $returnstmt = "<table class='table table-sm table-hover'><tr><th>klas</th><th>aantal</th><th>studenten</th></tr>";
             while($recset=$query->fetch(PDO::FETCH_ASSOC)){
                 $emailadressen = $this->selectEmailadressenBijKlas($oplcode, $cohort, $recset['gespr_klas']);
                 $returnstmt.="<tr><td style='width: 15%'>{$recset['gespr_klas']}</td>";
