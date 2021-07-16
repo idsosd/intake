@@ -451,7 +451,7 @@ class Gesprek
     public function selectVooroplDraaitabel($oplcode, $cohort, $variant){
         try{
             $dbconnect = new dbconnection();
-            $sql="SELECT gespr_stid, gespr_vooropl_niv, COUNT(gespr_vooropl_niv) AS aantal FROM gesprekken WHERE gespr_opl=:oplcode AND gespr_cohort=:coh AND gespr_oplvariant=:variant GROUP BY gespr_vooropl_niv";
+            $sql="SELECT gespr_stid, gespr_vooropl_niv, COUNT(gespr_vooropl_niv) AS aantal FROM gesprekken WHERE gespr_opl=:oplcode AND gespr_cohort=:coh AND gespr_oplvariant=:variant GROUP BY gespr_vooropl_niv ORDER BY gespr_vooropl_niv";
             $query = $dbconnect -> prepare($sql);
             $query -> bindParam(':oplcode',$oplcode);
             $query -> bindParam(':coh',$cohort);
@@ -463,7 +463,7 @@ class Gesprek
             $returnstmt = "<table class='table table-sm table-hover'><tr><th>status</th><th>aantal</th><th>studenten</th></tr>";
             while($recset=$query->fetch(PDO::FETCH_ASSOC)){
                 $emailadressen = $this->selectEmailadressenBijVooropl($oplcode, $cohort, $recset['gespr_vooropl_niv'], $variant);
-                $returnstmt.="<tr><td>{$recset['gespr_vooropl_niv']}</td>";
+                $returnstmt.="<tr><td style='width: 15%'>{$recset['gespr_vooropl_niv']}</td>";
                 $returnstmt.="<td class='text-center'><a href='mailto:{$emailadressen[0]}'>{$recset['aantal']}</a></td>";
                 $returnstmt.="<td>{$emailadressen[1]}</td>";
                 $returnstmt.="</tr>";
