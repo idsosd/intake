@@ -9,17 +9,19 @@ fputcsv($output,$headdata,";");
 
 $oplcode = 1;
 $cohort = "21/22";
+$variant = 0;
 
 $dbconnect = new dbconnection();
-$sql = "SELECT * FROM gesprekken WHERE gespr_opl=:oplcode AND gespr_cohort=:coh ORDER BY gespr_achternaam";
+$sql = "SELECT * FROM gesprekken WHERE gespr_opl=:oplcode AND gespr_cohort=:coh AND gespr_oplvariant=:variant ORDER BY gespr_achternaam";
 $query = $dbconnect->prepare($sql);
 $query -> bindParam(':oplcode',$oplcode);
 $query -> bindParam(':coh',$cohort);
+$query -> bindParam(':variant',$variant);
 $query -> execute();
 
 $teller = 1;
 while($recset=$query->fetch(PDO::FETCH_ASSOC)){
-    $data=array($teller, $recset['gespr_stid'], $recset['gespr_achternaam'],$recset['gespr_roepnaam'],$recset['gespr_klas']);
+    $data=array($teller, $recset['gespr_stid'], $recset['gespr_achternaam'],$recset['gespr_roepnaam']." ".$recset['gespr_voorvoegsel'],$recset['gespr_klas']);
     fputcsv($output,$data,";");
     $teller++;
 }
