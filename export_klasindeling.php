@@ -4,7 +4,7 @@ include_once('inc/dbconnection.class.php');
 header('Content-Type: csv; charset=utf-8');
 header('Content-Disposition: attachment; filename=SD-klasindeling-cohort2122.csv');
 $output = fopen("php://output", "w");
-$headdata=array("Volgnr","Studentid","Achternaam","Roepnaam","Klas");
+$headdata=array("Volgnr","Studentid","Achternaam","Roepnaam","Cohort","Klas");
 fputcsv($output,$headdata,";");
 
 $oplcode = 1;
@@ -21,7 +21,7 @@ $query -> execute();
 
 $teller = 1;
 while($recset=$query->fetch(PDO::FETCH_ASSOC)){
-    $data=array($teller, $recset['gespr_stid'], $recset['gespr_achternaam'],$recset['gespr_roepnaam']." ".$recset['gespr_voorvoegsel'],$recset['gespr_klas']);
+    $data=array($teller, $recset['gespr_stid'], $recset['gespr_achternaam'],$recset['gespr_roepnaam']." ".$recset['gespr_voorvoegsel'],$cohort,$recset['gespr_klas']);
     fputcsv($output,$data,";");
     $teller++;
 }

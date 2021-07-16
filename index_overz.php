@@ -114,6 +114,9 @@ $gesprekken = $query -> fetchAll(2);
             echo $draaitabel;
             ?>
         </div>
+        <div class="col text-right">
+           <a class="btn btn-success" href="export_klasindeling.php">DOWNLOAD KLASINDELING</a>
+        </div>
     </div>
 <table class="table table-hover w-auto">
 	<thead class="thead-dark">
