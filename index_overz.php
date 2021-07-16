@@ -139,7 +139,7 @@ $uitkomstopties = array(0=>'Geen', 1=>'Geplaatst', 2=>'Afmelden', 3=>'Afgewezen'
         }
         echo "</SELECT></td>";
         $klassenarray = array(0=>"B-ITA4-1a", 1=>"B-ITA4-1b");
-        echo "<td class='fit'><SELECT id='klas_{$gesprek['gespr_id']}' class='form-select form-select-sm' onchange='updateKlas({$gesprek['gespr_klas']})'>";
+        echo "<td class='fit'><SELECT id='klas_{$gesprek['gespr_id']}' class='form-select form-select-sm' onchange='updateKlas({$gesprek['gespr_id']})'>";
         $i = 0;
         while($i < count($klassenarray)){
             $selected = "";
