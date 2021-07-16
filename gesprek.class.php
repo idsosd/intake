@@ -458,7 +458,6 @@ class Gesprek
             $query -> bindParam(':coh',$cohort);
             $query -> bindParam(':variant',$variant);
             $query -> execute();
-            $vooroplopties = array(0=>'MBO N2', 1=>'MBO N3', 2=>'MBO N4', 3=>'VMBO-K', 4=>'VMBO-(G)T', 5=>'HAVO 3', 6=>'HAVO 4', 7=>'HAVO 5', 8=>'anders');
             $totaal = 0;
             $alleemailadressen = "";
             $returnstmt = "<table class='table table-sm table-hover'><tr><th>status</th><th>aantal</th><th>studenten</th></tr>";
@@ -489,6 +488,61 @@ class Gesprek
             $query -> bindParam(':oplcode',$oplcode);
             $query -> bindParam(':coh',$cohort);
             $query -> bindParam(':vooropl',$vooropl);
+            $query -> bindParam(':variant',$variant);
+            $query -> execute();
+            $emailadresarray=array();
+            $achternaamenid = "| ";
+            while($recset=$query->fetch(PDO::FETCH_ASSOC)){
+                if(!in_array($recset['gespr_emailadres1'], $emailadresarray))
+                    array_push($emailadresarray, $recset['gespr_emailadres1']);
+                $achternaamenid.=$recset['gespr_achternaam'].", {$recset['gespr_roepnaam']} {$recset['gespr_voorvoegsel']} ({$recset['gespr_stid']}) | ";
+            }
+            $returndata = array(0=>implode("; ", $emailadresarray), 1=>$achternaamenid);
+            return $returndata;
+        } catch (PDOException $e){
+            echo $e -> getMessage();
+        }
+    }
+
+    public function selectKlasDraaitabel($oplcode, $cohort, $variant){
+        try{
+            $dbconnect = new dbconnection();
+            $sql="SELECT gespr_stid, gespr_klas, COUNT(gespr_klas) AS aantal FROM gesprekken WHERE gespr_opl=:oplcode AND gespr_cohort=:coh AND gespr_oplvariant=:variant GROUP BY gespr_klas ORDER BY gespr_klas";
+            $query = $dbconnect -> prepare($sql);
+            $query -> bindParam(':oplcode',$oplcode);
+            $query -> bindParam(':coh',$cohort);
+            $query -> bindParam(':variant',$variant);
+            $query -> execute();
+            $totaal = 0;
+            $alleemailadressen = "";
+            $returnstmt = "<table class='table table-sm table-hover'><tr><th>status</th><th>aantal</th><th>studenten</th></tr>";
+            while($recset=$query->fetch(PDO::FETCH_ASSOC)){
+                $emailadressen = $this->selectEmailadressenBijKlas($oplcode, $cohort, $recset['gespr_klas'], $variant);
+                $returnstmt.="<tr><td style='width: 15%'>{$recset['gespr_klas']}</td>";
+                $returnstmt.="<td class='text-center'><a href='mailto:{$emailadressen[0]}'>{$recset['aantal']}</a></td>";
+                $returnstmt.="<td>{$emailadressen[1]}</td>";
+                $returnstmt.="</tr>";
+                if($alleemailadressen <> "")
+                    $alleemailadressen .= "; ";
+                $alleemailadressen .= $emailadressen[0];
+                $totaal+=$recset['aantal'];
+            }
+            $returnstmt.="<tr><td>totaal</td><td class='text-center'><a href='mailto:$alleemailadressen'>$totaal</a></td><td></td></tr>";
+            $returnstmt .= "</table>";
+            return $returnstmt;
+        } catch (PDOException $e){
+            echo $e -> getMessage();
+        }
+    }
+
+    private function selectEmailadressenBijKlas($oplcode, $cohort, $klas, $variant){
+        try{
+            $dbconnect = new dbconnection();
+            $sql="SELECT * FROM gesprekken WHERE gespr_opl=:oplcode AND gespr_cohort=:coh AND gespr_klas=:klas AND gespr_oplvariant=:variant ORDER BY gespr_achternaam";
+            $query = $dbconnect -> prepare($sql);
+            $query -> bindParam(':oplcode',$oplcode);
+            $query -> bindParam(':coh',$cohort);
+            $query -> bindParam(':klas',$klas);
             $query -> bindParam(':variant',$variant);
             $query -> execute();
             $emailadresarray=array();

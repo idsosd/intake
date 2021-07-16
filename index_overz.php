@@ -107,6 +107,15 @@ $gesprekken = $query -> fetchAll(2);
             ?>
         </div>
     </div>
+    <div class="row" style="padding-top: 20px;">
+        <div class="col">
+            <h3>Draaitabel klas <?= $cohort ?></h3>
+            <?php
+            $draaitabel = $gesprek->selectKlasDraaitabel($oplcode, $cohort, 0);
+            echo $draaitabel;
+            ?>
+        </div>
+    </div>
 <table class="table table-hover w-auto">
 	<thead class="thead-dark">
     <tr>
