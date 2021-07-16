@@ -14,7 +14,7 @@ $cohort='21/22';
 $dbconnect=new dbconnection();
 
 
-$sql = "SELECT * FROM gesprekken WHERE gespr_opl=:oplcode AND gespr_cohort=:coh ORDER BY gespr_achternaam";
+$sql = "SELECT * FROM gesprekken WHERE gespr_opl=:oplcode AND gespr_cohort=:coh ORDER BY gespr_datum, gespr_achternaam";
 $query = $dbconnect->prepare($sql);
 
 $query -> bindParam(':oplcode',$oplcode);
@@ -108,7 +108,7 @@ $gesprekken = $query -> fetchAll(2);
       <th>Zorgstatus</th>
         <th>Uitkomst</th>
         <th style="width: 15%">Status</th>
-        <th style="width: 8%">Klas</th>
+        <th style="width: 10%">Klas</th>
     </tr>
   </thead><tbody>
 <?php
