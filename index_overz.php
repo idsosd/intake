@@ -113,6 +113,7 @@ $gesprekken = $query -> fetchAll(2);
       <th class="text-right">#</th>
       <th>Naam</th>
       <th>Opl.</th>
+        <th>Vooropl.</th>
         <th>Nodig</th>
       <th>Zorgstatus</th>
         <th>Uitkomst</th>
@@ -133,6 +134,7 @@ $uitkomstopties = array(0=>'Geen', 1=>'Geplaatst', 2=>'Afmelden', 3=>'Afgewezen'
 		echo "<td class='fit'>".volledigeNaam(1, $gesprek['gespr_achternaam'], $gesprek['gespr_voorvoegsel'], $gesprek['gespr_roepnaam'])."</td>";
         $variantarray=array(0=>"BOL", 1=>"BBL");
 		echo "<td class='fit'>".$variantarray[$gesprek['gespr_oplvariant']]."</td>";
+        echo "<td class='fit'>".$gesprek['gespr_vooropl_niv']."</td>";
 		echo "<td>".$gesprek['gespr_nodig']."</td>";
 		echo "<td class='fit text-center'>".$gesprek['gespr_zorgstatus']."</td>";
         echo "<td class='fit'>".$uitkomstopties[$gesprek['gespr_uitkomst']]."</td>";
