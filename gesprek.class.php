@@ -457,13 +457,14 @@ class Gesprek
             $query -> bindParam(':coh',$cohort);
             $query -> bindParam(':variant',$variant);
             $query -> execute();
+            $vooroplopties = array(0=>'MBO N2', 1=>'MBO N3', 2=>'MBO N4', 3=>'VMBO-K', 4=>'VMBO-(G)T', 5=>'HAVO 3', 6=>'HAVO 4', 7=>'HAVO 5', 8=>'anders');
             $totaal = 0;
             $alleemailadressen = "";
             $statusarray = array(0=>"intake", 1=>"afgedrukt", 2=>"definitief",3=>"afgemeld");
             $returnstmt = "<table class='table table-sm table-hover'><tr><th>status</th><th>aantal</th><th>studenten</th></tr>";
             while($recset=$query->fetch(PDO::FETCH_ASSOC)){
-                $emailadressen = $this->selectEmailadressen($oplcode, $cohort, $recset['gespr_aanmstatus'], $variant);
-                $returnstmt.="<tr><td>{$statusarray[$recset['gespr_aanmstatus']]}</td>";
+                $emailadressen = $this->selectEmailadressen($oplcode, $cohort, $recset['gespr_vooropl_niv'], $variant);
+                $returnstmt.="<tr><td>{$statusarray[$recset['gespr_vooropl_niv']]}</td>";
                 $returnstmt.="<td class='text-center'><a href='mailto:{$emailadressen[0]}'>{$recset['aantal']}</a></td>";
                 $returnstmt.="<td>{$emailadressen[1]}</td>";
                 $returnstmt.="</tr>";
