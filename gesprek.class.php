@@ -504,14 +504,13 @@ class Gesprek
         }
     }
 
-    public function selectKlasDraaitabel($oplcode, $cohort, $variant){
+    public function selectKlasDraaitabel($oplcode, $cohort){
         try{
             $dbconnect = new dbconnection();
-            $sql="SELECT gespr_stid, gespr_klas, COUNT(gespr_klas) AS aantal FROM gesprekken WHERE gespr_opl=:oplcode AND gespr_cohort=:coh AND gespr_oplvariant=:variant GROUP BY gespr_klas ORDER BY gespr_klas";
+            $sql="SELECT gespr_stid, gespr_klas, COUNT(gespr_klas) AS aantal FROM gesprekken WHERE gespr_opl=:oplcode AND gespr_cohort=:coh GROUP BY gespr_klas ORDER BY gespr_klas";
             $query = $dbconnect -> prepare($sql);
             $query -> bindParam(':oplcode',$oplcode);
             $query -> bindParam(':coh',$cohort);
-            $query -> bindParam(':variant',$variant);
             $query -> execute();
             $totaal = 0;
             $alleemailadressen = "";
