@@ -9,7 +9,7 @@ include_once('gesprek.class.php');
 $gesprek= new Gesprek();
 
 $oplcode=1;
-$cohort='21/22';
+$cohort='22/23';
 
 $dbconnect=new dbconnection();
 
