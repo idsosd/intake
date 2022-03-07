@@ -128,7 +128,7 @@ function addGesprek()
 				"<label for='leeftijd'><b>Leeftijd</b></label>" +
 				"<input id='leeftijd' class='form-control' type='text' placeholder=''>" +
 				"</div>" +
-				"<div class='col-md-4'>" +
+				"<div class='col-md-3'>" +
 				"<label for='opl'><b>Opleiding</b></label>" +
 				"<SELECT id='opl' class='form-control' required>" +
 				"<option value=''>kies...</option>" +
@@ -136,6 +136,16 @@ function addGesprek()
 				"<option value='1'>Software Developer</option>" +
 				"</SELECT>" +
 				"</div>" +
+		"<div class='col-md-1'>" +
+		"<label for='coh'><b>Cohort</b></label>" +
+		"<SELECT id='coh' class='form-control' required>" +
+		"<option value=''>kies...</option>" +
+		"<option value='20/21'>20/21</option>" +
+		"<option value='21/22'>21/22</option>" +
+		"<option value='22/23'>22/23</option>" +
+		"<option value='23/24'>23/24</option>" +
+		"</SELECT>" +
+		"</div>" +
 				"<div class='col-md-2'>" +
 				"<label for='var'><b>Variant</b></label>" +
 				"<SELECT id='var' class='form-control' required>" +
@@ -154,6 +164,7 @@ function addGesprek()
 				"<option value=''>kies...</option>" +
 				"<option value='JIO'>JIO</option>" +
 				"<option value='OSD'>OSD</option>" +
+				"<option value='RUH'>RUH</option>" +
 				"</SELECT>" +
 				"</div>" +
 				"</div>" +

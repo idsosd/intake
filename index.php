@@ -6,7 +6,8 @@ include_once('inc/dbconnection.class.php');
 include_once('inc/functions.php');
 
 $oplcode=1;
-$cohort='21/22';
+$tweedecohjaar = intval($_GET['coh']) + 1;
+$cohort=$_GET['coh']."/".$tweedecohjaar;
 
 $intaker = "";
 if(isset($_GET['intaker']))
