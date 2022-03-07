@@ -5,13 +5,13 @@ include_once("../inc/functions.php");
 if ($_POST['wachtwoord1'] ==  $_POST['wachtwoord2']) {
     if (preg_match("#.*^(?=.{5,10})(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*\W).*$#", $_POST['wachtwoord1'] )){
         //echo "Your password is strong.";
-        $dbconnect = new dbconnection();
+        //$dbconnect = new dbconnection();
         $aantalgevonden=checkEmailadres($_POST['email']);
         if($aantalgevonden == 0){
             $gehashdpassword = password_hash( $_POST['wachtwoord2'],PASSWORD_DEFAULT);
             $userid = insertUser($_POST['email'],$gehashdpassword);
             //ik wil in de verifieercode graag de user_id verwerken (verstopt), zodat ik die kan gebruiken bij de identificatie: welke user is aan het verifieren
-            /*$verifieercode = $userid."rysp".substr($gehashdpassword,4,40);
+            $verifieercode = $userid."rysp".substr($gehashdpassword,4,40);
             $to = $_POST['email'].", idsosinga@idsosd.nl";
             $subject = "Aanmelding bij OSD's reserveringssyteem";
             $message = "Er is een account aangemaakt voor OSD's reserveringssysteem op dit e-mailadres:<br>".$_POST['email'];
@@ -22,7 +22,7 @@ if ($_POST['wachtwoord1'] ==  $_POST['wachtwoord2']) {
             $headers .= "Reply-To: idsosinga@idsosd.nl\r\n";
             $headers .= "MIME-Version: 1.0\r\n";
             $headers .= "Content-Type: text/html; charset=UTF-8\r\n";
-            mail($to,$subject,$message,$headers);*/
+            mail($to,$subject,$message,$headers);
             header("Location: ../login.php?verified=0");
         }
         else {
