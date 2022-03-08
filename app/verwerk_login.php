@@ -18,7 +18,7 @@ else {
         //de user_id ook opslaan in een sessie-variabele om een apparaat te kunnen reserveren
         $_SESSION['user_id'] = haalUseridOp($_POST['inputEmail']);
         //ga door naar het deel achter de login
-        header("Location: ../index.php?coh=20");
+        header("Location: ../index.php?coh=22");
     } else {
         $_SESSION['loggedin'] = 0;
         header("Location: ../login.php?error=1");
