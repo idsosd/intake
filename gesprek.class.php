@@ -37,7 +37,7 @@ class Gesprek
            $returnstmt.="<label for='leeftijd'><b>Leeftijd</b></label>";
            $returnstmt.="<input id='leeftijd' class='form-control' type='text' value='".$recset['gespr_leeftijd']."'>";
            $returnstmt.="</div>";
-           $returnstmt.="<div class='col-md-4'>";
+           $returnstmt.="<div class='col-md-3'>";
            $returnstmt.="<label for='opl'><b>Opleiding</b></label>";
            $selectedOpl0="";
            $selectedOpl1="";
@@ -63,6 +63,19 @@ class Gesprek
            $returnstmt.="<option value=''>kies...</option>";
            $returnstmt.="<option value='0' ".$selectedVariant0.">BOL</option>";
            $returnstmt.="<option value='1' ".$selectedVariant1.">BBL</option>";
+           $returnstmt.="</SELECT>";
+           $returnstmt.="</div>";
+           $returnstmt.="<div class='col-md-1'>";
+           $cohortarray = array('20' => '20/21', '21' => '21/22', 22 => '22/23', 23 => '23/24');
+           $returnstmt.="<label for='oplcohort'><b>Cohort</b></label>";
+           $returnstmt.="<SELECT id='oplcohort' class='form-control' required>";
+           $returnstmt.="<option value=''>kies...</option>";
+           foreach ($cohortarray as $key => $value) {
+               $selected = "";
+               if($recset['gespr_cohort'] == $value)
+                   $selected = "SELECTED";
+               $returnstmt.="<option value='$key' $selected>$value</option>";
+           }
            $returnstmt.="</SELECT>";
            $returnstmt.="</div>";
            $returnstmt.="<div class='col'>";
