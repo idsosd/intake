@@ -294,7 +294,8 @@ class Gesprek
             gespr_emailadres2=:emailadres2,
             gespr_tel1=:tel1,
             gespr_opl=:opl,
-            gespr_oplvariant=:oplvariant,      
+            gespr_oplvariant=:oplvariant,
+            gespr_cohort=:oplcohort,
             gespr_vorigeopl=:vorigeopl,
             gespr_andereintake=:andereintake,
             gespr_thuissituatie=:thuissituatie,
@@ -321,6 +322,7 @@ class Gesprek
             $query -> bindParam(':tel1', $_POST['tel1']);
             $query -> bindParam(':opl', $_POST['opl']);
             $query -> bindParam(':oplvariant', $_POST['oplvariant']);
+            $query -> bindParam(':oplcohort', $_POST['oplcohort']);
             $query -> bindParam(':vorigeopl', $_POST['vorigeopl']);
             $query -> bindParam(':andereintake', $_POST['andereintake']);
             $query -> bindParam(':thuissituatie', $_POST['thuissituatie']);

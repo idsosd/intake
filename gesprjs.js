@@ -29,6 +29,7 @@ function updateGesprek(gesprid)
 	var tel1 = $('#tel1').val();
 	var opl = $('#opl').val();
 	var oplvariant = $('#oplvariant').val();
+	let oplcohort = $('#oplcohort').val();
 	var doorwie = $('#doorwie').val();
 	var datum = $('#datum').val();
 	var vorigeopl = $('#vorigeopl').val();
@@ -58,6 +59,7 @@ function updateGesprek(gesprid)
 		  tel1: tel1,
 		  opl: opl,
 		  oplvariant: oplvariant,
+		  oplcohort: oplcohort,
 		  doorwie: doorwie,
 	      datum: datum,
 		  vorigeopl: vorigeopl,
