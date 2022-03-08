@@ -74,7 +74,7 @@ class Gesprek
                $selected = "";
                if($recset['gespr_cohort'] == $value)
                    $selected = "SELECTED";
-               $returnstmt.="<option value='$key' $selected>$value</option>";
+               $returnstmt.="<option value='$value' $selected>$value</option>";
            }
            $returnstmt.="</SELECT>";
            $returnstmt.="</div>";
