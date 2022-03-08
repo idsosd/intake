@@ -10,8 +10,11 @@ $tweedecohjaar = intval($_GET['coh']) + 1;
 $cohort=$_GET['coh']."/".$tweedecohjaar;
 
 $intaker = "";
-if(isset($_GET['intaker']))
+$intakertekst = "Intaker";
+if(isset($_GET['intaker'])) {
     $intaker = $_GET['intaker'];
+    $intakertekst = $intaker;
+}
 
 $variant = "";
 $varianttekst = "Variant";
@@ -95,7 +98,7 @@ $gesprekken = $query -> fetchAll(2);
                             <li><a class="dropdown-item" href="index.php?coh=20&intaker=<?= $intaker ?>&variant=1">20/21</a></li>
                         </ul>
                     </li>
-                 <li class="nav-item dropdown">
+                 <li class="nav-item dropdown" style="margin-left: 20px;">
                      <a class="nav-link dropdown-toggle btn btn-outline-warning" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false"><?= $varianttekst ?></a>
                      <ul class="dropdown-menu">
                          <li><a class="dropdown-item" href="index.php?coh=<?= $_GET['coh'] ?>&intaker=<?= $intaker ?>">Beide</a></li>
@@ -105,7 +108,7 @@ $gesprekken = $query -> fetchAll(2);
                      </ul>
                     </li>
                     <li class="nav-item dropdown" style="margin-left: 20px;">
-                        <a class="nav-link dropdown-toggle btn btn-outline-warning" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false"><?= $intaker ?></a>
+                        <a class="nav-link dropdown-toggle btn btn-outline-warning" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false"><?= $intakertekst ?></a>
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="index.php?coh=<?= $_GET['coh'] ?>&variant=<?= $variant ?>">Alle</a></li>
                             <li><hr class="dropdown-divider"></li>
