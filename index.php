@@ -14,16 +14,13 @@ if(isset($_GET['intaker']))
     $intaker = $_GET['intaker'];
 
 $variant = "";
-if(isset($_GET['variant']))
+$varianttekst = "Variant";
+if(isset($_GET['variant'])) {
     $variant = $_GET['variant'];
-
-switch($variant){
-    case 0:
+    if($variant == 0)
         $varianttekst = "BOL";
-    case 1:
+    else
         $varianttekst = "BBL";
-    default:
-        $varianttekst = "Variant";
 }
 
 $dbconnect=new dbconnection();
