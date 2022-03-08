@@ -81,19 +81,27 @@ $gesprekken = $query -> fetchAll(2);
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <ul class="navbar-nav me-auto mb-2 mb-md-0">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle btn btn-outline-warning" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Cohort</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="index.php?coh=22&intaker=<?= $intaker ?>">22/23</a></li>
+                            <li><a class="dropdown-item" href="index.php?coh=21&intaker=<?= $intaker ?>&variant=0">21/22</a></li>
+                            <li><a class="dropdown-item" href="index.php?coh=20&intaker=<?= $intaker ?>&variant=1">20/21</a></li>
+                        </ul>
+                    </li>
                  <li class="nav-item dropdown">
                      <a class="nav-link dropdown-toggle btn btn-outline-warning" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">BOL en/of BBL</a>
                      <ul class="dropdown-menu">
-                         <li><a class="dropdown-item" href="index.php?intaker=<?= $intaker ?>">Beide</a></li>
+                         <li><a class="dropdown-item" href="index.php?coh=<?= $_GET['coh'] ?>&intaker=<?= $intaker ?>">Beide</a></li>
                          <li><hr class="dropdown-divider"></li>
-                         <li><a class="dropdown-item" href="index.php?intaker=<?= $intaker ?>&variant=0">BOL</a></li>
-                         <li><a class="dropdown-item" href="index.php?intaker=<?= $intaker ?>&variant=1">BBL</a></li>
+                         <li><a class="dropdown-item" href="index.php?coh=<?= $_GET['coh'] ?>&intaker=<?= $intaker ?>&variant=0">BOL</a></li>
+                         <li><a class="dropdown-item" href="index.php?coh=<?= $_GET['coh'] ?>&intaker=<?= $intaker ?>&variant=1">BBL</a></li>
                      </ul>
                     </li>
                     <li class="nav-item dropdown" style="margin-left: 20px;">
                         <a class="nav-link dropdown-toggle btn btn-outline-warning" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Intaker</a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="index.php?variant=<?= $variant ?>">Alle</a></li>
+                            <li><a class="dropdown-item" href="index.php?coh=<?= $_GET['coh'] ?>&variant=<?= $variant ?>">Alle</a></li>
                             <li><hr class="dropdown-divider"></li>
                             <?php
                             $sql="SELECT * FROM intaker";
@@ -101,7 +109,7 @@ $gesprekken = $query -> fetchAll(2);
                             $query -> execute();
                             $intakers = $query -> fetchAll(2);
                             foreach($intakers as $intaker){
-                                echo "<li><a class='dropdown-item' href='index.php?intaker={$intaker['it_afk']}&variant=$variant'>{$intaker['it_afk']}</a></li>";
+                                echo "<li><a class='dropdown-item' href='index.php?coh={$_GET['coh']}&intaker={$intaker['it_afk']}&variant=$variant'>{$intaker['it_afk']}</a></li>";
                                 }
                             ?>
                         </ul>

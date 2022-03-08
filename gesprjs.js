@@ -136,6 +136,14 @@ function addGesprek()
 				"<option value='1'>Software Developer</option>" +
 				"</SELECT>" +
 				"</div>" +
+				"<div class='col-md-2'>" +
+				"<label for='var'><b>Variant</b></label>" +
+				"<SELECT id='var' class='form-control' required>" +
+				"<option value=''>kies...</option>" +
+				"<option value='0'>BOL</option>" +
+				"<option value='1'>BBL</option>" +
+				"</SELECT>" +
+				"</div>" +
 		"<div class='col-md-1'>" +
 		"<label for='coh'><b>Cohort</b></label>" +
 		"<SELECT id='coh' class='form-control' required>" +
@@ -146,14 +154,6 @@ function addGesprek()
 		"<option value='23/24'>23/24</option>" +
 		"</SELECT>" +
 		"</div>" +
-				"<div class='col-md-2'>" +
-				"<label for='var'><b>Variant</b></label>" +
-				"<SELECT id='var' class='form-control' required>" +
-				"<option value=''>kies...</option>" +
-				"<option value='0'>BOL</option>" +
-				"<option value='1'>BBL</option>" +
-				"</SELECT>" +
-				"</div>" +
 				"<div class='col-md-3'>" +
 				"<label for='datum'><b>Datum</b></label>" +
 				"<input id='datum' class='form-control' type='date'>" +
