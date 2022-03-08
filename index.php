@@ -82,7 +82,7 @@ $gesprekken = $query -> fetchAll(2);
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <ul class="navbar-nav me-auto mb-2 mb-md-0">
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle btn btn-outline-warning" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Cohort</a>
+                        <a class="nav-link dropdown-toggle btn btn-outline-warning" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false"><?= $cohort ?></a>
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="index.php?coh=22&intaker=<?= $intaker ?>">22/23</a></li>
                             <li><a class="dropdown-item" href="index.php?coh=21&intaker=<?= $intaker ?>&variant=0">21/22</a></li>
@@ -90,7 +90,7 @@ $gesprekken = $query -> fetchAll(2);
                         </ul>
                     </li>
                  <li class="nav-item dropdown">
-                     <a class="nav-link dropdown-toggle btn btn-outline-warning" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">BOL en/of BBL</a>
+                     <a class="nav-link dropdown-toggle btn btn-outline-warning" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false"><?= $variant ?></a>
                      <ul class="dropdown-menu">
                          <li><a class="dropdown-item" href="index.php?coh=<?= $_GET['coh'] ?>&intaker=<?= $intaker ?>">Beide</a></li>
                          <li><hr class="dropdown-divider"></li>
@@ -99,7 +99,7 @@ $gesprekken = $query -> fetchAll(2);
                      </ul>
                     </li>
                     <li class="nav-item dropdown" style="margin-left: 20px;">
-                        <a class="nav-link dropdown-toggle btn btn-outline-warning" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Intaker</a>
+                        <a class="nav-link dropdown-toggle btn btn-outline-warning" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false"><?= $intaker ?></a>
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="index.php?coh=<?= $_GET['coh'] ?>&variant=<?= $variant ?>">Alle</a></li>
                             <li><hr class="dropdown-divider"></li>
