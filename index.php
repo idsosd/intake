@@ -19,11 +19,11 @@ if(isset($_GET['variant']))
 
 switch($variant){
     case 0:
-        $varianttekst = "Variant";
-    case 1:
         $varianttekst = "BOL";
-    case 2:
+    case 1:
         $varianttekst = "BBL";
+    default:
+        $varianttekst = "Variant";
 }
 
 $dbconnect=new dbconnection();
