@@ -189,6 +189,7 @@ function insertGesprek()
 	var email2 = $('#email2').val();
 	var opl = $('#opl').val();
 	var variant = $('#var').val();
+	let cohort = $('#coh').val()
 	var wie = $('#doorwie').val();
 	$.ajax({                                      
       url: 'gesprjs.php',      
@@ -205,6 +206,7 @@ function insertGesprek()
 		  email2: email2,
 	      opl: opl,
 		  var: variant,
+		  coh: cohort,
 	      wie: wie
 	       },
       type: 'post',
