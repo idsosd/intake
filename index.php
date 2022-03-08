@@ -17,6 +17,15 @@ $variant = "";
 if(isset($_GET['variant']))
     $variant = $_GET['variant'];
 
+switch($variant){
+    case 0:
+        $varianttekst = "Variant";
+    case 1:
+        $varianttekst = "BOL";
+    case 2:
+        $varianttekst = "BBL";
+}
+
 $dbconnect=new dbconnection();
 
 if($intaker <> '') {
@@ -90,7 +99,7 @@ $gesprekken = $query -> fetchAll(2);
                         </ul>
                     </li>
                  <li class="nav-item dropdown">
-                     <a class="nav-link dropdown-toggle btn btn-outline-warning" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false"><?= $variant ?></a>
+                     <a class="nav-link dropdown-toggle btn btn-outline-warning" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false"><?= $varianttekst ?></a>
                      <ul class="dropdown-menu">
                          <li><a class="dropdown-item" href="index.php?coh=<?= $_GET['coh'] ?>&intaker=<?= $intaker ?>">Beide</a></li>
                          <li><hr class="dropdown-divider"></li>
