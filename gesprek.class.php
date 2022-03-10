@@ -84,16 +84,17 @@ class Gesprek
            $returnstmt.="</div>";
            $returnstmt.="<div class='col'>";
            $returnstmt.="<label for='doorwie'><b>Door</b></label>";
-           $selectedOSD="";
-           $selectedJIO="";
-           if($recset['gespr_doorwie']=='OSD')
-               $selectedOSD="SELECTED";
-           elseif($recset['gespr_doorwie']=='JIO')
-               $selectedJIO="SELECTED";
+           $intakersarray= array(0 => 'JIO', 1 => 'OSD', 2 => 'RUH');
            $returnstmt.="<SELECT id='doorwie' class='form-control' required>";
            $returnstmt.="<option value=''>kies...</option>";
-           $returnstmt.="<option value='JIO' ".$selectedJIO.">JIO</option>";
-           $returnstmt.="<option value='OSD' ".$selectedOSD.">OSD</option>";
+           $intaketeller = 0;
+           while($intaketeller < count($intakersarray)){
+               $selected = "";
+               if($intakersarray[$intaketeller] == $recset['gespr_doorwie'])
+                   $selected = "SELECTED";
+               $returnstmt.="<option value='$intakersarray[$intaketeller]' $selected>$intakersarray[$intaketeller]</option>";
+               $intaketeller++;
+           }
            $returnstmt.="</SELECT>";
            $returnstmt.="</div>";
            $returnstmt.="</div>";
