@@ -500,7 +500,7 @@ class Gesprek
     private function selectEmailadressenBijVooropl($oplcode, $cohort, $vooropl, $variant){
         try{
             $dbconnect = new dbconnection();
-            $sql="SELECT * FROM gesprekken WHERE gespr_opl=:oplcode AND gespr_cohort=:coh AND gespr_vooropl_niv=:vooropl AND gespr_oplvariant=:variant ORDER BY gespr_achternaam";
+            $sql="SELECT * FROM gesprekken WHERE gespr_opl=:oplcode AND gespr_cohort=:coh AND gespr_vooropl_niv=:vooropl AND gespr_oplvariant=:variant AND gespr_aanmstatus<>3 ORDER BY gespr_achternaam";
             $query = $dbconnect -> prepare($sql);
             $query -> bindParam(':oplcode',$oplcode);
             $query -> bindParam(':coh',$cohort);
