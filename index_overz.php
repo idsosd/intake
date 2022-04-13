@@ -9,7 +9,8 @@ include_once('gesprek.class.php');
 $gesprek= new Gesprek();
 
 $oplcode=1;
-$cohort='22/23';
+$tweedecohjaar = intval($_GET['coh']) + 1;
+$cohort=$_GET['coh']."/".$tweedecohjaar;
 
 $dbconnect=new dbconnection();
 
@@ -53,7 +54,19 @@ $gesprekken = $query -> fetchAll(2);
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav me-auto mb-2 mb-md-0">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle btn btn-outline-warning" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false"><?= $cohort ?></a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="index.php?coh=22">22/23</a></li>
+                            <li><a class="dropdown-item" href="index.php?coh=21">21/22</a></li>
+                            <li><a class="dropdown-item" href="index.php?coh=20">20/21</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
     </nav>
 </header>
 <main class="flex-shrink-0">
