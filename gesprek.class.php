@@ -340,7 +340,7 @@ class Gesprek
             $query -> bindParam(':zorgstatus', $_POST['zorgstatus']);
             $uitkomst = $_POST['uitkomst'];
             if($_POST['uitkomst'] == '')
-                $uitkomst = 7
+                $uitkomst = 7;
             $query -> bindParam(':uitkomst', $uitkomst);
             $query -> bindParam(':id', $_POST['gesprid']);
             $query -> execute();
