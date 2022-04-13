@@ -50,7 +50,7 @@ $gesprekken = $query -> fetchAll(2);
     <!-- Fixed navbar -->
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
         <div class="container-fluid">
-            <a class="navbar-brand" href="index.php"><img src="img/alfalogo.png" alt="" width="40"class="d-inline-block align-text-top">&nbsp;&nbsp;&nbsp;&nbsp;Intakegesprekken SD</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <a class="navbar-brand" href="index.php?coh=<?= $_GET['coh'] ?>"><img src="img/alfalogo.png" alt="" width="40"class="d-inline-block align-text-top">&nbsp;&nbsp;&nbsp;&nbsp;Intakegesprekken SD</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -59,9 +59,9 @@ $gesprekken = $query -> fetchAll(2);
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle btn btn-outline-warning" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false"><?= $cohort ?></a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="index.php?coh=22">22/23</a></li>
-                            <li><a class="dropdown-item" href="index.php?coh=21">21/22</a></li>
-                            <li><a class="dropdown-item" href="index.php?coh=20">20/21</a></li>
+                            <li><a class="dropdown-item" href="index_overz.php?coh=22">22/23</a></li>
+                            <li><a class="dropdown-item" href="index_overz.php?coh=21">21/22</a></li>
+                            <li><a class="dropdown-item" href="index_overz.php?coh=20">20/21</a></li>
                         </ul>
                     </li>
                 </ul>
