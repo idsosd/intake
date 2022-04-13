@@ -47,8 +47,6 @@ function updateGesprek(gesprid)
 	var voork = $('.voork:checked').val();
 	var zorgstatus = $('#zorgstatus').val();
 	var uitkomst = $('#uitkomst').val();
-	if(uitkomst == '')
-		uitkomst = null;
 	$.ajax({                                      
       url: 'gesprjs.php',      
       data: { 

@@ -338,7 +338,10 @@ class Gesprek
             $query -> bindParam(':vooropl', $_POST['vooropl']);
             $query -> bindParam(':voork', $_POST['voork']);
             $query -> bindParam(':zorgstatus', $_POST['zorgstatus']);
-            $query -> bindParam(':uitkomst', $_POST['uitkomst']);
+            $uitkomst = $_POST['uitkomst'];
+            if($_POST['uitkomst'] == '')
+                $uitkomst = 7
+            $query -> bindParam(':uitkomst', $uitkomst);
             $query -> bindParam(':id', $_POST['gesprid']);
             $query -> execute();
         } catch (PDOException $e){
