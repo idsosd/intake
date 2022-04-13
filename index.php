@@ -13,7 +13,8 @@ $intaker = "";
 $intakertekst = "Intaker";
 if(isset($_GET['intaker'])) {
     $intaker = $_GET['intaker'];
-    $intakertekst = $intaker;
+    if($intaker <> "")
+        $intakertekst = $intaker;
 }
 
 $variant = "";
