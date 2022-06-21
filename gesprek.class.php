@@ -29,7 +29,7 @@ class Gesprek
            $returnstmt .= "</div>";
            $returnstmt .= "<div class='col-3'>";
            $returnstmt .= "<label for='roepnaam'><b>Roepnaam</b></label>";
-           $returnstmt .= "<input id='roepnaam' class='form-control' type='text' value='{$recset['gespr_roepnaam']} required>";
+           $returnstmt .= "<input id='roepnaam' class='form-control' type='text' value='{$recset['gespr_roepnaam']}' required>";
            $returnstmt .= "</div>";
            $returnstmt .= "<div class='col-2'>";
            $returnstmt .= "<label for='geslacht'><b>Geslacht</b></label>";
