@@ -142,15 +142,15 @@ $gesprekken = $query -> fetchAll(2);
 	<thead class="thead-dark">
     <tr>
       <th class="text-right">#</th>
-        <th><a href="index_overz.php?sort=naam">Naam</a></th>
+        <th><a href="index_overz.php?sort=gespr_achternaam">Naam</a></th>
         <th>Studentnr.</th>
       <th>Opl.</th>
-        <th><a href="index_overz.php?sort=vooropl">Vooropl.</a></th>
+        <th><a href="index_overz.php?sort=gespr_vooropl_niv">Vooropl.</a></th>
         <th>Nodig</th>
-        <th><a href="index_overz.php?sort=zorg">Zorgstatus</a></th>
+        <th><a href="index_overz.php?sort=gespr_zorgstatus">Zorgstatus</a></th>
 <!--        <th>Uitkomst</th>-->
-        <th style="width: 15%"><a href="index_overz.php?sort=status">Status</a></th>
-        <th style="width: 10%"><a href="index_overz.php?sort=klas">Klas</a></th>
+        <th style="width: 15%"><a href="index_overz.php?sort=gespr_aanmstatus">Status</a></th>
+        <th style="width: 10%"><a href="index_overz.php?sort=gespr_klas">Klas</a></th>
     </tr>
   </thead><tbody>
 <?php
