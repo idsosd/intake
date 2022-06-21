@@ -122,8 +122,8 @@ $gesprekken = $query -> fetchAll(2);
                             $query = $dbconnect -> prepare($sql);
                             $query -> execute();
                             $intakers = $query -> fetchAll(2);
-                            foreach($intakers as $intaker){
-                                echo "<li><a class='dropdown-item' href='index.php?coh={$_GET['coh']}&intaker={$intaker['it_afk']}&variant=$variant'>{$intaker['it_afk']}</a></li>";
+                            foreach($intakers as $intakeafnemer){
+                                echo "<li><a class='dropdown-item' href='index.php?coh={$_GET['coh']}&intaker={$intakeafnemer['it_afk']}&variant=$variant'>{$intakeafnemer['it_afk']}</a></li>";
                                 }
                             ?>
                         </ul>
