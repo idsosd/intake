@@ -27,28 +27,32 @@ if(isset($_GET['variant'])) {
         $varianttekst = "BBL";
 }
 
+$sort = "gespr_achternaam";
+if(isset($_GET['sort']))
+    $sort = $_GET['sort'];
+
 $dbconnect=new dbconnection();
 
 if($intaker <> '') {
     if($variant <> '') {
-        $sql = "SELECT * FROM gesprekken WHERE gespr_opl=:oplcode AND gespr_cohort=:coh AND gespr_doorwie=:intaker AND gespr_oplvariant=:variant ORDER BY gespr_datum, gespr_achternaam";
+        $sql = "SELECT * FROM gesprekken WHERE gespr_opl=:oplcode AND gespr_cohort=:coh AND gespr_doorwie=:intaker AND gespr_oplvariant=:variant ORDER BY $sort, gespr_achternaam";
         $query = $dbconnect->prepare($sql);
         $query->bindParam(':variant', $variant);
     }
     else {
-        $sql = "SELECT * FROM gesprekken WHERE gespr_opl=:oplcode AND gespr_cohort=:coh AND gespr_doorwie=:intaker ORDER BY gespr_datum, gespr_achternaam";
+        $sql = "SELECT * FROM gesprekken WHERE gespr_opl=:oplcode AND gespr_cohort=:coh AND gespr_doorwie=:intaker ORDER BY $sort, gespr_achternaam";
         $query = $dbconnect->prepare($sql);
     }
     $query->bindParam(':intaker', $intaker);
 }
 else {
     if($variant <> '') {
-        $sql = "SELECT * FROM gesprekken WHERE gespr_opl=:oplcode AND gespr_cohort=:coh AND gespr_oplvariant=:variant ORDER BY gespr_datum, gespr_achternaam";
+        $sql = "SELECT * FROM gesprekken WHERE gespr_opl=:oplcode AND gespr_cohort=:coh AND gespr_oplvariant=:variant ORDER BY $sort, gespr_achternaam";
         $query = $dbconnect->prepare($sql);
         $query->bindParam(':variant', $variant);
     }
     else {
-        $sql = "SELECT * FROM gesprekken WHERE gespr_opl=:oplcode AND gespr_cohort=:coh ORDER BY gespr_datum, gespr_achternaam";
+        $sql = "SELECT * FROM gesprekken WHERE gespr_opl=:oplcode AND gespr_cohort=:coh ORDER BY $sort, gespr_achternaam";
         $query = $dbconnect->prepare($sql);
     }
 }
@@ -167,8 +171,8 @@ $gesprekken = $query -> fetchAll(2);
 	<thead class="thead-dark">
     <tr>
       <th class="text-right">#</th>
-      <th>Datum</th>
-      <th>Naam</th>
+        <th><a href="index.php?coh=<?= $_GET['coh'] ?>&variant=<?= $variant ?>&intaker=<? $intaker ?>&sort=gespr_datum">Datum</a></th>
+        <th><a href="index.php?coh=<?= $_GET['coh'] ?>&variant=<?= $variant ?>&intaker=<? $intaker ?>&sort=gespr_achternaam">Naam</a></th>
       <th>E-mailadres</th>
         <th>Uitgenodigd</th>
       <th>Opl.</th>
@@ -176,7 +180,7 @@ $gesprekken = $query -> fetchAll(2);
       <th>Zorgstatus</th>
         <th>Uitkomst</th>
       <th>Verwerkt</th>
-        <th>Door</th>
+        <th><a href="index.php?coh=<?= $_GET['coh'] ?>&variant=<?= $variant ?>&intaker=<? $intaker ?>&sort=gespr_doorwie">Door</a></th>
         <th>Status</th>
     </tr>
   </thead>
@@ -194,7 +198,7 @@ $uitkomstopties = array(0=>'Geen', 1=>'Geplaatst', 2=>'Afmelden', 3=>'Afgewezen'
             $datum = "";
 		else
 		    $datum=strftime('%a %e %h %Y' , strtotime($gesprek['gespr_datum']));
-		echo "<td width='150'>".$datum."</td>";
+		echo "<td class='fit'>".$datum."</td>";
 		echo "<td width='250'>".volledigeNaam(1, $gesprek['gespr_achternaam'], $gesprek['gespr_voorvoegsel'], $gesprek['gespr_roepnaam'])."</td>";
 		$emailbody = "Beste {$gesprek['gespr_roepnaam']},%0A%0AJe hebt je aangemeld voor de Software Developer opleiding aan het Alfa-college. Het is de bedoeling dat ik eerst een intakegesprek met je doe.%0A
 		%0AIk nodig je daarom uit om mij uit te nodigen voor een online bijeenkomst via MS Teams (of een vergelijkbare tool) van een half uur. De momenten waarop ik doorgaans prima kan, zijn:%0A%0A%0AIk ontvang graag een uitnodiging van je!%0A%0A";
