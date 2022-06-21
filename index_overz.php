@@ -143,6 +143,7 @@ $gesprekken = $query -> fetchAll(2);
     <tr>
       <th class="text-right">#</th>
         <th><a href="index_overz.php?coh=<?= $_GET['coh'] ?>&sort=gespr_achternaam">Naam</a></th>
+        <th><a href="index_overz.php?coh=<?= $_GET['coh'] ?>&sort=gespr_geslacht">M/V</a></th>
         <th>St.nr.</th>
       <th>Opl.</th>
         <th><a href="index_overz.php?coh=<?= $_GET['coh'] ?>&sort=gespr_vooropl_niv">Vooropl.</a></th>
@@ -164,6 +165,7 @@ $uitkomstopties = array(0=>'Geen', 1=>'Geplaatst', 2=>'Afmelden', 3=>'Afgewezen'
 		echo "<tr class='".$trclass."'>";
 		echo "<td class='fit text-end' width='40'>{$i}.</td>";
 		echo "<td class='fit'>".volledigeNaam(1, $gesprek['gespr_achternaam'], $gesprek['gespr_voorvoegsel'], $gesprek['gespr_roepnaam'])."</td>";
+        echo "<td class='fit'>{$gesprek['gespr_geslacht']}</td>";
         echo "<td class='fit'>{$gesprek['gespr_stid']}</td>";
         $variantarray=array(0=>"BOL", 1=>"BBL");
 		echo "<td class='fit'>{$variantarray[$gesprek['gespr_oplvariant']]}</td>";
