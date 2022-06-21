@@ -390,7 +390,7 @@ class Gesprek
     public function selectStatusDraaitabel($oplcode, $cohort, $variant){
         try{
             $dbconnect = new dbconnection();
-            $sql="SELECT gespr_stid, gespr_aanmstatus, COUNT(gespr_aanmstatus) AS aantal FROM gesprekken WHERE gespr_opl=:oplcode AND gespr_cohort=:coh AND gespr_oplvariant=:variant GROUP BY gespr_aanmstatus";
+            $sql="SELECT gespr_stid, gespr_aanmstatus, COUNT(gespr_aanmstatus) AS aantal FROM gesprekken WHERE gespr_opl=:oplcode AND gespr_cohort=:coh AND gespr_oplvariant=:variant AND gespr_uitkomst=1 GROUP BY gespr_aanmstatus";
             $query = $dbconnect -> prepare($sql);
             $query -> bindParam(':oplcode',$oplcode);
             $query -> bindParam(':coh',$cohort);
