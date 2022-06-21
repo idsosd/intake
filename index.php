@@ -181,7 +181,7 @@ $gesprekken = $query -> fetchAll(2);
         <th><a href="index.php?coh=<?= $_GET['coh'] ?>&variant=<?= $variant ?>&intaker=<?= $intaker ?>&sort=gespr_uitkomst">Uitkomst</a></th>
         <th><a href="index.php?coh=<?= $_GET['coh'] ?>&variant=<?= $variant ?>&intaker=<?= $intaker ?>&sort=gespr_afgehandeld">Verwerkt</a></th>
         <th><a href="index.php?coh=<?= $_GET['coh'] ?>&variant=<?= $variant ?>&intaker=<?= $intaker ?>&sort=gespr_doorwie">Door</a></th>
-        <th>Status</th>
+        <th><a href="index.php?coh=<?= $_GET['coh'] ?>&variant=<?= $variant ?>&intaker=<?= $intaker ?>&sort=gespr_aanmstatus">Status</a></th>
     </tr>
   </thead>
 <?php

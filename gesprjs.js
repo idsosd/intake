@@ -109,6 +109,15 @@ function addGesprek()
 				"<label for='roepnaam'><b>Roepnaam</b></label>" +
 				"<input id='roepnaam' class='form-control' type='text' placeholder='roepnaam' required>" +
 				"</div>" +
+		"<div class='col'>" +
+		"<label for='geslacht'><b>Geslacht</b></label>" +
+		"<SELECT id='geslacht' class='form-control' required>" +
+		"<option value=''>kies...</option>" +
+		"<option value='m'>man</option>" +
+		"<option value='v'>vrouw</option>" +
+		"<option value='n'>neutraal</option>" +
+		"</SELECT>" +
+		"</div>" +
 		"</div>" +
 		"<div class='row'>" +
 
@@ -180,19 +189,20 @@ function addGesprek()
 
 function insertGesprek()
 {
-	var studnr = $('#studnr').val();
-	var achternaam = $('#achternaam').val();
-	var voorv = $('#voorv').val();
-	var roepnaam = $('#roepnaam').val();
-	var leeftijd = $('#leeftijd').val();
-	var datum = $('#datum').val();
-	var tel1 = $('#tel1').val();
-	var email1 = $('#email1').val();
-	var email2 = $('#email2').val();
-	var opl = $('#opl').val();
-	var variant = $('#var').val();
+	let studnr = $('#studnr').val();
+	let achternaam = $('#achternaam').val();
+	let voorv = $('#voorv').val();
+	let roepnaam = $('#roepnaam').val();
+	let geslacht = $('#geslacht').val();
+	let leeftijd = $('#leeftijd').val();
+	let datum = $('#datum').val();
+	let tel1 = $('#tel1').val();
+	let email1 = $('#email1').val();
+	let email2 = $('#email2').val();
+	let opl = $('#opl').val();
+	let variant = $('#var').val();
 	let cohort = $('#coh').val()
-	var wie = $('#doorwie').val();
+	let wie = $('#doorwie').val();
 	$.ajax({                                      
       url: 'gesprjs.php',      
       data: { 
@@ -201,6 +211,7 @@ function insertGesprek()
 	      achternaam: achternaam,
 		  voorv: voorv,
 		  roepnaam: roepnaam,
+		  geslacht: geslacht,
 		  leeftijd: leeftijd,
 	      datum: datum,
 	      tel1: tel1,
