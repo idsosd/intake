@@ -48,7 +48,7 @@ class Gesprek
            $returnstmt.="</SELECT>";
            $returnstmt .= "</div>";
            $returnstmt .= "</div>";
-           $returnstmt .= "<div class='row'>";
+           $returnstmt .= "<div class='row' style='background: coral;'>";
            $returnstmt .= "<div class='col'>";
            $returnstmt .= "<label for='emailadres1'><b>E-mailadres 1</b></label>";
            $returnstmt .= "<input id='emailadres1' class='form-control' type='email' value='{$recset['gespr_emailadres1']}' required>";
@@ -62,7 +62,7 @@ class Gesprek
            $returnstmt .= "<input id='tel1' class='form-control' type='text' value='{$recset['gespr_tel1']}' required>";
            $returnstmt .= "</div>";
            $returnstmt .= "</div>";
-           $returnstmt .= "<div class='row'>";
+           $returnstmt .= "<div class='row' style='background: coral; padding-bottom: 20px'>";
            $returnstmt .= "<div class='col-md-1'>";
            $returnstmt .= "<label for='leeftijd'><b>Leeftijd</b></label>";
            $returnstmt .= "<input id='leeftijd' class='form-control' type='text' value='{$recset['gespr_leeftijd']}'>";
