@@ -12,32 +12,62 @@ class Gesprek
            $query -> bindParam(':id', $_POST['gespr_id']);
            $query -> execute();
            $recset = $query -> fetch(2);
-           $returnstmt="<form id='gespreksform' onsubmit=\"updateGesprek(".$recset['gespr_id'].");return false;\">";
-           $returnstmt.="<div class='row' style='background: coral;'>";
-           $returnstmt.="<div class='col-md-2'>";
-           $returnstmt.="<label for='stid'><b>Studentnr</b></label>";
-           $returnstmt.="<input id='stid' class='form-control' type='text' value='".$recset['gespr_stid']."'>";
-           $returnstmt.="</div>";
 
-           $returnstmt.="<div class='col-md-4'>";
-           $returnstmt.="<label for='emailadres1'><b>E-mailadres 1</b></label>";
-           $returnstmt.="<input id='emailadres1' class='form-control' type='email' value='".$recset['gespr_emailadres1']."'>";
-           $returnstmt.="</div>";
-           $returnstmt.="<div class='col-md-3'>";
-           $returnstmt.="<label for='emailadres2'><b>E-mailadres 2</b></label>";
-           $returnstmt.="<input id='emailadres2' class='form-control' type='email' value='".$recset['gespr_emailadres2']."'>";
-           $returnstmt.="</div>";
-           $returnstmt.="<div class='col-md-3'>";
-           $returnstmt.="<label for='tel1'><b>Telefoonnr. 1</b></label>";
-           $returnstmt.="<input id='tel1' class='form-control' type='text' value='".$recset['gespr_tel1']."'>";
-           $returnstmt.="</div>";
-           $returnstmt.="</div>";
-           $returnstmt.="<div class='row' style='background: coral; padding-bottom: 20px'>";
-           $returnstmt.="<div class='col-md-1'>";
-           $returnstmt.="<label for='leeftijd'><b>Leeftijd</b></label>";
-           $returnstmt.="<input id='leeftijd' class='form-control' type='text' value='".$recset['gespr_leeftijd']."'>";
-           $returnstmt.="</div>";
-           $returnstmt.="<div class='col-md-3'>";
+           $returnstmt = "<form id='gespreksform' onsubmit=\"updateGesprek('{$recset['gespr_id']}');return false;\">";
+           $returnstmt .= "<div class='row'>";
+           $returnstmt .= "<div class='col-2'>";
+           $returnstmt .= "<label for='stid'><b>Studentnr</b></label>";
+           $returnstmt .= "<input id='stid' class='form-control' type='text' value='{$recset['gespr_stid']}'>";
+           $returnstmt .= "</div>";
+           $returnstmt .= "<div class='col-3'>";
+           $returnstmt .= "<label for='achternaam'><b>Achternaam</b></label>";
+           $returnstmt .= "<input id='achternaam' class='form-control' type='text' value='{$recset['gespr_achternaam']}' required>";
+           $returnstmt .= "</div>";
+           $returnstmt .= "<div class='col-2'>";
+           $returnstmt .= "<label for='voorv'><b>Voorv.</b></label>";
+           $returnstmt .= "<input id='voorv' class='form-control' type='text' value='{$recset['gespr_voorvoegsel']}'>";
+           $returnstmt .= "</div>";
+           $returnstmt .= "<div class='col-3'>";
+           $returnstmt .= "<label for='roepnaam'><b>Roepnaam</b></label>";
+           $returnstmt .= "<input id='roepnaam' class='form-control' type='text' value='{$recset['gespr_roepnaam']} required>";
+           $returnstmt .= "</div>";
+           $returnstmt .= "<div class='col-2'>";
+           $returnstmt .= "<label for='geslacht'><b>Geslacht</b></label>";
+
+           $geslachtarray= array('man', 'vrouw', 'neutraal');
+           $returnstmt.="<SELECT id='geslacht' class='form-control' required>";
+           $returnstmt.="<option value=''>kies...</option>";
+           $geslteller = 0;
+           while($geslteller < count($geslachtarray)){
+               $selected = "";
+               if(substr($geslachtarray[$geslteller], 0, 1) == $recset['gespr_geslacht'])
+                   $selected = "SELECTED";
+               $returnstmt.="<option value='".substr($geslachtarray[$geslteller], 0, 1)."' $selected>$geslachtarray[$geslteller]</option>";
+               $intaketeller++;
+           }
+           $returnstmt.="</SELECT>";
+           $returnstmt .= "</div>";
+           $returnstmt .= "</div>";
+           $returnstmt .= "<div class='row'>";
+           $returnstmt .= "<div class='col'>";
+           $returnstmt .= "<label for='emailadres1'><b>E-mailadres 1</b></label>";
+           $returnstmt .= "<input id='emailadres1' class='form-control' type='email' value='{$recset['gespr_emailadres1']}' required>";
+           $returnstmt .= "</div>";
+           $returnstmt .= "<div class='col'>";
+           $returnstmt .= "<label for='emailadres2'><b>E-mailadres 2</b></label>";
+           $returnstmt .= "<input id='emailadres2' class='form-control' type='email' value='{$recset['gespr_emailadres2']}'>";
+           $returnstmt .= "</div>";
+           $returnstmt .= "<div class='col'>";
+           $returnstmt .= "<label for='tel1'><b>Telefoonnr. 1</b></label>";
+           $returnstmt .= "<input id='tel1' class='form-control' type='text' value='{$recset['gespr_tel1']}' required>";
+           $returnstmt .= "</div>";
+           $returnstmt .= "</div>";
+           $returnstmt .= "<div class='row'>";
+           $returnstmt .= "<div class='col-md-1'>";
+           $returnstmt .= "<label for='leeftijd'><b>Leeftijd</b></label>";
+           $returnstmt .= "<input id='leeftijd' class='form-control' type='text' value='{$recset['gespr_leeftijd']}'>";
+           $returnstmt .= "</div>";
+           $returnstmt .= "<div class='col-md-3'>";
            $returnstmt.="<label for='opl'><b>Opleiding</b></label>";
            $selectedOpl0="";
            $selectedOpl1="";
@@ -50,8 +80,8 @@ class Gesprek
            $returnstmt.="<option value='0' ".$selectedOpl0.">Expert IT systems and devices</option>";
            $returnstmt.="<option value='1' ".$selectedOpl1.">Software Developer</option>";
            $returnstmt.="</SELECT>";
-           $returnstmt.="</div>";
-           $returnstmt.="<div class='col-md-2'>";
+           $returnstmt .= "</div>";
+           $returnstmt .= "<div class='col-md-2'>";
            $returnstmt.="<label for='oplvariant'><b>Variant</b></label>";
            $selectedVariant0="";
            $selectedVariant1="";
@@ -64,8 +94,8 @@ class Gesprek
            $returnstmt.="<option value='0' ".$selectedVariant0.">BOL</option>";
            $returnstmt.="<option value='1' ".$selectedVariant1.">BBL</option>";
            $returnstmt.="</SELECT>";
-           $returnstmt.="</div>";
-           $returnstmt.="<div class='col-md-1'>";
+           $returnstmt .= "</div>";
+           $returnstmt .= "<div class='col-md-1'>";
            $cohortarray = array('20' => '20/21', '21' => '21/22', 22 => '22/23', 23 => '23/24');
            $returnstmt.="<label for='oplcohort'><b>Cohort</b></label>";
            $returnstmt.="<SELECT id='oplcohort' class='form-control' required>";
@@ -77,12 +107,12 @@ class Gesprek
                $returnstmt.="<option value='$value' $selected>$value</option>";
            }
            $returnstmt.="</SELECT>";
-           $returnstmt.="</div>";
-           $returnstmt.="<div class='col'>";
-           $returnstmt.="<label for='datum'><b>Datum</b></label>";
-           $returnstmt.="<input id='datum' class='form-control' type='date' value='".$recset['gespr_datum']."'>";
-           $returnstmt.="</div>";
-           $returnstmt.="<div class='col'>";
+           $returnstmt .= "</div>";
+           $returnstmt .= "<div class='col-md-3'>";
+           $returnstmt .= "<label for='datum'><b>Datum</b></label>";
+           $returnstmt .= "<input id='datum' class='form-control' type='date' value='{$recset['gespr_datum']}'>";
+           $returnstmt .= "</div>";
+           $returnstmt .= "<div class='col-md-2'>";
            $returnstmt.="<label for='doorwie'><b>Door</b></label>";
            $intakersarray= array(0 => 'JIO', 1 => 'OSD', 2 => 'RUH');
            $returnstmt.="<SELECT id='doorwie' class='form-control' required>";
@@ -96,6 +126,95 @@ class Gesprek
                $intaketeller++;
            }
            $returnstmt.="</SELECT>";
+//           $returnstmt .= "</div>";
+//           $returnstmt .= "</div>";
+//           $returnstmt .= "</form>";
+//
+//
+//           $returnstmt="<form id='gespreksform' onsubmit=\"updateGesprek(".$recset['gespr_id'].");return false;\">";
+//           $returnstmt.="<div class='row' style='background: coral;'>";
+//           $returnstmt.="<div class='col-md-2'>";
+//           $returnstmt.="<label for='stid'><b>Studentnr</b></label>";
+//           $returnstmt.="<input id='stid' class='form-control' type='text' value='".$recset['gespr_stid']."'>";
+//           $returnstmt.="</div>";
+//
+//           $returnstmt.="<div class='col-md-4'>";
+//           $returnstmt.="<label for='emailadres1'><b>E-mailadres 1</b></label>";
+//           $returnstmt.="<input id='emailadres1' class='form-control' type='email' value='".$recset['gespr_emailadres1']."'>";
+//           $returnstmt.="</div>";
+//           $returnstmt.="<div class='col-md-3'>";
+//           $returnstmt.="<label for='emailadres2'><b>E-mailadres 2</b></label>";
+//           $returnstmt.="<input id='emailadres2' class='form-control' type='email' value='".$recset['gespr_emailadres2']."'>";
+//           $returnstmt.="</div>";
+//           $returnstmt.="<div class='col-md-3'>";
+//           $returnstmt.="<label for='tel1'><b>Telefoonnr. 1</b></label>";
+//           $returnstmt.="<input id='tel1' class='form-control' type='text' value='".$recset['gespr_tel1']."'>";
+//           $returnstmt.="</div>";
+//           $returnstmt.="</div>";
+//           $returnstmt.="<div class='row' style='background: coral; padding-bottom: 20px'>";
+//           $returnstmt.="<div class='col-md-1'>";
+//           $returnstmt.="<label for='leeftijd'><b>Leeftijd</b></label>";
+//           $returnstmt.="<input id='leeftijd' class='form-control' type='text' value='".$recset['gespr_leeftijd']."'>";
+//           $returnstmt.="</div>";
+//           $returnstmt.="<div class='col-md-3'>";
+//           $returnstmt.="<label for='opl'><b>Opleiding</b></label>";
+//           $selectedOpl0="";
+//           $selectedOpl1="";
+//           if($recset['gespr_opl']==0)
+//               $selectedOpl0="SELECTED";
+//           elseif($recset['gespr_opl']==1)
+//               $selectedOpl1="SELECTED";
+//           $returnstmt.="<SELECT id='opl' class='form-control' required>";
+//           $returnstmt.="<option value=''>kies...</option>";
+//           $returnstmt.="<option value='0' ".$selectedOpl0.">Expert IT systems and devices</option>";
+//           $returnstmt.="<option value='1' ".$selectedOpl1.">Software Developer</option>";
+//           $returnstmt.="</SELECT>";
+//           $returnstmt.="</div>";
+//           $returnstmt.="<div class='col-md-2'>";
+//           $returnstmt.="<label for='oplvariant'><b>Variant</b></label>";
+//           $selectedVariant0="";
+//           $selectedVariant1="";
+//           if($recset['gespr_oplvariant']==0)
+//               $selectedVariant0="SELECTED";
+//           elseif($recset['gespr_oplvariant']==1)
+//               $selectedVariant1="SELECTED";
+//           $returnstmt.="<SELECT id='oplvariant' class='form-control' required>";
+//           $returnstmt.="<option value=''>kies...</option>";
+//           $returnstmt.="<option value='0' ".$selectedVariant0.">BOL</option>";
+//           $returnstmt.="<option value='1' ".$selectedVariant1.">BBL</option>";
+//           $returnstmt.="</SELECT>";
+//           $returnstmt.="</div>";
+//           $returnstmt.="<div class='col-md-1'>";
+//           $cohortarray = array('20' => '20/21', '21' => '21/22', 22 => '22/23', 23 => '23/24');
+//           $returnstmt.="<label for='oplcohort'><b>Cohort</b></label>";
+//           $returnstmt.="<SELECT id='oplcohort' class='form-control' required>";
+//           $returnstmt.="<option value=''>kies...</option>";
+//           foreach ($cohortarray as $key => $value) {
+//               $selected = "";
+//               if($recset['gespr_cohort'] == $value)
+//                   $selected = "SELECTED";
+//               $returnstmt.="<option value='$value' $selected>$value</option>";
+//           }
+//           $returnstmt.="</SELECT>";
+//           $returnstmt.="</div>";
+//           $returnstmt.="<div class='col'>";
+//           $returnstmt.="<label for='datum'><b>Datum</b></label>";
+//           $returnstmt.="<input id='datum' class='form-control' type='date' value='".$recset['gespr_datum']."'>";
+//           $returnstmt.="</div>";
+//           $returnstmt.="<div class='col'>";
+//           $returnstmt.="<label for='doorwie'><b>Door</b></label>";
+//           $intakersarray= array(0 => 'JIO', 1 => 'OSD', 2 => 'RUH');
+//           $returnstmt.="<SELECT id='doorwie' class='form-control' required>";
+//           $returnstmt.="<option value=''>kies...</option>";
+//           $intaketeller = 0;
+//           while($intaketeller < count($intakersarray)){
+//               $selected = "";
+//               if($intakersarray[$intaketeller] == $recset['gespr_doorwie'])
+//                   $selected = "SELECTED";
+//               $returnstmt.="<option value='$intakersarray[$intaketeller]' $selected>$intakersarray[$intaketeller]</option>";
+//               $intaketeller++;
+//           }
+//           $returnstmt.="</SELECT>";
            $returnstmt.="</div>";
            $returnstmt.="</div>";
            $returnstmt.="<hr>";
