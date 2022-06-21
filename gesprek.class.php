@@ -14,7 +14,7 @@ class Gesprek
            $recset = $query -> fetch(2);
 
            $returnstmt = "<form id='gespreksform' onsubmit=\"updateGesprek('{$recset['gespr_id']}');return false;\">";
-           $returnstmt .= "<div class='row'>";
+           $returnstmt .= "<div class='row' style='background: coral;'>";
            $returnstmt .= "<div class='col-2'>";
            $returnstmt .= "<label for='stid'><b>Studentnr</b></label>";
            $returnstmt .= "<input id='stid' class='form-control' type='text' value='{$recset['gespr_stid']}'>";
