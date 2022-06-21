@@ -142,15 +142,15 @@ $gesprekken = $query -> fetchAll(2);
 	<thead class="thead-dark">
     <tr>
       <th class="text-right">#</th>
-        <th><a href="index_overz.php?coh=<?= $cohort ?>&sort=gespr_achternaam">Naam</a></th>
+        <th><a href="index_overz.php?coh=<?= $_GET['coh'] ?>&sort=gespr_achternaam">Naam</a></th>
         <th>St.nr.</th>
       <th>Opl.</th>
-        <th><a href="index_overz.php?coh=<?= $cohort ?>&sort=gespr_vooropl_niv">Vooropl.</a></th>
+        <th><a href="index_overz.php?coh=<?= $_GET['coh'] ?>&sort=gespr_vooropl_niv">Vooropl.</a></th>
         <th>Nodig</th>
-        <th><a href="index_overz.php?coh=<?= $cohort ?>&sort=gespr_zorgstatus">Zorgstatus</a></th>
+        <th><a href="index_overz.php?coh=<?= $_GET['coh'] ?>&sort=gespr_zorgstatus">Zorgstatus</a></th>
 <!--        <th>Uitkomst</th>-->
-        <th style="width: 15%"><a href="index_overz.php?coh=<?= $cohort ?>&sort=gespr_aanmstatus">Status</a></th>
-        <th style="width: 10%"><a href="index_overz.php?coh=<?= $cohort ?>&sort=gespr_klas">Klas</a></th>
+        <th style="width: 15%"><a href="index_overz.php?coh=<?= $_GET['coh'] ?>&sort=gespr_aanmstatus">Status</a></th>
+        <th style="width: 10%"><a href="index_overz.php?coh=<?= $_GET['coh'] ?>&sort=gespr_klas">Klas</a></th>
     </tr>
   </thead><tbody>
 <?php
