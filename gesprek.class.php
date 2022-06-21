@@ -472,7 +472,7 @@ class Gesprek
     public function selectVooroplDraaitabel($oplcode, $cohort, $variant){
         try{
             $dbconnect = new dbconnection();
-            $sql="SELECT gespr_stid, gespr_vooropl_niv, COUNT(gespr_vooropl_niv) AS aantal FROM gesprekken WHERE gespr_opl=:oplcode AND gespr_cohort=:coh AND gespr_oplvariant=:variant AND gespr_aanmstatus<>3 GROUP BY gespr_vooropl_niv ORDER BY gespr_vooropl_niv";
+            $sql="SELECT gespr_stid, gespr_vooropl_niv, COUNT(gespr_vooropl_niv) AS aantal FROM gesprekken WHERE gespr_opl=:oplcode AND gespr_cohort=:coh AND gespr_oplvariant=:variant AND gespr_aanmstatus<>3 AND gespr_uitkomst=1 GROUP BY gespr_vooropl_niv ORDER BY gespr_vooropl_niv";
             $query = $dbconnect -> prepare($sql);
             $query -> bindParam(':oplcode',$oplcode);
             $query -> bindParam(':coh',$cohort);
