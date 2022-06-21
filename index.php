@@ -190,16 +190,16 @@ $uitkomstopties = array(0=>'Geen', 1=>'Geplaatst', 2=>'Afmelden', 3=>'Afgewezen'
 	foreach($gesprekken as $gesprek)
 	{
 		$trclass="";
-		if($gesprek['gespr_zorgstatus']=="")
+		if($gesprek['gespr_uitkomst']=="")
 			$trclass="table-success";
 		echo "<tr class='".$trclass."'>";
-		echo "<td class='text-end' width='40'><a href='#' onclick=\"showDetails({$gesprek['gespr_id']})\">{$i}.</a></td>";
+		echo "<td class='fit text-end'><a href='#' onclick=\"showDetails({$gesprek['gespr_id']})\">{$i}.</a></td>";
 		if(is_null($gesprek['gespr_datum']) OR $gesprek['gespr_datum'] == '' OR $gesprek['gespr_datum'] == '0000-00-00')
             $datum = "";
 		else
 		    $datum=strftime('%a %e %h %Y' , strtotime($gesprek['gespr_datum']));
 		echo "<td class='fit'>".$datum."</td>";
-		echo "<td width='250'>".volledigeNaam(1, $gesprek['gespr_achternaam'], $gesprek['gespr_voorvoegsel'], $gesprek['gespr_roepnaam'])."</td>";
+		echo "<td class='fit'>".volledigeNaam(1, $gesprek['gespr_achternaam'], $gesprek['gespr_voorvoegsel'], $gesprek['gespr_roepnaam'])."</td>";
 		$emailbody = "Beste {$gesprek['gespr_roepnaam']},%0A%0AJe hebt je aangemeld voor de Software Developer opleiding aan het Alfa-college. Het is de bedoeling dat ik eerst een intakegesprek met je doe.%0A
 		%0AIk nodig je daarom uit om mij uit te nodigen voor een online bijeenkomst via MS Teams (of een vergelijkbare tool) van een half uur. De momenten waarop ik doorgaans prima kan, zijn:%0A%0A%0AIk ontvang graag een uitnodiging van je!%0A%0A";
 		echo "<td width='150'><a href='mailto:{$gesprek['gespr_emailadres1']}?subject=Intakegesprek Alfa-college Software Developer&body=$emailbody'>{$gesprek['gespr_emailadres1']}</a></td>";
