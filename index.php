@@ -171,16 +171,16 @@ $gesprekken = $query -> fetchAll(2);
 	<thead class="thead-dark">
     <tr>
       <th class="text-right">#</th>
-        <th><a href="index.php?coh=<?= $_GET['coh'] ?>&variant=<?= $variant ?>&intaker=<? $intaker ?>&sort=gespr_datum">Datum</a></th>
-        <th><a href="index.php?coh=<?= $_GET['coh'] ?>&variant=<?= $variant ?>&intaker=<? $intaker ?>&sort=gespr_achternaam">Naam</a></th>
+        <th><a href="index.php?coh=<?= $_GET['coh'] ?>&variant=<?= $variant ?>&intaker=<?= $intaker ?>&sort=gespr_datum">Datum</a></th>
+        <th><a href="index.php?coh=<?= $_GET['coh'] ?>&variant=<?= $variant ?>&intaker=<?= $intaker ?>&sort=gespr_achternaam">Naam</a></th>
       <th>E-mailadres</th>
-        <th>Uitgenodigd</th>
+        <th><a href="index.php?coh=<?= $_GET['coh'] ?>&variant=<?= $variant ?>&intaker=<?= $intaker ?>&sort=gespr_uitgenodigd">Uitgenodigd</a></th>
       <th>Opl.</th>
       <th>Nodig</th>
-      <th>Zorgstatus</th>
-        <th>Uitkomst</th>
-      <th>Verwerkt</th>
-        <th><a href="index.php?coh=<?= $_GET['coh'] ?>&variant=<?= $variant ?>&intaker=<? $intaker ?>&sort=gespr_doorwie">Door</a></th>
+        <th><a href="index.php?coh=<?= $_GET['coh'] ?>&variant=<?= $variant ?>&intaker=<?= $intaker ?>&sort=gespr_zorgstatus">Zorgstatus</a></th>
+        <th><a href="index.php?coh=<?= $_GET['coh'] ?>&variant=<?= $variant ?>&intaker=<?= $intaker ?>&sort=gespr_uitkomst">Uitkomst</a></th>
+        <th><a href="index.php?coh=<?= $_GET['coh'] ?>&variant=<?= $variant ?>&intaker=<?= $intaker ?>&sort=gespr_afgehandeld">Verwerkt</a></th>
+        <th><a href="index.php?coh=<?= $_GET['coh'] ?>&variant=<?= $variant ?>&intaker=<?= $intaker ?>&sort=gespr_doorwie">Door</a></th>
         <th>Status</th>
     </tr>
   </thead>
