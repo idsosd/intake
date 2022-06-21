@@ -43,7 +43,7 @@ class Gesprek
                if(substr($geslachtarray[$geslteller], 0, 1) == $recset['gespr_geslacht'])
                    $selected = "SELECTED";
                $returnstmt.="<option value='".substr($geslachtarray[$geslteller], 0, 1)."' $selected>$geslachtarray[$geslteller]</option>";
-               $intaketeller++;
+               $geslteller++;
            }
            $returnstmt.="</SELECT>";
            $returnstmt .= "</div>";
