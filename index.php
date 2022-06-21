@@ -213,7 +213,7 @@ $uitkomstopties = array(0=>'Geen', 1=>'Geplaatst', 2=>'Afmelden', 3=>'Afgewezen'
             $variant="BBL";*/
         $variantarray=array(0=>"BOL", 1=>"BBL");
 		echo "<td>".$variantarray[$gesprek['gespr_oplvariant']]."</td>";
-		echo "<td>".$gesprek['gespr_nodig'].$gesprek['gespr_vorigeopl']."</td>";
+		echo "<td>".$gesprek['gespr_nodig'].$gesprek['gespr_vooropl_niv']."</td>";
 		echo "<td class='text-center'>".$gesprek['gespr_zorgstatus']."</td>";
         echo "<td>".$uitkomstopties[$gesprek['gespr_uitkomst']]."</td>";
 		$afgehandeld="<i style='color: red;' class='bi bi-check-circle'></i>";
