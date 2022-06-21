@@ -11,11 +11,14 @@ $gesprek= new Gesprek();
 $oplcode=1;
 $tweedecohjaar = intval($_GET['coh']) + 1;
 $cohort=$_GET['coh']."/".$tweedecohjaar;
+$sort = "gespr_achternaam";
+if(isset($_GET['sort']))
+    $sort=$_GET['sort'];
 
 $dbconnect=new dbconnection();
 
 
-$sql = "SELECT * FROM gesprekken WHERE gespr_opl=:oplcode AND gespr_cohort=:coh AND gespr_uitkomst<2 AND gespr_aanmstatus<>3 ORDER BY gespr_datum, gespr_achternaam";
+$sql = "SELECT * FROM gesprekken WHERE gespr_opl=:oplcode AND gespr_cohort=:coh AND gespr_uitkomst<2 AND gespr_aanmstatus<>3 ORDER BY $sort, gespr_achternaam";
 $query = $dbconnect->prepare($sql);
 $query -> bindParam(':oplcode',$oplcode);
 $query -> bindParam(':coh',$cohort);
@@ -139,14 +142,15 @@ $gesprekken = $query -> fetchAll(2);
 	<thead class="thead-dark">
     <tr>
       <th class="text-right">#</th>
-      <th>Naam</th>
+        <th><a href="index_overz.php?sort=naam">Naam</a></th>
+        <th>Studentnr.</th>
       <th>Opl.</th>
-        <th>Vooropl.</th>
+        <th><a href="index_overz.php?sort=vooropl">Vooropl.</a></th>
         <th>Nodig</th>
-      <th>Zorgstatus</th>
-        <th>Uitkomst</th>
-        <th style="width: 15%">Status</th>
-        <th style="width: 10%">Klas</th>
+        <th><a href="index_overz.php?sort=zorg">Zorgstatus</a></th>
+<!--        <th>Uitkomst</th>-->
+        <th style="width: 15%"><a href="index_overz.php?sort=status">Status</a></th>
+        <th style="width: 10%"><a href="index_overz.php?sort=klas">Klas</a></th>
     </tr>
   </thead><tbody>
 <?php
@@ -160,12 +164,13 @@ $uitkomstopties = array(0=>'Geen', 1=>'Geplaatst', 2=>'Afmelden', 3=>'Afgewezen'
 		echo "<tr class='".$trclass."'>";
 		echo "<td class='fit text-end' width='40'>{$i}.</td>";
 		echo "<td class='fit'>".volledigeNaam(1, $gesprek['gespr_achternaam'], $gesprek['gespr_voorvoegsel'], $gesprek['gespr_roepnaam'])."</td>";
+        echo "<td class='fit'>{$gesprek['gespr_stid']}</td>";
         $variantarray=array(0=>"BOL", 1=>"BBL");
-		echo "<td class='fit'>".$variantarray[$gesprek['gespr_oplvariant']]."</td>";
-        echo "<td class='fit'>".$gesprek['gespr_vooropl_niv']."</td>";
+		echo "<td class='fit'>{$variantarray[$gesprek['gespr_oplvariant']]}</td>";
+        echo "<td class='fit'>{$gesprek['gespr_vooropl_niv']}</td>";
 		echo "<td>".$gesprek['gespr_nodig']."</td>";
 		echo "<td class='fit text-center'>".$gesprek['gespr_zorgstatus']."</td>";
-        echo "<td class='fit'>".$uitkomstopties[$gesprek['gespr_uitkomst']]."</td>";
+        //echo "<td class='fit'>".$uitkomstopties[$gesprek['gespr_uitkomst']]."</td>";
 		$statusarray = array(0=>"intake", 1=>"afgedrukt", 2=>"definitief",3=>"afgemeld");
         echo "<td class='fit'><SELECT id='aanmstatus_{$gesprek['gespr_id']}' class='form-select form-select-sm' onchange='updateAanmstatus({$gesprek['gespr_id']})'>";
         $j = 0;
