@@ -33,7 +33,6 @@ class Gesprek
            $returnstmt .= "</div>";
            $returnstmt .= "<div class='col-2'>";
            $returnstmt .= "<label for='geslacht'><b>Geslacht</b></label>";
-
            $geslachtarray= array('man', 'vrouw', 'neutraal');
            $returnstmt.="<SELECT id='geslacht' class='form-control' required>";
            $returnstmt.="<option value=''>kies...</option>";
@@ -408,6 +407,10 @@ class Gesprek
             $dbconnect = new dbconnection();
             $sql="UPDATE gesprekken SET 
             gespr_stid=:stid, 
+            gespr_achternaam=:achternaam,
+            gespr_roepnaam=:roepnaam,
+            gespr_voorvoegsel=:voorvoegsel,
+            gespr_geslacht=:geslacht,
             gespr_datum=:datum,
             gespr_doorwie=:doorwie,
             gespr_leeftijd=:leeftijd,   
@@ -435,6 +438,10 @@ class Gesprek
             WHERE gespr_id=:id";
             $query = $dbconnect -> prepare($sql);
             $query -> bindParam(':stid', $_POST['stid']);
+            $query -> bindParam(':achternaam', $_POST['achternaam']);
+            $query -> bindParam(':roepnaam', $_POST['roepnaam']);
+            $query -> bindParam(':voorvoegsel', $_POST['voorv']);
+            $query -> bindParam(':geslacht', $_POST['geslacht']);
             $query -> bindParam(':datum', $_POST['datum']);
             $query -> bindParam(':doorwie', $_POST['doorwie']);
             $query -> bindParam(':leeftijd', $_POST['leeftijd']);

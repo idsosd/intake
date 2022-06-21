@@ -23,6 +23,10 @@ function showDetails(gesprid)
 function updateGesprek(gesprid)
 {
 	var stid = $('#stid').val();
+	let achternaam = $('#achternaam').val();
+	let voorv = $('#voorv').val();
+	let roepnaam = $('#roepnaam').val();
+	let geslacht = $('#geslacht').val();
 	var leeftijd = $('#leeftijd').val();
 	var emailadres1 = $('#emailadres1').val();
 	var emailadres2 = $('#emailadres2').val();
@@ -53,6 +57,10 @@ function updateGesprek(gesprid)
 	      action: 'update', 
 	      gesprid: gesprid,
 	      stid: stid,
+		  achternaam: achternaam,
+		  voorv: voorv,
+		  roepnaam: roepnaam,
+		  geslacht: geslacht,
 		  leeftijd: leeftijd,
 		  emailadres1: emailadres1,
 		  emailadres2: emailadres2,
