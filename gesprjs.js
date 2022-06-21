@@ -93,19 +93,19 @@ function addGesprek()
 {
 	var form="<form id='addgesprek' onsubmit=\"insertGesprek(); return false\">" +
 				"<div class='row'>" +
-		"<div class='col-1'>" +
+		"<div class='col-2'>" +
 		"<label for='studnr'><b>Studentnr</b></label>" +
 		"<input id='studnr' class='form-control' type='text'>" +
 		"</div>" +
-				"<div class='col-4'>" +
+				"<div class='col-3'>" +
 				"<label for='achternaam'><b>Achternaam</b></label>" +
 				"<input id='achternaam' class='form-control' type='text' placeholder='achternaam' required>" +
 				"</div>" +
-				"<div class='col-1'>" +
+				"<div class='col-2'>" +
 				"<label for='voorv'><b>Voorv.</b></label>" +
 				"<input id='voorv' class='form-control' type='text' placeholder='voorvoegsel'>" +
 				"</div>" +
-				"<div class='col-4'>" +
+				"<div class='col-3'>" +
 				"<label for='roepnaam'><b>Roepnaam</b></label>" +
 				"<input id='roepnaam' class='form-control' type='text' placeholder='roepnaam' required>" +
 				"</div>" +
