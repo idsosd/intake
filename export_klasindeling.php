@@ -1,14 +1,15 @@
 <?php
 include_once('inc/dbconnection.class.php');
-
+$coh = $_GET['coh'];
+$coh2 = $coh + 1;
 header('Content-Type: csv; charset=utf-8');
-header('Content-Disposition: attachment; filename=SD-klasindeling-cohort2122.csv');
+header('Content-Disposition: attachment; filename=SD-klasindeling-cohort'.$coh.$coh2.'.csv');
 $output = fopen("php://output", "w");
 $headdata=array("Volgnr","Studentid","Achternaam","Roepnaam","Cohort","Klas");
 fputcsv($output,$headdata,";");
 
 $oplcode = 1;
-$cohort = "21/22";
+$cohort = $coh."/".$coh2;
 $variant = 0;
 
 $dbconnect = new dbconnection();

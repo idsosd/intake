@@ -127,7 +127,7 @@ $gesprekken = $query -> fetchAll(2);
             <h3>Draaitabel klas <?= $cohort ?></h3>
         </div>
         <div class="col text-end">
-            <a class="btn btn-success" href="export_klasindeling.php">DOWNLOAD KLASINDELING</a>
+            <a class="btn btn-success" href="export_klasindeling.php?coh=22">DOWNLOAD KLASINDELING</a>
         </div>
     </div>
     <div class="row">
