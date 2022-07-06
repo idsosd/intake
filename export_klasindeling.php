@@ -13,7 +13,7 @@ $cohort = $coh."/".$coh2;
 $variant = 0;
 
 $dbconnect = new dbconnection();
-$sql = "SELECT * FROM gesprekken WHERE gespr_opl=:oplcode AND gespr_cohort=:coh AND gespr_oplvariant=:variant ORDER BY gespr_achternaam";
+$sql = "SELECT * FROM gesprekken WHERE gespr_opl=:oplcode AND gespr_cohort=:coh AND gespr_oplvariant=:variant AND gespr_uitkomst=1 ORDER BY gespr_klas, gespr_achternaam";
 $query = $dbconnect->prepare($sql);
 $query -> bindParam(':oplcode',$oplcode);
 $query -> bindParam(':coh',$cohort);
