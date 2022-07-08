@@ -15,7 +15,7 @@ if ($_POST['wachtwoord1'] ==  $_POST['wachtwoord2']) {
             $to = $_POST['email'].", idsosinga@idsosd.nl";
             $subject = "Aanmelding bij OSD's reserveringssyteem";
             $message = "Er is een account aangemaakt voor OSD's reserveringssysteem op dit e-mailadres:<br>".$_POST['email'];
-            $message .= "<br><br>Klik op <a href='http://localhost/reserveren/app/verifieer.php?id=".$verifieercode."'>deze link</a> om het account definitief te activeren!";
+            $message .= "<br><br>Klik op <a href='https://idsosd.nl/intake/app/verifieer.php?id=".$verifieercode."'>deze link</a> om het account definitief te activeren!";
             $message .= "<br><br>Als u het account NIET heeft aangemaakt, klik dan NIET op de link en neem contact op met de webmaster (idsosinga@idsosd.nl).";
             $message .= "<br><br>Met vriendelijke groet,<br>Ids Osinga<br>namens OSD's reserveringssysteemteam.";
             $headers = "From: idsosinga@idsosd.nl\r\n";

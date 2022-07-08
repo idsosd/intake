@@ -109,7 +109,7 @@ class Gesprek
            $returnstmt .= "</div>";
            $returnstmt .= "<div class='col-md-3'>";
            $returnstmt .= "<label for='datum'><b>Datum</b></label>";
-           $returnstmt .= "<input id='datum' class='form-control' type='date' value='{$recset['gespr_datum']}'>";
+           $returnstmt .= "<input id='datum' class='form-control' type='datetime-local' value='{$recset['gespr_datum']}'>";
            $returnstmt .= "</div>";
            $returnstmt .= "<div class='col-md-2'>";
            $returnstmt.="<label for='doorwie'><b>Door</b></label>";

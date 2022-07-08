@@ -175,7 +175,7 @@ function addGesprek()
 		"</div>" +
 				"<div class='col-md-3'>" +
 				"<label for='datum'><b>Datum</b></label>" +
-				"<input id='datum' class='form-control' type='date'>" +
+				"<input id='datum' class='form-control' type='datetime-local'>" +
 				"</div>" +
 				"<div class='col-md-2'>" +
 				"<label for='doorwie'><b>Door</b></label>" +
