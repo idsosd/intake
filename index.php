@@ -194,7 +194,7 @@ $uitkomstopties = array(0=>'Geen', 1=>'Geplaatst', 2=>'Afmelden', 3=>'Afgewezen'
 			$trclass="table-success";
 		echo "<tr class='".$trclass."'>";
 		echo "<td class='fit text-end'><a href='#' onclick=\"showDetails({$gesprek['gespr_id']})\">{$i}.</a></td>";
-		if(is_null($gesprek['gespr_datum']) OR $gesprek['gespr_datum'] == '' OR $gesprek['gespr_datum'] == '0000-00-00')
+		if(is_null($gesprek['gespr_datum']) OR $gesprek['gespr_datum'] == '' OR $gesprek['gespr_datum'] == '0000-00-00 00:00:00')
             $datum = "";
 		else
 		    $datum=strftime('%a %e %h %Y' , strtotime($gesprek['gespr_datum']));
