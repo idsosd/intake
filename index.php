@@ -197,7 +197,7 @@ $uitkomstopties = array(0=>'Geen', 1=>'Geplaatst', 2=>'Afmelden', 3=>'Afgewezen'
 		if(is_null($gesprek['gespr_datum']) OR $gesprek['gespr_datum'] == '' OR $gesprek['gespr_datum'] == '0000-00-00 00:00:00')
             $datum = "";
 		else
-		    $datum=strftime('%a %e %h %Y' , strtotime($gesprek['gespr_datum']));
+		    $datum=strftime('%a %e %h %Y %H:%M' , strtotime($gesprek['gespr_datum']));
 		echo "<td class='fit'>".$datum."</td>";
 		echo "<td class='fit'>".volledigeNaam(1, $gesprek['gespr_achternaam'], $gesprek['gespr_voorvoegsel'], $gesprek['gespr_roepnaam'])."</td>";
 		$emailbody = "Beste {$gesprek['gespr_roepnaam']},%0A%0AJe hebt je aangemeld voor de Software Developer opleiding aan het Alfa-college. Het is de bedoeling dat ik eerst een intakegesprek met je doe.%0A
